@@ -1,0 +1,9 @@
+# Oraciones con errores reales de concordancia: el rechazo es CORRECTO, no un fallo del parser.
+# Una oración por línea. Abrir en main.py > español > Leer archivo .txt.
+# Los rechazos son resultados del parser actual; no todos significan errores del español.
+
+Los niños que juegan con la niña corre.
+Las niño corren.
+Las niñas pequeño corren.
+Las niñas que canta corren.
+Las niñas que juegan con el perro canta.

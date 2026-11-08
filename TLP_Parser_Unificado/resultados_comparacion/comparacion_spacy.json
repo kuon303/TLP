@@ -1,0 +1,2507 @@
+{
+  "metadatos": {
+    "generado_en": "2026-11-07T18:20:18.150037-06:00",
+    "modo": "COMPARACION",
+    "modelo": "es_core_news_sm",
+    "version_spacy": "3.8.18",
+    "nota_vocabulario": "Resultados del parser reevaluados con vocabulario ampliado; las etiquetas de spaCy son datos preservados de la ejecución original (modelo es_core_news_sm), no se ejecutó spaCy otra vez."
+  },
+  "casos": [
+    {
+      "id": "E01",
+      "fenomeno": "Simple",
+      "oracion": "El niño corre.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Oración simple con sujeto masculino singular.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E02",
+      "fenomeno": "Simple",
+      "oracion": "La niña canta.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Oración simple con sujeto femenino singular.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canto",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E03",
+      "fenomeno": "Simple",
+      "oracion": "Los niños corren.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Sujeto plural con verbo plural.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "corren",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corren",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corren",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corren",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E04",
+      "fenomeno": "Simple",
+      "oracion": "Las niñas cantan.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Sujeto femenino plural con verbo plural.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('cantan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Las",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niñas",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "cantan",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "cantan",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "cantan",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "cantan",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E05",
+      "fenomeno": "Simple",
+      "oracion": "El perro duerme.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Otro sustantivo y verbo del vocabulario.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('perro')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('duerme')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "perro",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "perro",
+            "lema": "perro",
+            "categoria": "PROPN",
+            "morfologia": "",
+            "dependencia": "nsubj",
+            "depende_de": "duerme",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "duerme",
+            "lema": "dormir",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "duerme",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "duerme",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E06",
+      "fenomeno": "Adjetivo",
+      "oracion": "El niño grande corre.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Adjetivo común en género y singular.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_COMUN_S ('grande')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "grande",
+            "lema": "grande",
+            "categoria": "ADJ",
+            "morfologia": "Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E07",
+      "fenomeno": "Adjetivo",
+      "oracion": "La niña pequeña canta.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Concordancia femenina singular.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_FS ('pequeña')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "pequeña",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canto",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E08",
+      "fenomeno": "Adjetivo",
+      "oracion": "Los niños pequeños corren.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Concordancia masculina plural.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('pequeños')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "corren",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "pequeños",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "amod",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corren",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corren",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corren",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E09",
+      "fenomeno": "Adjetivo",
+      "oracion": "Las niñas grandes caminan.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Adjetivo común plural.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── ADJ_COMUN_P ('grandes')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('caminan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Las",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niñas",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "caminan",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "grandes",
+            "lema": "grande",
+            "categoria": "ADJ",
+            "morfologia": "Number=Plur",
+            "dependencia": "amod",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "caminan",
+            "lema": "caminar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "caminan",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "caminan",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E10",
+      "fenomeno": "Adverbio",
+      "oracion": "El niño corre rápidamente.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Adverbio de modo.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "rápidamente",
+            "lema": "rápidamente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E11",
+      "fenomeno": "Adverbio",
+      "oracion": "La niña canta alegremente.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Adverbio de modo con sujeto femenino.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── ADV ('alegremente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "canta",
+            "lema": "canto",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "alegremente",
+            "lema": "alegremente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E12",
+      "fenomeno": "Frase preposicional",
+      "oracion": "El niño corre en el parque.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Complemento introducido por en.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('parque')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "parque",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "parque",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "parque",
+            "lema": "parque",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E13",
+      "fenomeno": "Frase preposicional",
+      "oracion": "La niña camina con el perro.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Complemento introducido por con.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('camina')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('con')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('perro')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "camina",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "camina",
+            "lema": "camín",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "camina",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "con",
+            "lema": "con",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "perro",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "perro",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "perro",
+            "lema": "perro",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "camina",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "camina",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E14",
+      "fenomeno": "Frase preposicional",
+      "oracion": "Los niños juegan en la escuela.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Sujeto plural más frase preposicional.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('escuela')\n│               └── AdjetivoFSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "juegan",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "juegan",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "juegan",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "escuela",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "escuela",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "escuela",
+            "lema": "escuela",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "juegan",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "juegan",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E15",
+      "fenomeno": "Subordinada",
+      "oracion": "El niño que juega corre.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Relativa de sujeto simple.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('juega')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "juega",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "juega",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 4
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E16",
+      "fenomeno": "Subordinada",
+      "oracion": "Las niñas que cantan corren.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Relativa plural con verbo principal plural.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('cantan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Las",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niñas",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "cantan",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "cantan",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corren",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E17",
+      "fenomeno": "Combinación",
+      "oracion": "El niño pequeño que juega corre lentamente en el parque.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Adjetivo, relativa, adverbio y frase preposicional.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_MS ('pequeño')\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('juega')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('parque')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "pequeño",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "juega",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "juega",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "lentamente",
+            "lema": "lentamente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "corre",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "parque",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "parque",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "parque",
+            "lema": "parque",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "corre",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 5
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E18",
+      "fenomeno": "Combinación",
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Relativa con preposición y adverbio principal.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('pequeños')\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('juegan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           ├── PREP ('en')\n│           └── SintagmaNominal\n│               └── NominalMS\n│                   ├── ART_MS ('el')\n│                   ├── SUST_MS ('parque')\n│                   └── AdjetivoMSOpc\n│                       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "corren",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "pequeños",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "amod",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "juegan",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "juegan",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "parque",
+            "indice_cabeza": 7
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "parque",
+            "indice_cabeza": 7
+          },
+          {
+            "palabra": "parque",
+            "lema": "parque",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "juegan",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "corren",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corren",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "rápidamente",
+            "lema": "rápidamente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "corren",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corren",
+            "indice_cabeza": 8
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E19",
+      "fenomeno": "Combinación",
+      "oracion": "La niña pequeña que camina tranquilamente en la escuela canta alegremente.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Modificadores dentro y fuera de subordinada.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_FS ('pequeña')\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('camina')\n│       ├── AdverbioOpc\n│       │   └── ADV ('tranquilamente')\n│       └── FrasePrepOpc\n│           ├── PREP ('en')\n│           └── SintagmaNominal\n│               └── NominalFS\n│                   ├── ART_FS ('la')\n│                   ├── SUST_FS ('escuela')\n│                   └── AdjetivoFSOpc\n│                       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── ADV ('alegremente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "canta",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "pequeña",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "camina",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "camina",
+            "lema": "caminar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "tranquilamente",
+            "lema": "tranquilamente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "camina",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "escuela",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "escuela",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "escuela",
+            "lema": "escuela",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "camina",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "canta",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "canta",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "alegremente",
+            "lema": "alegremente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "canta",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "canta",
+            "indice_cabeza": 9
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E20",
+      "fenomeno": "Frase preposicional",
+      "oracion": "El niño corre con la perra grande.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": true,
+      "esperado_parser": true,
+      "justificacion": "Concordancia dentro de sintagma nominal preposicional.",
+      "parser": {
+        "acepta": true,
+        "error": "",
+        "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('con')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('perra')\n│               └── AdjetivoFSOpc\n│                   └── ADJ_COMUN_S ('grande')\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')"
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "con",
+            "lema": "con",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "perra",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "perra",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "perra",
+            "lema": "perra",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "grande",
+            "lema": "grande",
+            "categoria": "ADJ",
+            "morfologia": "Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "perra",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E21",
+      "fenomeno": "Error de concordancia",
+      "oracion": "Los niño corre.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Artículo masculino plural frente a sustantivo y verbo singular.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 5: se esperaba SUST_MP, pero apareció SUST_MS ('niño').",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E22",
+      "fenomeno": "Error de concordancia",
+      "oracion": "La niño canta.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Artículo femenino frente a sustantivo masculino.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 4: se esperaba SUST_FS, pero apareció SUST_MS ('niño').",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "PROPN",
+            "morfologia": "",
+            "dependencia": "ROOT",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canta",
+            "categoria": "PROPN",
+            "morfologia": "",
+            "dependencia": "appos",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E23",
+      "fenomeno": "Error de concordancia",
+      "oracion": "Las niñas canta.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Sujeto plural y verbo singular.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 11: no se puede analizar RelativaPOpc cuando aparece VERBO_S ('canta'). Tokens esperados: QUE, VERBO_P.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Las",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niñas",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niñas",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "canta",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "canta",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E24",
+      "fenomeno": "Error de concordancia",
+      "oracion": "La niña pequeño canta.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Adjetivo masculino con sustantivo femenino.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 9: no se puede analizar AdjetivoFSOpc cuando aparece ADJ_MS ('pequeño'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "pequeño",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "canta",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E25",
+      "fenomeno": "Error de concordancia",
+      "oracion": "Los niños que juega corren.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Verbo singular en relativa de sujeto plural.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 15: se esperaba VERBO_P, pero apareció VERBO_S ('juega').",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "juega",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "juega",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "corren",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corren",
+            "indice_cabeza": 4
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E26",
+      "fenomeno": "Error de concordancia",
+      "oracion": "La niña que juegan canta.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Verbo plural en relativa de sujeto singular.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 13: se esperaba VERBO_S, pero apareció VERBO_P ('juegan').",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "que",
+            "lema": "que",
+            "categoria": "PRON",
+            "morfologia": "PronType=Int,Rel",
+            "dependencia": "nsubj",
+            "depende_de": "juegan",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "juegan",
+            "lema": "jugar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "acl",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canta",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "obj",
+            "depende_de": "juegan",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E27",
+      "fenomeno": "Error de concordancia",
+      "oracion": "Los niños pequeños camina.",
+      "gramaticalmente_correcta": false,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Verbo singular con sujeto plural.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 20: no se puede analizar RelativaPOpc cuando aparece VERBO_S ('camina'). Tokens esperados: QUE, VERBO_P.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Los",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niños",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "nsubj",
+            "depende_de": "camina",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": "pequeños",
+            "lema": "pequeño",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Masc|Number=Plur",
+            "dependencia": "amod",
+            "depende_de": "niños",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "camina",
+            "lema": "camina",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "camina",
+            "indice_cabeza": 3
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "camina",
+            "indice_cabeza": 3
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E28",
+      "fenomeno": "Fuera del alcance",
+      "oracion": "El niño corre rápidamente en el parque con la niña.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Dos complementos preposicionales; la gramática admite solo uno en esa posición.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 40: no se puede analizar AdjetivoMSOpc cuando aparece PREP ('con'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "rápidamente",
+            "lema": "rápidamente",
+            "categoria": "ADV",
+            "morfologia": "",
+            "dependencia": "advmod",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "parque",
+            "indice_cabeza": 6
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "parque",
+            "indice_cabeza": 6
+          },
+          {
+            "palabra": "parque",
+            "lema": "parque",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "con",
+            "lema": "con",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "niña",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 9
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nmod",
+            "depende_de": "parque",
+            "indice_cabeza": 6
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E29",
+      "fenomeno": "Fuera del alcance",
+      "oracion": "La niña canta en el parque de la escuela.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Frases preposicionales anidadas no contempladas.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 28: no se puede analizar AdjetivoMSOpc cuando aparece PREP ('de'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canto",
+            "categoria": "ADJ",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "amod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "en",
+            "lema": "en",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "parque",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "parque",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "parque",
+            "lema": "parque",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nmod",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "de",
+            "lema": "de",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "escuela",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "escuela",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "escuela",
+            "lema": "escuela",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nmod",
+            "depende_de": "parque",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E30",
+      "fenomeno": "Fuera del alcance",
+      "oracion": "Corre el niño.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Orden verbo-sujeto, correcto en español pero no contemplado.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 1: no se puede analizar Oracion cuando aparece VERBO_S ('Corre'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "Corre",
+            "indice_cabeza": 0
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "Corre",
+            "indice_cabeza": 0
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "Corre",
+            "indice_cabeza": 0
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E31",
+      "fenomeno": "Fuera del alcance",
+      "oracion": "La niña corre y canta.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Coordinación de verbos no implementada.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 15: no se puede analizar AdverbioOpc cuando aparece DESCONOCIDA ('y'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "La",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "corre",
+            "lema": "correr",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "y",
+            "lema": "y",
+            "categoria": "CCONJ",
+            "morfologia": "",
+            "dependencia": "cc",
+            "depende_de": "canta",
+            "indice_cabeza": 4
+          },
+          {
+            "palabra": "canta",
+            "lema": "cantar",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+            "dependencia": "conj",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "corre",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E32",
+      "fenomeno": "Fuera del alcance",
+      "oracion": "Mi hermana canta.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Vocabulario y determinante posesivo fuera del subconjunto.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 1: no se puede analizar Oracion cuando aparece DESCONOCIDA ('Mi'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "Mi",
+            "lema": "mi",
+            "categoria": "DET",
+            "morfologia": "Number=Sing|Number[psor]=Sing|Person=1|Poss=Yes|PronType=Prs",
+            "dependencia": "det",
+            "depende_de": "hermana",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "hermana",
+            "lema": "hermana",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "ROOT",
+            "depende_de": "hermana",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "canta",
+            "lema": "canta",
+            "categoria": "PROPN",
+            "morfologia": "",
+            "dependencia": "amod",
+            "depende_de": "hermana",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "hermana",
+            "indice_cabeza": 1
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    },
+    {
+      "id": "E33",
+      "fenomeno": "Ambigüedad",
+      "oracion": "El niño vio a la niña con el telescopio.",
+      "gramaticalmente_correcta": true,
+      "dentro_del_subconjunto": false,
+      "esperado_parser": false,
+      "justificacion": "Oración gramaticalmente correcta con posible ambigüedad de adjunción; verbo fuera del vocabulario.",
+      "parser": {
+        "acepta": false,
+        "error": "Línea 1, columna 9: no se puede analizar AdjetivoMSOpc cuando aparece DESCONOCIDA ('vio'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+        "arbol": ""
+      },
+      "spacy": {
+        "estado": "ANALIZADO",
+        "tokens": [
+          {
+            "palabra": "El",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niño",
+            "indice_cabeza": 1
+          },
+          {
+            "palabra": "niño",
+            "lema": "niño",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "nsubj",
+            "depende_de": "vio",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "vio",
+            "lema": "ver",
+            "categoria": "VERB",
+            "morfologia": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+            "dependencia": "ROOT",
+            "depende_de": "vio",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "a",
+            "lema": "a",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "niña",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "la",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "niña",
+            "indice_cabeza": 5
+          },
+          {
+            "palabra": "niña",
+            "lema": "niña",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Fem|Number=Sing",
+            "dependencia": "obj",
+            "depende_de": "vio",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": "con",
+            "lema": "con",
+            "categoria": "ADP",
+            "morfologia": "",
+            "dependencia": "case",
+            "depende_de": "telescopio",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "el",
+            "lema": "el",
+            "categoria": "DET",
+            "morfologia": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+            "dependencia": "det",
+            "depende_de": "telescopio",
+            "indice_cabeza": 8
+          },
+          {
+            "palabra": "telescopio",
+            "lema": "telescopio",
+            "categoria": "NOUN",
+            "morfologia": "Gender=Masc|Number=Sing",
+            "dependencia": "obl",
+            "depende_de": "vio",
+            "indice_cabeza": 2
+          },
+          {
+            "palabra": ".",
+            "lema": ".",
+            "categoria": "PUNCT",
+            "morfologia": "PunctType=Peri",
+            "dependencia": "punct",
+            "depende_de": "vio",
+            "indice_cabeza": 2
+          }
+        ],
+        "nota": "Anotaciones predichas; revisión lingüística manual pendiente."
+      }
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+[
+  {
+    "id": "E01",
+    "fenomeno": "Simple",
+    "oracion": "El niño corre.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Oración simple con sujeto masculino singular."
+  },
+  {
+    "id": "E02",
+    "fenomeno": "Simple",
+    "oracion": "La niña canta.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Oración simple con sujeto femenino singular."
+  },
+  {
+    "id": "E03",
+    "fenomeno": "Simple",
+    "oracion": "Los niños corren.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Sujeto plural con verbo plural."
+  },
+  {
+    "id": "E04",
+    "fenomeno": "Simple",
+    "oracion": "Las niñas cantan.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Sujeto femenino plural con verbo plural."
+  },
+  {
+    "id": "E05",
+    "fenomeno": "Simple",
+    "oracion": "El perro duerme.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Otro sustantivo y verbo del vocabulario."
+  },
+  {
+    "id": "E06",
+    "fenomeno": "Adjetivo",
+    "oracion": "El niño grande corre.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Adjetivo común en género y singular."
+  },
+  {
+    "id": "E07",
+    "fenomeno": "Adjetivo",
+    "oracion": "La niña pequeña canta.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Concordancia femenina singular."
+  },
+  {
+    "id": "E08",
+    "fenomeno": "Adjetivo",
+    "oracion": "Los niños pequeños corren.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Concordancia masculina plural."
+  },
+  {
+    "id": "E09",
+    "fenomeno": "Adjetivo",
+    "oracion": "Las niñas grandes caminan.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Adjetivo común plural."
+  },
+  {
+    "id": "E10",
+    "fenomeno": "Adverbio",
+    "oracion": "El niño corre rápidamente.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Adverbio de modo."
+  },
+  {
+    "id": "E11",
+    "fenomeno": "Adverbio",
+    "oracion": "La niña canta alegremente.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Adverbio de modo con sujeto femenino."
+  },
+  {
+    "id": "E12",
+    "fenomeno": "Frase preposicional",
+    "oracion": "El niño corre en el parque.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Complemento introducido por en."
+  },
+  {
+    "id": "E13",
+    "fenomeno": "Frase preposicional",
+    "oracion": "La niña camina con el perro.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Complemento introducido por con."
+  },
+  {
+    "id": "E14",
+    "fenomeno": "Frase preposicional",
+    "oracion": "Los niños juegan en la escuela.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Sujeto plural más frase preposicional."
+  },
+  {
+    "id": "E15",
+    "fenomeno": "Subordinada",
+    "oracion": "El niño que juega corre.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Relativa de sujeto simple."
+  },
+  {
+    "id": "E16",
+    "fenomeno": "Subordinada",
+    "oracion": "Las niñas que cantan corren.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Relativa plural con verbo principal plural."
+  },
+  {
+    "id": "E17",
+    "fenomeno": "Combinación",
+    "oracion": "El niño pequeño que juega corre lentamente en el parque.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Adjetivo, relativa, adverbio y frase preposicional."
+  },
+  {
+    "id": "E18",
+    "fenomeno": "Combinación",
+    "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Relativa con preposición y adverbio principal."
+  },
+  {
+    "id": "E19",
+    "fenomeno": "Combinación",
+    "oracion": "La niña pequeña que camina tranquilamente en la escuela canta alegremente.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Modificadores dentro y fuera de subordinada."
+  },
+  {
+    "id": "E20",
+    "fenomeno": "Frase preposicional",
+    "oracion": "El niño corre con la perra grande.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": true,
+    "esperado_parser": true,
+    "justificacion": "Concordancia dentro de sintagma nominal preposicional."
+  },
+  {
+    "id": "E21",
+    "fenomeno": "Error de concordancia",
+    "oracion": "Los niño corre.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Artículo masculino plural frente a sustantivo y verbo singular."
+  },
+  {
+    "id": "E22",
+    "fenomeno": "Error de concordancia",
+    "oracion": "La niño canta.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Artículo femenino frente a sustantivo masculino."
+  },
+  {
+    "id": "E23",
+    "fenomeno": "Error de concordancia",
+    "oracion": "Las niñas canta.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Sujeto plural y verbo singular."
+  },
+  {
+    "id": "E24",
+    "fenomeno": "Error de concordancia",
+    "oracion": "La niña pequeño canta.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Adjetivo masculino con sustantivo femenino."
+  },
+  {
+    "id": "E25",
+    "fenomeno": "Error de concordancia",
+    "oracion": "Los niños que juega corren.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Verbo singular en relativa de sujeto plural."
+  },
+  {
+    "id": "E26",
+    "fenomeno": "Error de concordancia",
+    "oracion": "La niña que juegan canta.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Verbo plural en relativa de sujeto singular."
+  },
+  {
+    "id": "E27",
+    "fenomeno": "Error de concordancia",
+    "oracion": "Los niños pequeños camina.",
+    "gramaticalmente_correcta": false,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Verbo singular con sujeto plural."
+  },
+  {
+    "id": "E28",
+    "fenomeno": "Fuera del alcance",
+    "oracion": "El niño corre rápidamente en el parque con la niña.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Dos complementos preposicionales; la gramática admite solo uno en esa posición."
+  },
+  {
+    "id": "E29",
+    "fenomeno": "Fuera del alcance",
+    "oracion": "La niña canta en el parque de la escuela.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Frases preposicionales anidadas no contempladas."
+  },
+  {
+    "id": "E30",
+    "fenomeno": "Fuera del alcance",
+    "oracion": "Corre el niño.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Orden verbo-sujeto, correcto en español pero no contemplado."
+  },
+  {
+    "id": "E31",
+    "fenomeno": "Fuera del alcance",
+    "oracion": "La niña corre y canta.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Coordinación de verbos no implementada."
+  },
+  {
+    "id": "E32",
+    "fenomeno": "Fuera del alcance",
+    "oracion": "Mi hermana canta.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Vocabulario y determinante posesivo fuera del subconjunto."
+  },
+  {
+    "id": "E33",
+    "fenomeno": "Ambigüedad",
+    "oracion": "El niño vio a la niña con el telescopio.",
+    "gramaticalmente_correcta": true,
+    "dentro_del_subconjunto": false,
+    "esperado_parser": false,
+    "justificacion": "Oración gramaticalmente correcta con posible ambigüedad de adjunción; verbo fuera del vocabulario."
+  }
+]

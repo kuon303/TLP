@@ -1,0 +1,20 @@
+# Oraciones posibles en español que el parser actual RECHAZA por limites del subconjunto. Ver evidencias_fallos/GUIA_CASOS_FALLA.md.
+# Una oración por línea. Abrir en main.py > español > Leer archivo .txt.
+# Los rechazos son resultados del parser actual; no todos significan errores del español.
+
+El niño que juega con la niña que canta corre.
+Corre el niño.
+El niño rápidamente corre.
+La niña pequeña tranquila canta.
+El niño corre lentamente tranquilamente.
+El niño corre en el parque con la niña.
+El niño corre en la casa de la niña.
+La niña corre y canta.
+El niño y la niña corren.
+Mi niña corre.
+Niños corren.
+El niño corre porque la niña canta.
+El niño corre en el parque rápidamente.
+El niño que la niña conoce corre.
+El niño corre mientras la niña canta.
+La niña que corre con el perro que duerme canta.

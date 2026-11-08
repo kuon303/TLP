@@ -1,0 +1,14 @@
+# Oraciones aceptadas con el vocabulario ampliado.
+El carro corre.
+Los carros corren.
+Un carro rojo avanza.
+Una estudiante estudia.
+El estudiante lee.
+Las profesoras enseñan.
+Unos perros felices juegan.
+La niña cocina.
+La cocina funciona.
+El hombre trabaja en la oficina.
+Las mariposas bonitas vuelan lentamente.
+El carro avanza rápidamente en la ciudad.
+La niña camina velozmente.

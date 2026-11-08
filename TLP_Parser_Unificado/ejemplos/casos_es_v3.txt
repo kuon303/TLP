@@ -1,0 +1,17 @@
+# Oraciones incluidas en V3: aceptadas y rechazadas (una por línea)
+El niño corre.
+La niña pequeña canta.
+Los niños pequeños que juegan en el parque corren rápidamente.
+El niño que canta alegremente corre con el perro.
+El niño juega con la niña pequeña.
+La niña pequeño canta.
+Los niños que juega corren.
+El niño corre en el parque con la niña.
+La niña camina velozmente.
+
+# Nuevas palabras reconocidas por el vocabulario ampliado
+El carro corre.
+Los carros corren.
+Una profesora enseña.
+La estudiante lee rápidamente.
+Un carro rojo avanza.

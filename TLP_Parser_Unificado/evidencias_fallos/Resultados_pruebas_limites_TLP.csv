@@ -1,0 +1,50 @@
+﻿id,lenguaje,fenomeno,entrada,resultado,error
+S01,Español,Subordinada relativa simple,El niño que juega corre.,ACEPTA,
+S02,Español,Subordinada anidada,El niño que juega con la niña que canta corre.,RECHAZA,"Línea 1, columna 31: no se puede analizar PredicadoS cuando aparece QUE ('que'). Tokens esperados: VERBO_S."
+S03,Español,Concordancia a distancia válida,Los niños que juegan con la niña corren.,ACEPTA,
+S04,Español,Concordancia a distancia incorrecta,Los niños que juegan con la niña corre.,RECHAZA,"Línea 1, columna 34: no se puede analizar PredicadoP cuando aparece VERBO_S ('corre'). Tokens esperados: VERBO_P."
+S05,Español,Acuerdo articulo/sustantivo,Las niño corren.,RECHAZA,"Línea 1, columna 5: se esperaba SUST_FP, pero apareció SUST_MS ('niño')."
+S06,Español,Acuerdo sustantivo/adjetivo,Las niñas pequeño corren.,RECHAZA,"Línea 1, columna 11: no se puede analizar AdjetivoFPOpc cuando aparece ADJ_MS ('pequeño'). Tokens esperados: ADJ_COMUN_P, ADJ_FP, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S07,Español,Acuerdo subordinada,Las niñas que canta corren.,RECHAZA,"Línea 1, columna 15: se esperaba VERBO_P, pero apareció VERBO_S ('canta')."
+S08,Español,Orden verbo-sujeto,Corre el niño.,RECHAZA,"Línea 1, columna 1: no se puede analizar Oracion cuando aparece VERBO_S ('Corre'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS."
+S09,Español,Adverbio adelantado,El niño rápidamente corre.,RECHAZA,"Línea 1, columna 9: no se puede analizar AdjetivoMSOpc cuando aparece ADV ('rápidamente'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S10,Español,Dos adjetivos,La niña pequeña tranquila canta.,RECHAZA,"Línea 1, columna 17: no se puede analizar RelativaSOpc cuando aparece ADJ_FS ('tranquila'). Tokens esperados: QUE, VERBO_S."
+S11,Español,Dos adverbios,El niño corre lentamente tranquilamente.,RECHAZA,"Línea 1, columna 26: no se puede analizar FrasePrepOpc cuando aparece ADV ('tranquilamente'). Tokens esperados: EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S12,Español,Dos frases preposicionales,El niño corre en el parque con la niña.,RECHAZA,"Línea 1, columna 28: no se puede analizar AdjetivoMSOpc cuando aparece PREP ('con'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S13,Español,Preposicion anidada,El niño corre en la casa de la niña.,RECHAZA,"Línea 1, columna 26: no se puede analizar AdjetivoFSOpc cuando aparece PREP ('de'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S14,Español,Coordinacion verbal,La niña corre y canta.,RECHAZA,"Línea 1, columna 15: no se puede analizar AdverbioOpc cuando aparece DESCONOCIDA ('y'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S15,Español,Coordinacion sujetos,El niño y la niña corren.,RECHAZA,"Línea 1, columna 9: no se puede analizar AdjetivoMSOpc cuando aparece DESCONOCIDA ('y'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S16,Español,Determinante posesivo,Mi niña corre.,RECHAZA,"Línea 1, columna 1: no se puede analizar Oracion cuando aparece DESCONOCIDA ('Mi'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS."
+S17,Español,Sujeto sin articulo,Niños corren.,RECHAZA,"Línea 1, columna 1: no se puede analizar Oracion cuando aparece SUST_MP ('Niños'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS."
+S18,Español,Oracion interrogativa,¿El niño corre?,RECHAZA,"Línea 1, columna 1: carácter no reconocido '¿'."
+S19,Español,Oracion exclamativa,¡El niño corre!,RECHAZA,"Línea 1, columna 1: carácter no reconocido '¡'."
+S20,Español,Oracion con subordinada adverbial,El niño corre porque la niña canta.,RECHAZA,"Línea 1, columna 15: no se puede analizar AdverbioOpc cuando aparece DESCONOCIDA ('porque'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S21,Español,Oracion con subord complemento,El niño canta que la niña corre.,RECHAZA,"Línea 1, columna 15: no se puede analizar AdverbioOpc cuando aparece QUE ('que'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S22,Español,Ambiguedad con telescopio,El niño corre con el telescopio.,ACEPTA,
+S23,Español,Ambiguedad: ver telescopio,El niño vio a la niña con el telescopio.,RECHAZA,"Línea 1, columna 9: no se puede analizar AdjetivoMSOpc cuando aparece DESCONOCIDA ('vio'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S24,Español,Aceptacion sin semantica,El telescopio duerme.,ACEPTA,
+S25,Español,Aceptacion sin semantica 2,La casa corre.,ACEPTA,
+S26,Español,Subordinada con adverbio,El niño que juega rápidamente corre.,ACEPTA,
+S27,Español,Preposicion y adjetivo,El niño corre con la niña pequeña.,ACEPTA,
+S28,Español,Adjetivo separado del sustantivo,El niño que corre grande canta.,RECHAZA,"Línea 1, columna 19: no se puede analizar AdverbioOpc cuando aparece ADJ_COMUN_S ('grande'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S29,Español,Dos relativas mismo sujeto,El niño que corre que canta duerme.,RECHAZA,"Línea 1, columna 19: no se puede analizar AdverbioOpc cuando aparece QUE ('que'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S30,Español,Concordancia correcta diferente numero dentro,Las niñas que juegan con el perro cantan.,ACEPTA,
+S31,Español,Concordancia incorrecta diferente numero dentro,Las niñas que juegan con el perro canta.,RECHAZA,"Línea 1, columna 35: no se puede analizar PredicadoP cuando aparece VERBO_S ('canta'). Tokens esperados: VERBO_P."
+S32,Español,PP posicion alterna,El niño corre en el parque rápidamente.,RECHAZA,"Línea 1, columna 28: no se puede analizar AdjetivoMSOpc cuando aparece ADV ('rápidamente'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S."
+S33,Español,Sujeto plural sin verbo,Los niños pequeños.,RECHAZA,"Línea 1, columna 19: no se puede analizar RelativaPOpc cuando aparece PUNTO ('.'). Tokens esperados: QUE, VERBO_P."
+S34,Español,Dependencia con relativa objetual,El niño que la niña conoce corre.,RECHAZA,"Línea 1, columna 13: se esperaba VERBO_S, pero apareció ART_FS ('la')."
+S35,Español,Causal subordinada,El niño corre mientras la niña canta.,RECHAZA,"Línea 1, columna 15: no se puede analizar AdverbioOpc cuando aparece DESCONOCIDA ('mientras'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S."
+S36,Español,Varios niveles de relativos,La niña que corre con el perro que duerme canta.,RECHAZA,"Línea 1, columna 32: no se puede analizar PredicadoS cuando aparece QUE ('que'). Tokens esperados: VERBO_S."
+C01,C++,Valido del subconjunto,int x = 3; if (x > 0) { x = x + 1; },ACEPTA,
+C02,C++,Sentencia valida de C++ fuera del subconjunto,int main() { return 0; },RECHAZA,"Línea 1, columna 9: no se puede analizar Inicializacion cuando aparece LPAREN ('('). Tokens esperados: ASSIGN, SEMI."
+C03,C++,Bucle while valido en C++ fuera del subconjunto,int x = 3; while (x > 0) { x = x - 1; },RECHAZA,"Línea 1, columna 18: se esperaba ASSIGN, pero apareció LPAREN ('(')."
+C04,C++,Error de sintaxis,int x = ;,RECHAZA,"Línea 1, columna 9: no se puede analizar Expresion cuando aparece SEMI (';'). Tokens esperados: ID, LPAREN, MINUS, NUMBER."
+C05,C++,Falta llave,if (1 > 0) { int x = 3;,RECHAZA,"Línea 1, columna 24: se esperaba RBRACE, pero apareció EOF ('$')."
+C06,C++,Semantica: identificador no declarado,int x = y;,ACEPTA,
+C07,C++,Semantica: redeclaracion,int x; int x;,ACEPTA,
+C08,C++,Semantica: division cero,int x = 1 / 0;,ACEPTA,
+C09,C++,C++ valido: cout fuera del subconjunto,cout << 3;,RECHAZA,"Línea 1, columna 6: se esperaba ASSIGN, pero apareció LT ('<')."
+C10,C++,Palabra reservada indebidamente tratada como ID,int while = 5;,ACEPTA,
+C11,C++,Palabra reservada indebidamente tratada como ID,int class = 2;,ACEPTA,
+C12,C++,Palabra reservada indebidamente tratada como ID,int return = 1;,ACEPTA,
+C13,C++,Condicional sin llaves válido en C++,int x = 1; if (x > 0) x = 2;,RECHAZA,"Línea 1, columna 23: no se puede analizar Bloque cuando aparece ID ('x'). Tokens esperados: LBRACE."

@@ -1,0 +1,6 @@
+# Oraciones aceptadas por el parser pero con interpretaciones semanticas extrañas. No son errores sintacticos.
+# Una oración por línea. Abrir en main.py > español > Leer archivo .txt.
+# Los rechazos son resultados del parser actual; no todos significan errores del español.
+
+El telescopio duerme.
+La casa corre.
