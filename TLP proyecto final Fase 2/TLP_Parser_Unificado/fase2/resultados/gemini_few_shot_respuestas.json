@@ -1,0 +1,424 @@
+{
+  "resultados": [
+    {
+      "resultado": {
+        "oracion": "El niño corre.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular y verbo singular con concordancia gramatical correcta."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña canta.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular y verbo singular con vocabulario permitido."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niño corre.",
+        "resultado": "RECHAZADA",
+        "razon": "Discordancia de numero entre articulo, sustantivo y verbo."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros duermen.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural masculino y verbo plural validos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las profesoras enseñan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino plural y verbo plural validos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La carro corre.",
+        "resultado": "RECHAZADA",
+        "razon": "El articulo femenino singular no concuerda con el sustantivo masculino singular."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Un carro rojo avanza.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto masculino singular con adjetivo y verbo singular concuerdan perfectamente."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una mujer trabaja.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular y predicado singular válidos según la gramática."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corren.",
+        "resultado": "RECHAZADA",
+        "razon": "El articulo singular no concuerda con el verbo plural."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los carros nuevos avanzan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural y predicado plural concuerdan perfectamente."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas juegan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural femenino y verbo plural validos con punto y fin de cadena."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas come.",
+        "resultado": "RECHAZADA",
+        "razon": "El sujeto plural no concuerda con el verbo en singular."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El perro duerme.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular masculino con verbo singular y punto opcional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora trabaja.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular y verbo singular con puntuacion valida."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños juegan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural masculino y predicado plural concuerdan perfectamente segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mujeres trabajan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural femenino y predicado plural concuerdan perfectamente."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El doctor estudia.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto masculino singular y verbo singular con punto y fin de secuencia correctos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una niña canta.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular y verbo singular con puntuacion valida."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mariposas vuelan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino plural y verbo plural concuerdan perfectamente segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los profesores enseñan.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural masculino y verbo plural validos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña canta rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular, adjetivo, verbo singular y adverbio permitidos por la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros felices juegan en el jardín.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural, adjetivo plural común, verbo plural y frase preposicional válida."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeño canta.",
+        "resultado": "RECHAZADA",
+        "razon": "El genero del articulo y sustantivo no concuerda con el adjetivo."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en el parque.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular, verbo singular y frase preposicional permitida por la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora que enseña trabaja.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular con proposicion relativa y predicado singular validos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños que juega corren.",
+        "resultado": "RECHAZADA",
+        "razon": "El verbo de la relativa debe ser plural para concordar con niños."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mariposas bonitas vuelan lentamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino plural con adjetivo y predicado plural con adverbio permitidos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Un doctor trabaja en el hospital.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular y verbo singular con frase preposicional permitida en la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los vehículos nueva circulan.",
+        "resultado": "RECHAZADA",
+        "razon": "El adjetivo femenino no concuerda con el sustantivo masculino."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural, adjetivo plural, verbo plural y adverbio con sintagma preposicional permitidos por CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que canta alegremente corre con el perro.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto masculino singular con relativa, predicado con adverbio y frase preposicional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en la casa de la niña.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular, verbo singular y frase preposicional anidada permitida por CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La estudiante estudia hoy.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular y verbo singular con adverbio permitido."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño pequeño corre lentamente.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS con adjetivo y PredicadoS con adverbio validos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña canta y baila.",
+        "resultado": "RECHAZADA",
+        "razon": "La conjuncion y no esta permitida en la gramatica de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora amable enseña en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular con adjetivo y predicado con frase preposicional correctos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros grandes duermen en el jardín.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural, adjetivo plural, verbo plural y frase preposicional permitida por la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una mujer feliz trabaja tranquilamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular con adjetivo y predicado con adverbio validos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas bonitas juegan en el parque.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural femenino, adjetivo, verbo plural y frase preposicional permitidas."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El carro rojo avanza rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular masculino, adjetivo, verbo singular y adverbio permitidos por la gramática."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural con relativa, predicado plural con adverbio, todo segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino plural con relativa, verbo plural y adverbio admitido."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que juega con la niña que canta corre.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular con relativas anidadas y predicado singular válidos según CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña que camina lentamente canta en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto singular con relativa, verbo singular, adverbio y frase preposicional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+        "resultado": "RECHAZADA",
+        "razon": "El adverbio 'rápidamente' no es permitido por la regla RelativaSOpc ni PredicadoS."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño y la niña corren.",
+        "resultado": "RECHAZADA",
+        "razon": "La CFG no contempla conjunciones copulativas como 'y' en la estructura del sujeto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural, relativa plural, predicado plural, adverbio y frase preposicional válidos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular con relativa y predicado validos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Corre el niño.",
+        "resultado": "RECHAZADA",
+        "razon": "El orden sintáctico no cumple con la regla de Sujeto antes que Predicado."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural con relativa, predicado plural, adverbio y frase preposicional válidos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular con subordinada relativa, predicado con adverbio y frase preposicional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que la niña conoce corre.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto masculino singular con proposicion relativa valida y predicado singular."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural con relativa, verbo plural, adverbio y frase preposicional válidos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña que corre con el perro que duerme canta.",
+        "resultado": "RECHAZADA",
+        "razon": "La gramática no permite oraciones relativas anidadas dentro de un sintagma nominal."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña tranquila canta.",
+        "resultado": "RECHAZADA",
+        "razon": "La gramatica solo permite un adjetivo opcional tras el sustantivo."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre lentamente hoy.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS, verbo singular, adverbio opcional y punto final validos por la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre porque la niña canta.",
+        "resultado": "RECHAZADA",
+        "razon": "La CFG no permite conectores subordinantes condicionales o causales."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en el parque rápidamente.",
+        "resultado": "RECHAZADA",
+        "razon": "El adverbio debe preceder a la frase preposicional segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño lee el libro.",
+        "resultado": "RECHAZADA",
+        "razon": "El objeto directo final no esta contemplado en el predicado de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños que juegan corre.",
+        "resultado": "RECHAZADA",
+        "razon": "El verbo principal no concuerda en numero con el sujeto plural."
+      }
+    }
+  ]
+}

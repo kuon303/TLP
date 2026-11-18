@@ -1,0 +1,2839 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analisis completo del corpus - Fase 2</title>
+<style>
+    :root{font-family:Arial,Helvetica,sans-serif;color:#222b38;background:#f5f7fa}
+    body{max-width:1050px;margin:28px auto;padding:0 19px;line-height:1.48}
+    h1{font-size:27px;margin:0 0 10px}h2{font-size:19px;margin:0 0 8px}
+    h3{font-size:15px;margin:16px 0 8px}
+    .portada,.caso{background:#fff;border:1px solid #d7dfe9;border-radius:10px;
+      padding:23px;margin-bottom:18px}
+    .muted{color:#59677a;font-size:13px}.nota{border-left:3px solid #73869c;
+      padding-left:11px;color:#415066}
+    table{border-collapse:collapse;width:100%;margin:10px 0;table-layout:fixed}
+    td,th{border-bottom:1px solid #e2e7ee;padding:8px 7px;text-align:left;
+      font-size:13px;vertical-align:top;overflow-wrap:anywhere}
+    th{background:#edf1f6}table.tokens{max-width:470px}td:first-child{width:22%}
+    .titulo-caso{display:flex;align-items:baseline;justify-content:space-between;
+      gap:10px;flex-wrap:wrap}
+    .oracion{font-size:17px;margin:9px 0}.correcto{color:#075d45;font-weight:bold}
+    .incorrecto{color:#a12e20;font-weight:bold}
+    .alerta{border:1px solid #e6b1a2;background:#fff5f2;padding:10px 12px;
+      border-radius:5px;margin:12px 0}
+    .arbol{white-space:pre;overflow-x:auto;background:#f0f3f7;border:1px solid #e1e7ee;
+      padding:11px;font:12px/1.45 Consolas,monospace}
+    details{margin-top:12px}summary{cursor:pointer;font-weight:bold}
+    .separador{height:1px;background:#d7dfe9;margin:17px 0}
+    .indice{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 20px}
+    .indice a{font-size:12px;padding:3px 8px;border:1px solid #dae0e8;
+      border-radius:3px;text-decoration:none;color:#315776;background:white}
+    .volver{font-size:12px}
+    @media print{body{max-width:none;margin:0;background:white}.portada,.caso{
+      border-radius:0;break-inside:auto}details{display:block}
+      details>.arbol,details>table{display:block!important}
+      .indice,.volver{display:none}.caso{break-before:page}}
+    </style></head><body>
+<section class="portada" id="inicio"><h1>Analisis del corpus de 60 oraciones</h1>
+<p class="muted">Demostracion detallada del parser LL(1) y comparacion con los resultados registrados de NLP y Gemini.</p>
+<p><b>Casos:</b> 60 &nbsp; <b>Parser aceptadas:</b> 40 &nbsp; <b>Parser rechazadas:</b> 20 &nbsp; <b>Falsos positivos:</b> 0 &nbsp; <b>Falsos negativos:</b> 0</p>
+<h2>Resumen de resultados</h2>
+<table class="resumen"><thead><tr><th>Enfoque</th><th>ACEPTADA</th><th>RECHAZADA</th><th>FP</th><th>FN</th><th>Coincidencias</th></tr></thead><tbody>
+<tr><td>Parser LL(1)</td><td>40</td><td>20</td><td>0</td><td>0</td><td>60/60</td></tr>
+<tr><td>spaCy + criterio</td><td>32</td><td>28</td><td>0</td><td>8</td><td>52/60</td></tr>
+<tr><td>NLTK + criterio</td><td>20</td><td>40</td><td>0</td><td>20</td><td>40/60</td></tr>
+<tr><td>Gemini zero-shot</td><td>45</td><td>15</td><td>6</td><td>1</td><td>53/60</td></tr>
+<tr><td>Gemini few-shot</td><td>43</td><td>17</td><td>4</td><td>1</td><td>55/60</td></tr>
+</tbody></table>
+<p class="nota">La etiqueta esperada corresponde a la CFG controlada, no a la correccion general del español. FP significa que la herramienta acepto algo que la referencia marca como rechazado; FN significa lo inverso. Las decisiones de spaCy y NLTK son derivadas de criterios de equivalencia, no validaciones nativas de su API. Para Gemini se consultan respuestas ya guardadas, sin realizar nuevas llamadas.</p>
+</section>
+<nav class="indice" aria-label="Indice por ID">
+<a href="#caso-01">01</a>
+<a href="#caso-02">02</a>
+<a href="#caso-03">03</a>
+<a href="#caso-04">04</a>
+<a href="#caso-05">05</a>
+<a href="#caso-06">06</a>
+<a href="#caso-07">07</a>
+<a href="#caso-08">08</a>
+<a href="#caso-09">09</a>
+<a href="#caso-10">10</a>
+<a href="#caso-11">11</a>
+<a href="#caso-12">12</a>
+<a href="#caso-13">13</a>
+<a href="#caso-14">14</a>
+<a href="#caso-15">15</a>
+<a href="#caso-16">16</a>
+<a href="#caso-17">17</a>
+<a href="#caso-18">18</a>
+<a href="#caso-19">19</a>
+<a href="#caso-20">20</a>
+<a href="#caso-21">21</a>
+<a href="#caso-22">22</a>
+<a href="#caso-23">23</a>
+<a href="#caso-24">24</a>
+<a href="#caso-25">25</a>
+<a href="#caso-26">26</a>
+<a href="#caso-27">27</a>
+<a href="#caso-28">28</a>
+<a href="#caso-29">29</a>
+<a href="#caso-30">30</a>
+<a href="#caso-31">31</a>
+<a href="#caso-32">32</a>
+<a href="#caso-33">33</a>
+<a href="#caso-34">34</a>
+<a href="#caso-35">35</a>
+<a href="#caso-36">36</a>
+<a href="#caso-37">37</a>
+<a href="#caso-38">38</a>
+<a href="#caso-39">39</a>
+<a href="#caso-40">40</a>
+<a href="#caso-41">41</a>
+<a href="#caso-42">42</a>
+<a href="#caso-43">43</a>
+<a href="#caso-44">44</a>
+<a href="#caso-45">45</a>
+<a href="#caso-46">46</a>
+<a href="#caso-47">47</a>
+<a href="#caso-48">48</a>
+<a href="#caso-49">49</a>
+<a href="#caso-50">50</a>
+<a href="#caso-51">51</a>
+<a href="#caso-52">52</a>
+<a href="#caso-53">53</a>
+<a href="#caso-54">54</a>
+<a href="#caso-55">55</a>
+<a href="#caso-56">56</a>
+<a href="#caso-57">57</a>
+<a href="#caso-58">58</a>
+<a href="#caso-59">59</a>
+<a href="#caso-60">60</a>
+</nav>
+<section class="caso" id="caso-01">
+<div class="titulo-caso">
+<h2>Caso 01 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto singular + verbo</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Estructura simple prevista en la CFG</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;niño&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;corre&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Cumple exactamente con SujetoMS PredicadoS PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular y verbo singular con concordancia gramatical correcta.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-02">
+<div class="titulo-caso">
+<h2>Caso 02 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña canta.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto singular femenino + verbo</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Estructura simple prevista en la CFG</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;niña&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;canta&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece PUNTO (.)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular y verbo singular con vocabulario permitido.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-03">
+<div class="titulo-caso">
+<h2>Caso 03 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los niño corre.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> Se esperaba SUST_MP, pero aparecio SUST_MS (&#x27;niño&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 5: se esperaba SUST_MP, pero aparecio SUST_MS (&#x27;niño&#x27;).</p>
+<p><b>Fenomeno:</b> Concordancia artículo-sustantivo</p>
+<p><b>Nota de referencia:</b> Artículo plural con sustantivo singular</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Articulo y sustantivo: numero diferente (Los / niño)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Articulo y sustantivo: numero diferente (Los / niño)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Error de concordancia entre sujeto plural (Los niño) y verbo singular (corre).</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Discordancia de numero entre articulo, sustantivo y verbo.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-04">
+<div class="titulo-caso">
+<h2>Caso 04 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los perros duermen.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto plural + verbo</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia de número</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;perros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;duermen&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>perros</td><td>SUST_MP</td></tr>
+<tr><td>duermen</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Sujeto y verbo principal: numero diferente (perros / duermen)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMP y PredicadoP concuerdan correctamente con la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural masculino y verbo plural validos segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-05">
+<div class="titulo-caso">
+<h2>Caso 05 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las profesoras enseñan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto plural femenino + verbo</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia de número</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;profesoras&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;enseñan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>profesoras</td><td>SUST_FP</td></tr>
+<tr><td>enseñan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesoras)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFP y PredicadoP concuerdan correctamente con ART_FP SUST_FP y VERBO_P seguido de punto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino plural y verbo plural validos segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-06">
+<div class="titulo-caso">
+<h2>Caso 06 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La carro corre.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> Se esperaba SUST_FS, pero aparecio SUST_MS (&#x27;carro&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 4: se esperaba SUST_FS, pero aparecio SUST_MS (&#x27;carro&#x27;).</p>
+<p><b>Fenomeno:</b> Concordancia de género</p>
+<p><b>Nota de referencia:</b> Artículo femenino con sustantivo masculino</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>carro</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Articulo y sustantivo: genero diferente (La / carro)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (carro)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El articulo femenino no concuerda en genero con el sustantivo masculino.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El articulo femenino singular no concuerda con el sustantivo masculino singular.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-07">
+<div class="titulo-caso">
+<h2>Caso 07 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Un carro rojo avanza.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales.</p>
+<p><b>Fenomeno:</b> Adjetivo masculino singular</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Modificador permitido</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;Un&#x27;)
+│   ├── SUST_MS (&#x27;carro&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS (&#x27;rojo&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;avanza&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Un</td><td>ART_MS</td></tr>
+<tr><td>carro</td><td>SUST_MS</td></tr>
+<tr><td>rojo</td><td>ADJ_MS</td></tr>
+<tr><td>avanza</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (carro)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMS con adjetivo y PredicadoS con verbo singular.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto masculino singular con adjetivo y verbo singular concuerdan perfectamente.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-08">
+<div class="titulo-caso">
+<h2>Caso 08 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Una mujer trabaja.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Artículo indefinido femenino</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Artículo y sustantivo compatibles</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;Una&#x27;)
+│   ├── SUST_FS (&#x27;mujer&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;trabaja&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Una</td><td>ART_FS</td></tr>
+<tr><td>mujer</td><td>SUST_FS</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular seguido de predicado singular y punto opcional.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular y predicado singular válidos según la gramática.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-09">
+<div class="titulo-caso">
+<h2>Caso 09 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corren.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de RelativaSOpc para el token VERBO_P (&#x27;corren&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 9: no hay produccion para RelativaSOpc con VERBO_P (&#x27;corren&#x27;). Tokens esperados: QUE, VERBO_S.</p>
+<p><b>Fenomeno:</b> Concordancia sujeto-verbo</p>
+<p><b>Nota de referencia:</b> Sujeto singular con verbo plural</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corren</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo principal: numero diferente (niño / corren)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo principal: numero diferente (niño / corren)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>SujetoMS requiere VERBO_S, pero se encontro VERBO_P.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El articulo singular no concuerda con el verbo plural.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-10">
+<div class="titulo-caso">
+<h2>Caso 10 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los carros nuevos avanzan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales.</p>
+<p><b>Fenomeno:</b> Adjetivo masculino plural</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia en sujeto y verbo</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;carros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP (&#x27;nuevos&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;avanzan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>carros</td><td>SUST_MP</td></tr>
+<tr><td>nuevos</td><td>ADJ_MP</td></tr>
+<tr><td>avanzan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con SujetoMP PredicadoP PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural y predicado plural concuerdan perfectamente.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-11">
+<div class="titulo-caso">
+<h2>Caso 11 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las niñas juegan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto plural femenino</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Estructura simple prevista en la CFG</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;niñas&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;juegan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>niñas</td><td>SUST_FP</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la regla sintactica de SujetoFP PredicadoP PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural femenino y verbo plural validos con punto y fin de cadena.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-12">
+<div class="titulo-caso">
+<h2>Caso 12 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las niñas come.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de RelativaPOpc para el token VERBO_S (&#x27;come&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 11: no hay produccion para RelativaPOpc con VERBO_S (&#x27;come&#x27;). Tokens esperados: QUE, VERBO_P.</p>
+<p><b>Fenomeno:</b> Concordancia sujeto-verbo</p>
+<p><b>Nota de referencia:</b> Sujeto plural con verbo singular</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>niñas</td><td>SUST_FP</td></tr>
+<tr><td>come</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece OTRO (come)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo principal: numero diferente (niñas / come)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Discrepancia de numero entre el sujeto plural y el predicado singular.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El sujeto plural no concuerda con el verbo en singular.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-13">
+<div class="titulo-caso">
+<h2>Caso 13 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El perro duerme.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto masculino singular</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Sujeto simple sin modificadores</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;perro&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;duerme&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>perro</td><td>SUST_MS</td></tr>
+<tr><td>duerme</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece OTRO (perro)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMS seguido de PredicadoS y punto opcional conforman la gramatica.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular masculino con verbo singular y punto opcional.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-14">
+<div class="titulo-caso">
+<h2>Caso 14 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La profesora trabaja.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto femenino singular</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Sujeto simple sin modificadores</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;profesora&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;trabaja&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>profesora</td><td>SUST_FS</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesora)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto FS y Predicado S con punto opcional y EOF validos.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular y verbo singular con puntuacion valida.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-15">
+<div class="titulo-caso">
+<h2>Caso 15 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los niños juegan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto masculino plural</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia del sujeto plural</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;niños&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;juegan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>niños</td><td>SUST_MP</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMP y PredicadoP cumplen exactamente con la gramática de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural masculino y predicado plural concuerdan perfectamente segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-16">
+<div class="titulo-caso">
+<h2>Caso 16 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las mujeres trabajan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto femenino plural</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia en plural femenino</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;mujeres&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;trabajan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>mujeres</td><td>SUST_FP</td></tr>
+<tr><td>trabajan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFP y PredicadoP cumplen exactamente con las reglas de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural femenino y predicado plural concuerdan perfectamente.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-17">
+<div class="titulo-caso">
+<h2>Caso 17 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El doctor estudia.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto masculino singular</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Verbo singular en presente</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;doctor&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;estudia&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>doctor</td><td>SUST_MS</td></tr>
+<tr><td>estudia</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (estudia)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Cumple exactamente con la estructura gramatical definida por la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto masculino singular y verbo singular con punto y fin de secuencia correctos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-18">
+<div class="titulo-caso">
+<h2>Caso 18 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Una niña canta.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Articulo indefinido</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Articulo singular femenino</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;Una&#x27;)
+│   ├── SUST_FS (&#x27;niña&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;canta&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Una</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece PUNTO (.)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular seguido de predicado singular y punto opcional.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular y verbo singular con puntuacion valida.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-19">
+<div class="titulo-caso">
+<h2>Caso 19 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las mariposas vuelan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto femenino plural</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Verbo plural en presente</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;mariposas&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;vuelan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>mariposas</td><td>SUST_FP</td></tr>
+<tr><td>vuelan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (mariposas)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFP y PredicadoP concuerdan correctamente en plural.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino plural y verbo plural concuerdan perfectamente segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-20">
+<div class="titulo-caso">
+<h2>Caso 20 · Nivel 1</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los profesores enseñan.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.</p>
+<p><b>Fenomeno:</b> Sujeto masculino plural</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Sujeto plural con verbo plural</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;profesores&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;enseñan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>profesores</td><td>SUST_MP</td></tr>
+<tr><td>enseñan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (enseñan)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMP seguido de PredicadoP y PuntoOpcional.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural masculino y verbo plural validos segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-21">
+<div class="titulo-caso">
+<h2>Caso 21 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña pequeña canta rápidamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.</p>
+<p><b>Fenomeno:</b> Adjetivo y adverbio</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Adjetivo y adverbio opcionales</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;niña&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_FS (&#x27;pequeña&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;canta&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>pequeña</td><td>ADJ_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion pertenece exactamente a la CFG como SujetoFS PredicadoS PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular, adjetivo, verbo singular y adverbio permitidos por la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-22">
+<div class="titulo-caso">
+<h2>Caso 22 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los perros felices juegan en el jardín.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Adjetivo y frase preposicional</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Frase preposicional simple</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;perros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P (&#x27;felices&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;juegan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;jardín&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>perros</td><td>SUST_MP</td></tr>
+<tr><td>felices</td><td>ADJ_COMUN_P</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>jardín</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oración cumple exactamente con la estructura sintáctica de sujeto plural y predicado de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural, adjetivo plural común, verbo plural y frase preposicional válida.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-23">
+<div class="titulo-caso">
+<h2>Caso 23 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña pequeño canta.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de AdjetivoFSOpc para el token ADJ_MS (&#x27;pequeño&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoFSOpc con ADJ_MS (&#x27;pequeño&#x27;). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Concordancia sustantivo-adjetivo</p>
+<p><b>Nota de referencia:</b> Adjetivo masculino con sustantivo femenino</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>pequeño</td><td>ADJ_MS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sustantivo y adjetivo: genero diferente (niña / pequeño)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sustantivo y adjetivo: genero diferente (niña / pequeño)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Discordancia de genero entre SUST_FS y ADJ_MS en el sujeto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El genero del articulo y sustantivo no concuerda con el adjetivo.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-24">
+<div class="titulo-caso">
+<h2>Caso 24 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre en el parque.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Frase preposicional</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Complemento preposicional simple</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;niño&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;corre&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;parque&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>parque</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMS seguido de PredicadoS con FrasePrepOpc y punto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular, verbo singular y frase preposicional permitida por la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-25">
+<div class="titulo-caso">
+<h2>Caso 25 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La profesora que enseña trabaja.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa.</p>
+<p><b>Fenomeno:</b> Relativa sencilla</p>
+<p><b>Estructura esperada:</b> SujetoFS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Relativa de sujeto en singular</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;profesora&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;enseña&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;trabaja&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>profesora</td><td>SUST_FS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>enseña</td><td>VERBO_S</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece ADJ (enseña)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesora)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>La regla RelativaSOpc exige adverbio o frase preposicional opcional tras el verbo.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular con proposicion relativa y predicado singular validos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-26">
+<div class="titulo-caso">
+<h2>Caso 26 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los niños que juega corren.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> Se esperaba VERBO_P, pero aparecio VERBO_S (&#x27;juega&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 15: se esperaba VERBO_P, pero aparecio VERBO_S (&#x27;juega&#x27;).</p>
+<p><b>Fenomeno:</b> Concordancia de la relativa</p>
+<p><b>Nota de referencia:</b> Antecedente plural con verbo singular en relativa</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>niños</td><td>SUST_MP</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>juega</td><td>VERBO_S</td></tr>
+<tr><td>corren</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo de la relativa: numero diferente (niños / juega)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo de la relativa: numero diferente (niños / juega)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El sujeto plural requiere verbo plural en la proposicion relativa.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El verbo de la relativa debe ser plural para concordar con niños.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-27">
+<div class="titulo-caso">
+<h2>Caso 27 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las mariposas bonitas vuelan lentamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.</p>
+<p><b>Fenomeno:</b> Adjetivo y adverbio plural</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Modificadores sencillos</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;mariposas&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_FP (&#x27;bonitas&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;vuelan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;lentamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>mariposas</td><td>SUST_FP</td></tr>
+<tr><td>bonitas</td><td>ADJ_FP</td></tr>
+<tr><td>vuelan</td><td>VERBO_P</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (mariposas)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFP, PredicadoP con adverbio y puntuacion validos segun CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino plural con adjetivo y predicado plural con adverbio permitidos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-28">
+<div class="titulo-caso">
+<h2>Caso 28 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Un doctor trabaja en el hospital.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Preposición con nominal masculino</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Un complemento preposicional</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;Un&#x27;)
+│   ├── SUST_MS (&#x27;doctor&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;trabaja&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;hospital&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Un</td><td>ART_MS</td></tr>
+<tr><td>doctor</td><td>SUST_MS</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>hospital</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la regla sintactica de la gramatica formal.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular y verbo singular con frase preposicional permitida en la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-29">
+<div class="titulo-caso">
+<h2>Caso 29 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los vehículos nueva circulan.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de AdjetivoMPOpc para el token ADJ_FS (&#x27;nueva&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 15: no hay produccion para AdjetivoMPOpc con ADJ_FS (&#x27;nueva&#x27;). Tokens esperados: ADJ_COMUN_P, ADJ_MP, EOF, PUNTO, QUE, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Concordancia sustantivo-adjetivo</p>
+<p><b>Nota de referencia:</b> Adjetivo femenino singular con sujeto plural masculino</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>vehículos</td><td>SUST_MP</td></tr>
+<tr><td>nueva</td><td>ADJ_FS</td></tr>
+<tr><td>circulan</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sustantivo y adjetivo: genero diferente (vehículos / nueva)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sustantivo y adjetivo: genero diferente (vehículos / nueva)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El adjetivo femenina singular no concuerda con el sustantivo masculino plural.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El adjetivo femenino no concuerda con el sustantivo masculino.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-30">
+<div class="titulo-caso">
+<h2>Caso 30 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los vehículos nuevos circulan rápidamente en las ciudades.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Modificadores y preposición</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Adverbio seguido de frase preposicional</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;vehículos&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP (&#x27;nuevos&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;circulan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFP
+│               ├── ART_FP (&#x27;las&#x27;)
+│               ├── SUST_FP (&#x27;ciudades&#x27;)
+│               └── AdjetivoFPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>vehículos</td><td>SUST_MP</td></tr>
+<tr><td>nuevos</td><td>ADJ_MP</td></tr>
+<tr><td>circulan</td><td>VERBO_P</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>las</td><td>ART_FP</td></tr>
+<tr><td>ciudades</td><td>SUST_FP</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion pertenece al lenguaje de la CFG especificada.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural, adjetivo plural, verbo plural y adverbio con sintagma preposicional permitidos por CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-31">
+<div class="titulo-caso">
+<h2>Caso 31 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño que canta alegremente corre con el perro.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa + adverbio + preposición</p>
+<p><b>Estructura esperada:</b> SujetoMS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Relativa sencilla y complemento del predicado</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;niño&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;canta&#x27;)
+│       ├── AdverbioOpc
+│       │   └── ADV (&#x27;alegremente&#x27;)
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;corre&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;con&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;perro&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>alegremente</td><td>ADV</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>con</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>perro</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple estrictamente con las reglas de la gramatica formal especificada.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto masculino singular con relativa, predicado con adverbio y frase preposicional.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-32">
+<div class="titulo-caso">
+<h2>Caso 32 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre en la casa de la niña.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de AdjetivoFSOpc para el token PREP (&#x27;de&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 26: no hay produccion para AdjetivoFSOpc con PREP (&#x27;de&#x27;). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Dos frases preposicionales encadenadas</p>
+<p><b>Nota de referencia:</b> La CFG solo permite un nominal simple tras la preposición</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>casa</td><td>SUST_FS</td></tr>
+<tr><td>de</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: de (PREP)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: de (PREP)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>La oracion pertenece al lenguaje reconocido por la gramatica.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Sujeto singular, verbo singular y frase preposicional anidada permitida por CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-33">
+<div class="titulo-caso">
+<h2>Caso 33 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La estudiante estudia hoy.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye adverbios.</p>
+<p><b>Fenomeno:</b> Sustantivo común en género</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Artículo femenino resuelve el sustantivo</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;estudiante&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;estudia&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;hoy&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>estudiante</td><td>SUST_FS</td></tr>
+<tr><td>estudia</td><td>VERBO_S</td></tr>
+<tr><td>hoy</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (estudia)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFS seguido de PredicadoS con adverbio y punto final.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular y verbo singular con adverbio permitido.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-34">
+<div class="titulo-caso">
+<h2>Caso 34 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño pequeño corre lentamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.</p>
+<p><b>Fenomeno:</b> Adjetivo y adverbio</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Modificador del sujeto y adverbio del verbo</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;niño&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS (&#x27;pequeño&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;corre&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;lentamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>pequeño</td><td>ADJ_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la estructura sintactica definida en la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMS con adjetivo y PredicadoS con adverbio validos segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-35">
+<div class="titulo-caso">
+<h2>Caso 35 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña canta y baila.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> El token &#x27;y&#x27; no pertenece al vocabulario valido en AdverbioOpc.</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA (&#x27;y&#x27;). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Coordinación verbal</p>
+<p><b>Nota de referencia:</b> La CFG no permite dos verbos coordinados</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>y</td><td>DESCONOCIDA</td></tr>
+<tr><td>baila</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece OTRO (y)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: y (OTRO)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La conjuncion &#x27;y&#x27; no esta permitida en el predicado segun la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La conjuncion y no esta permitida en la gramatica de la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-36">
+<div class="titulo-caso">
+<h2>Caso 36 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La profesora amable enseña en la escuela.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Adjetivo comun y preposicion</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Adjetivo y complemento preposicional</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;profesora&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S (&#x27;amable&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;enseña&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS (&#x27;la&#x27;)
+│               ├── SUST_FS (&#x27;escuela&#x27;)
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>profesora</td><td>SUST_FS</td></tr>
+<tr><td>amable</td><td>ADJ_COMUN_S</td></tr>
+<tr><td>enseña</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>escuela</td><td>SUST_FS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece ADJ (enseña)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesora)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oración cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular con adjetivo y predicado con frase preposicional correctos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-37">
+<div class="titulo-caso">
+<h2>Caso 37 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los perros grandes duermen en el jardín.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Adjetivo plural y preposicion</p>
+<p><b>Estructura esperada:</b> SujetoMP PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia plural y lugar</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;perros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P (&#x27;grandes&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;duermen&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;jardín&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>perros</td><td>SUST_MP</td></tr>
+<tr><td>grandes</td><td>ADJ_COMUN_P</td></tr>
+<tr><td>duermen</td><td>VERBO_P</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>jardín</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oración cumple exactamente con la estructura de SujetoMP y PredicadoP de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural, adjetivo plural, verbo plural y frase preposicional permitida por la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-38">
+<div class="titulo-caso">
+<h2>Caso 38 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Una mujer feliz trabaja tranquilamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.</p>
+<p><b>Fenomeno:</b> Adjetivo comun y adverbio</p>
+<p><b>Estructura esperada:</b> SujetoFS PredicadoS</p>
+<p><b>Nota de referencia:</b> Adjetivo comun y adverbio simple</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;Una&#x27;)
+│   ├── SUST_FS (&#x27;mujer&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S (&#x27;feliz&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;trabaja&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;tranquilamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Una</td><td>ART_FS</td></tr>
+<tr><td>mujer</td><td>SUST_FS</td></tr>
+<tr><td>feliz</td><td>ADJ_COMUN_S</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>tranquilamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la estructura sintactica definida en la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular con adjetivo y predicado con adverbio validos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-39">
+<div class="titulo-caso">
+<h2>Caso 39 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las niñas bonitas juegan en el parque.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Adjetivo femenino plural y preposicion</p>
+<p><b>Estructura esperada:</b> SujetoFP PredicadoP</p>
+<p><b>Nota de referencia:</b> Modificadores y concordancia</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;niñas&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_FP (&#x27;bonitas&#x27;)
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;juegan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;parque&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>niñas</td><td>SUST_FP</td></tr>
+<tr><td>bonitas</td><td>ADJ_FP</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>parque</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (bonitas)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto FP, predicado P con frase preposicional y punto final.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural femenino, adjetivo, verbo plural y frase preposicional permitidas.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-40">
+<div class="titulo-caso">
+<h2>Caso 40 · Nivel 2</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El carro rojo avanza rápidamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.</p>
+<p><b>Fenomeno:</b> Adjetivo masculino y adverbio</p>
+<p><b>Estructura esperada:</b> SujetoMS PredicadoS</p>
+<p><b>Nota de referencia:</b> Adjetivo y adverbio admitidos</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;carro&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS (&#x27;rojo&#x27;)
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;avanza&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>carro</td><td>SUST_MS</td></tr>
+<tr><td>rojo</td><td>ADJ_MS</td></tr>
+<tr><td>avanza</td><td>VERBO_S</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (carro)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoMS con adjetivo y PredicadoS con adverbio siguen exactamente las reglas de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular masculino, adjetivo, verbo singular y adverbio permitidos por la gramática.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-41">
+<div class="titulo-caso">
+<h2>Caso 41 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los niños pequeños que juegan en el parque corren rápidamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa + adjetivo + adverbio</p>
+<p><b>Estructura esperada:</b> SujetoMP RelativaPOpc PredicadoP</p>
+<p><b>Nota de referencia:</b> Combinación compleja dentro del alcance</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;niños&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP (&#x27;pequeños&#x27;)
+│   └── RelativaPOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_P (&#x27;juegan&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           ├── PREP (&#x27;en&#x27;)
+│           └── SintagmaNominal
+│               └── NominalMS
+│                   ├── ART_MS (&#x27;el&#x27;)
+│                   ├── SUST_MS (&#x27;parque&#x27;)
+│                   └── AdjetivoMSOpc
+│                       └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;corren&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>niños</td><td>SUST_MP</td></tr>
+<tr><td>pequeños</td><td>ADJ_MP</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>parque</td><td>SUST_MS</td></tr>
+<tr><td>corren</td><td>VERBO_P</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple estrictamente con las reglas de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural con relativa, predicado plural con adverbio, todo segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-42">
+<div class="titulo-caso">
+<h2>Caso 42 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las profesoras que enseñan trabajan tranquilamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios.</p>
+<p><b>Fenomeno:</b> Relativa plural y adverbio</p>
+<p><b>Estructura esperada:</b> SujetoFP RelativaPOpc PredicadoP</p>
+<p><b>Nota de referencia:</b> Relativa plural dentro del alcance</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;profesoras&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_P (&#x27;enseñan&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;trabajan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;tranquilamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>profesoras</td><td>SUST_FP</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>enseñan</td><td>VERBO_P</td></tr>
+<tr><td>trabajan</td><td>VERBO_P</td></tr>
+<tr><td>tranquilamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesoras)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural, relativa correcta, predicado con verbo plural y adverbio.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino plural con relativa, verbo plural y adverbio admitido.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-43">
+<div class="titulo-caso">
+<h2>Caso 43 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño que juega con la niña que canta corre.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de PredicadoS para el token QUE (&#x27;que&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 31: no hay produccion para PredicadoS con QUE (&#x27;que&#x27;). Tokens esperados: VERBO_S.</p>
+<p><b>Fenomeno:</b> Relativa anidada</p>
+<p><b>Nota de referencia:</b> La CFG no permite relativa en nominal preposicional</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>juega</td><td>VERBO_S</td></tr>
+<tr><td>con</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece QUE (que)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece QUE (que)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>La oracion cumple estrictamente con las reglas de la gramatica libre de contexto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Sujeto singular con relativas anidadas y predicado singular válidos según CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-44">
+<div class="titulo-caso">
+<h2>Caso 44 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña que camina lentamente canta en la escuela.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa con adverbio y complemento</p>
+<p><b>Estructura esperada:</b> SujetoFS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Relativa singular con complemento en predicado</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;niña&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;camina&#x27;)
+│       ├── AdverbioOpc
+│       │   └── ADV (&#x27;lentamente&#x27;)
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;canta&#x27;)
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS (&#x27;la&#x27;)
+│               ├── SUST_FS (&#x27;escuela&#x27;)
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>camina</td><td>VERBO_S</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>escuela</td><td>SUST_FS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>El verbo principal no es ROOT en spaCy</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (camina)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oración cumple estrictamente con la estructura sintáctica de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto singular con relativa, verbo singular, adverbio y frase preposicional.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-45">
+<div class="titulo-caso">
+<h2>Caso 45 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño pequeño que juega corre rápidamente en el parque.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa y modificadores multiples</p>
+<p><b>Estructura esperada:</b> SujetoMS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Una relativa, un adjetivo, un adverbio y una preposicion</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMS
+│   ├── ART_MS (&#x27;El&#x27;)
+│   ├── SUST_MS (&#x27;niño&#x27;)
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS (&#x27;pequeño&#x27;)
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;juega&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;corre&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS (&#x27;el&#x27;)
+│               ├── SUST_MS (&#x27;parque&#x27;)
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>pequeño</td><td>ADJ_MS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>juega</td><td>VERBO_S</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>parque</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con las reglas de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>El adverbio &#x27;rápidamente&#x27; no es permitido por la regla RelativaSOpc ni PredicadoS.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-46">
+<div class="titulo-caso">
+<h2>Caso 46 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño y la niña corren.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> El token &#x27;y&#x27; no pertenece al vocabulario valido en AdjetivoMSOpc.</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoMSOpc con DESCONOCIDA (&#x27;y&#x27;). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Sujeto coordinado</p>
+<p><b>Nota de referencia:</b> La CFG exige un solo sujeto simple</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>y</td><td>DESCONOCIDA</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>corren</td><td>VERBO_P</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece OTRO (y)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece OTRO (y)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La CFG no contempla la conjuncion copulativa entre dos sintagmas nominales.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La CFG no contempla conjunciones copulativas como &#x27;y&#x27; en la estructura del sujeto.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-47">
+<div class="titulo-caso">
+<h2>Caso 47 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Las niñas felices que cantan juegan lentamente en la escuela.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa plural y modificadores</p>
+<p><b>Estructura esperada:</b> SujetoFP RelativaPOpc PredicadoP</p>
+<p><b>Nota de referencia:</b> Concordancia plural con relativa y preposicion</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFP
+│   ├── ART_FP (&#x27;Las&#x27;)
+│   ├── SUST_FP (&#x27;niñas&#x27;)
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_COMUN_P (&#x27;felices&#x27;)
+│   └── RelativaPOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_P (&#x27;cantan&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;juegan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;lentamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS (&#x27;la&#x27;)
+│               ├── SUST_FS (&#x27;escuela&#x27;)
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Las</td><td>ART_FP</td></tr>
+<tr><td>niñas</td><td>SUST_FP</td></tr>
+<tr><td>felices</td><td>ADJ_COMUN_P</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>cantan</td><td>VERBO_P</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>escuela</td><td>SUST_FS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (cantan)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural femenino con relativa, predicado con adverbio y frase preposicional.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural, relativa plural, predicado plural, adverbio y frase preposicional válidos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-48">
+<div class="titulo-caso">
+<h2>Caso 48 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La profesora amable que trabaja en la escuela enseña rápidamente.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa con frase preposicional</p>
+<p><b>Estructura esperada:</b> SujetoFS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Preposicion en la relativa y adverbio principal</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;profesora&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S (&#x27;amable&#x27;)
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;trabaja&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           ├── PREP (&#x27;en&#x27;)
+│           └── SintagmaNominal
+│               └── NominalFS
+│                   ├── ART_FS (&#x27;la&#x27;)
+│                   ├── SUST_FS (&#x27;escuela&#x27;)
+│                   └── AdjetivoFSOpc
+│                       └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;enseña&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>profesora</td><td>SUST_FS</td></tr>
+<tr><td>amable</td><td>ADJ_COMUN_S</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>trabaja</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>escuela</td><td>SUST_FS</td></tr>
+<tr><td>enseña</td><td>VERBO_S</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece ADV (rápidamente)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba SUST; aparece SIN_ETIQUETA (profesora)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>SujetoFS con relativa y PredicadoS con adverbio validan la estructura completa de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular con relativa y predicado validos segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-49">
+<div class="titulo-caso">
+<h2>Caso 49 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Corre el niño.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de Oracion para el token VERBO_S (&#x27;Corre&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 1: no hay produccion para Oracion con VERBO_S (&#x27;Corre&#x27;). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS.</p>
+<p><b>Fenomeno:</b> Inversión sujeto-verbo</p>
+<p><b>Nota de referencia:</b> La CFG exige sujeto antes del predicado</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Corre</td><td>VERBO_S</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba ART; aparece VERBO (Corre)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba ART; aparece SIN_ETIQUETA (Corre)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La CFG exige que el sujeto preceda al predicado en la estructura de la oración.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El orden sintáctico no cumple con la regla de Sujeto antes que Predicado.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-50">
+<div class="titulo-caso">
+<h2>Caso 50 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los perros grandes que duermen corren lentamente con los niños.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa plural y preposicion</p>
+<p><b>Estructura esperada:</b> SujetoMP RelativaPOpc PredicadoP</p>
+<p><b>Nota de referencia:</b> Relativa plural y modificadores validos</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;perros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P (&#x27;grandes&#x27;)
+│   └── RelativaPOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_P (&#x27;duermen&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;corren&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;lentamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;con&#x27;)
+│       └── SintagmaNominal
+│           └── NominalMP
+│               ├── ART_MP (&#x27;los&#x27;)
+│               ├── SUST_MP (&#x27;niños&#x27;)
+│               └── AdjetivoMPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>perros</td><td>SUST_MP</td></tr>
+<tr><td>grandes</td><td>ADJ_COMUN_P</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>duermen</td><td>VERBO_P</td></tr>
+<tr><td>corren</td><td>VERBO_P</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>con</td><td>PREP</td></tr>
+<tr><td>los</td><td>ART_MP</td></tr>
+<tr><td>niños</td><td>SUST_MP</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple estrictamente todas las reglas de la gramatica libre de contexto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural con relativa, predicado plural, adverbio y frase preposicional válidos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-51">
+<div class="titulo-caso">
+<h2>Caso 51 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña pequeña que canta alegremente camina lentamente en la escuela.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Adverbios en dos predicados</p>
+<p><b>Estructura esperada:</b> SujetoFS RelativaSOpc PredicadoS</p>
+<p><b>Nota de referencia:</b> Adverbio dentro de relativa y otro en predicado principal</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoFS
+│   ├── ART_FS (&#x27;La&#x27;)
+│   ├── SUST_FS (&#x27;niña&#x27;)
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_FS (&#x27;pequeña&#x27;)
+│   └── RelativaSOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_S (&#x27;canta&#x27;)
+│       ├── AdverbioOpc
+│       │   └── ADV (&#x27;alegremente&#x27;)
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S (&#x27;camina&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;lentamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS (&#x27;la&#x27;)
+│               ├── SUST_FS (&#x27;escuela&#x27;)
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>pequeña</td><td>ADJ_FS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>alegremente</td><td>ADV</td></tr>
+<tr><td>camina</td><td>VERBO_S</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>escuela</td><td>SUST_FS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="incorrecto">RECHAZADA</span><div class="muted">Falso negativo: rechazada erroneamente</div></td><td>Se esperaba VERBO; aparece SIN_ETIQUETA (camina)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple exactamente con la estructura de la CFG especificada.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto femenino singular con subordinada relativa, predicado con adverbio y frase preposicional.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-52">
+<div class="titulo-caso">
+<h2>Caso 52 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño que la niña conoce corre.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> Se esperaba VERBO_S, pero aparecio ART_FS (&#x27;la&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 13: se esperaba VERBO_S, pero aparecio ART_FS (&#x27;la&#x27;).</p>
+<p><b>Fenomeno:</b> Relativa de objeto</p>
+<p><b>Nota de referencia:</b> La CFG solo modela relativa de sujeto</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>conoce</td><td>VERBO_S</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece ART (la)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece ART (la)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Cumple con las reglas de sujeto con relacional, predicado y punto final.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Sujeto masculino singular con proposicion relativa valida y predicado singular.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-53">
+<div class="titulo-caso">
+<h2>Caso 53 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los carros nuevos que avanzan circulan rápidamente en las ciudades.</p>
+<p><b>Referencia CFG:</b> ACEPTADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">ACEPTADA</span> &mdash; Verdadero positivo</p>
+<p><b>Motivo obtenido del parser:</b> Derivacion valida: Oracion -&gt; SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.</p>
+<p><b>Fenomeno:</b> Relativa plural y modificadores</p>
+<p><b>Estructura esperada:</b> SujetoMP RelativaPOpc PredicadoP</p>
+<p><b>Nota de referencia:</b> Relativa de sujeto plural con modificadores y lugar</p>
+<h3>Arbol sintactico generado por el parser</h3>
+<pre class="arbol">Oracion
+├── SujetoMP
+│   ├── ART_MP (&#x27;Los&#x27;)
+│   ├── SUST_MP (&#x27;carros&#x27;)
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP (&#x27;nuevos&#x27;)
+│   └── RelativaPOpc
+│       ├── QUE (&#x27;que&#x27;)
+│       ├── VERBO_P (&#x27;avanzan&#x27;)
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P (&#x27;circulan&#x27;)
+│   ├── AdverbioOpc
+│   │   └── ADV (&#x27;rápidamente&#x27;)
+│   └── FrasePrepOpc
+│       ├── PREP (&#x27;en&#x27;)
+│       └── SintagmaNominal
+│           └── NominalFP
+│               ├── ART_FP (&#x27;las&#x27;)
+│               ├── SUST_FP (&#x27;ciudades&#x27;)
+│               └── AdjetivoFPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO (&#x27;.&#x27;)
+└── EOF (&#x27;$&#x27;)</pre>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>carros</td><td>SUST_MP</td></tr>
+<tr><td>nuevos</td><td>ADJ_MP</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>avanzan</td><td>VERBO_P</td></tr>
+<tr><td>circulan</td><td>VERBO_P</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>las</td><td>ART_FP</td></tr>
+<tr><td>ciudades</td><td>SUST_FP</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Coincide con el patron de etiquetas y concordancia definido</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>La oracion cumple estrictamente con la CFG establecida.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">ACEPTADA</span><div class="muted">Verdadero positivo</div></td><td>Sujeto plural con relativa, verbo plural, adverbio y frase preposicional válidos.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-54">
+<div class="titulo-caso">
+<h2>Caso 54 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña que corre con el perro que duerme canta.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de PredicadoS para el token QUE (&#x27;que&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 32: no hay produccion para PredicadoS con QUE (&#x27;que&#x27;). Tokens esperados: VERBO_S.</p>
+<p><b>Fenomeno:</b> Relativa anidada</p>
+<p><b>Nota de referencia:</b> La CFG no permite relativas dentro del nominal preposicional</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>con</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>perro</td><td>SUST_MS</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>duerme</td><td>VERBO_S</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece QUE (que)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece QUE (que)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Sujeto con relativas anidadas y predicado concuerdan perfectamente con la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La gramática no permite oraciones relativas anidadas dentro de un sintagma nominal.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-55">
+<div class="titulo-caso">
+<h2>Caso 55 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> La niña pequeña tranquila canta.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de RelativaSOpc para el token ADJ_FS (&#x27;tranquila&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 17: no hay produccion para RelativaSOpc con ADJ_FS (&#x27;tranquila&#x27;). Tokens esperados: QUE, VERBO_S.</p>
+<p><b>Fenomeno:</b> Dos adjetivos consecutivos</p>
+<p><b>Nota de referencia:</b> La CFG permite un único adjetivo opcional</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>La</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>pequeña</td><td>ADJ_FS</td></tr>
+<tr><td>tranquila</td><td>ADJ_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece ADJ (tranquila)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Se esperaba VERBO; aparece ADJ (tranquila)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>SujetoFS no acepta dos adjetivos consecutivos sin conjuncion.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La gramatica solo permite un adjetivo opcional tras el sustantivo.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-56">
+<div class="titulo-caso">
+<h2>Caso 56 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre lentamente hoy.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de FrasePrepOpc para el token ADV (&#x27;hoy&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 26: no hay produccion para FrasePrepOpc con ADV (&#x27;hoy&#x27;). Tokens esperados: EOF, PREP, PUNTO, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Dos adverbios consecutivos</p>
+<p><b>Nota de referencia:</b> La CFG permite un único adverbio opcional</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>lentamente</td><td>ADV</td></tr>
+<tr><td>hoy</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: hoy (ADV)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: hoy (ADV)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>PredicadoS no acepta multiples adverbios consecutivos segun la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>SujetoMS, verbo singular, adverbio opcional y punto final validos por la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-57">
+<div class="titulo-caso">
+<h2>Caso 57 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre porque la niña canta.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> El token &#x27;porque&#x27; no pertenece al vocabulario valido en AdverbioOpc.</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA (&#x27;porque&#x27;). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Subordinada causal</p>
+<p><b>Nota de referencia:</b> La CFG no incluye subordinadas causales</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>porque</td><td>DESCONOCIDA</td></tr>
+<tr><td>la</td><td>ART_FS</td></tr>
+<tr><td>niña</td><td>SUST_FS</td></tr>
+<tr><td>canta</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: porque (OTRO)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: porque (OTRO)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La palabra porque no pertenece al conjunto terminal QUE de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>La CFG no permite conectores subordinantes condicionales o causales.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-58">
+<div class="titulo-caso">
+<h2>Caso 58 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño corre en el parque rápidamente.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de AdjetivoMSOpc para el token ADV (&#x27;rápidamente&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 28: no hay produccion para AdjetivoMSOpc con ADV (&#x27;rápidamente&#x27;). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Adverbio después de preposición</p>
+<p><b>Nota de referencia:</b> El orden del predicado en la CFG es adverbio y luego frase preposicional</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>en</td><td>PREP</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>parque</td><td>SUST_MS</td></tr>
+<tr><td>rápidamente</td><td>ADV</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: rápidamente (ADV)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: rápidamente (ADV)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>La oracion cumple exactamente con la estructura de SujetoMS, PredicadoS, adverbio y punto.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El adverbio debe preceder a la frase preposicional segun la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-59">
+<div class="titulo-caso">
+<h2>Caso 59 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> El niño lee el libro.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> SI</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de AdverbioOpc para el token ART_MS (&#x27;el&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 13: no hay produccion para AdverbioOpc con ART_MS (&#x27;el&#x27;). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.</p>
+<p><b>Fenomeno:</b> Objeto directo</p>
+<p><b>Nota de referencia:</b> El predicado de la CFG no permite objeto directo</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>El</td><td>ART_MS</td></tr>
+<tr><td>niño</td><td>SUST_MS</td></tr>
+<tr><td>lee</td><td>VERBO_S</td></tr>
+<tr><td>el</td><td>ART_MS</td></tr>
+<tr><td>libro</td><td>SUST_MS</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: el (ART)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sobran tokens: el (ART)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="incorrecto">ACEPTADA</span><div class="muted">Falso positivo: aceptada erroneamente</div></td><td>Cumple exactamente con la estructura de SujetoMS, PredicadoS, PuntoOpcional y EOF de la CFG.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El objeto directo final no esta contemplado en el predicado de la CFG.</td></tr>
+</tbody></table>
+</section>
+<section class="caso" id="caso-60">
+<div class="titulo-caso">
+<h2>Caso 60 · Nivel 3</h2>
+<a class="volver" href="#inicio">Volver al resumen</a></div>
+<p class="oracion"><b>Oracion:</b> Los niños que juegan corre.</p>
+<p><b>Referencia CFG:</b> RECHAZADA &nbsp; <b>Correcta en español general:</b> NO</p>
+<p><b>Parser LL(1):</b> <span class="correcto">RECHAZADA</span> &mdash; Verdadero negativo</p>
+<p><b>Motivo obtenido del parser:</b> No existe una produccion de PredicadoP para el token VERBO_S (&#x27;corre&#x27;).</p>
+<p><b>Error exacto:</b> ErrorSintactico: Linea 1, columna 22: no hay produccion para PredicadoP con VERBO_S (&#x27;corre&#x27;). Tokens esperados: VERBO_P.</p>
+<p><b>Fenomeno:</b> Concordancia sujeto-verbo a distancia</p>
+<p><b>Nota de referencia:</b> Sujeto plural y verbo principal singular</p>
+<p class="muted">No hay arbol sintactico completo porque la oracion fue rechazada.</p>
+<details><summary>Ver tokens del lexer</summary>
+<table class="tokens"><thead><tr><th>Texto</th><th>Tipo</th></tr></thead><tbody>
+<tr><td>Los</td><td>ART_MP</td></tr>
+<tr><td>niños</td><td>SUST_MP</td></tr>
+<tr><td>que</td><td>QUE</td></tr>
+<tr><td>juegan</td><td>VERBO_P</td></tr>
+<tr><td>corre</td><td>VERBO_S</td></tr>
+<tr><td>.</td><td>PUNTO</td></tr>
+<tr><td>$</td><td>EOF</td></tr>
+</tbody></table>
+</details>
+<h3>Otros enfoques (resultados guardados)</h3>
+<table><thead><tr><th>Herramienta</th><th>Decision / error</th><th>Explicacion registrada</th></tr></thead><tbody>
+<tr><td>spaCy + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo principal: numero diferente (niños / corre)</td></tr>
+<tr><td>NLTK + criterio</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>Sujeto y verbo principal: numero diferente (niños / corre)</td></tr>
+<tr><td>Gemini zero-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>No hay concordancia de número entre el sujeto plural y el predicado singular.</td></tr>
+<tr><td>Gemini few-shot</td><td><span class="correcto">RECHAZADA</span><div class="muted">Verdadero negativo</div></td><td>El verbo principal no concuerda en numero con el sujeto plural.</td></tr>
+</tbody></table>
+</section>
+</body></html>

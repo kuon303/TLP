@@ -1,0 +1,3 @@
+﻿herramienta,tokens_evaluados,tokens_con_etiqueta,tokens_pos_correctos,tokens_pos_incorrectos,cobertura_etiquetado,exactitud_pos,exactitud_pos_sobre_etiquetados
+spaCy,396,396,384,12,1.0,0.969697,0.969697
+NLTK,396,367,366,30,0.926768,0.924242,0.997275

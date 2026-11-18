@@ -1,0 +1,4573 @@
+{
+  "herramienta": "spaCy es_core_news_sm",
+  "tipo_resultado": "anotaciones_nlp",
+  "metadatos": {
+    "spacy_version": "3.8.18",
+    "modelo": "es_core_news_sm",
+    "lang": "es",
+    "fecha_ejecucion_utc": "2026-11-18T03:42:15.959857+00:00",
+    "nota": "Las anotaciones NLP no son veredictos CFG; el criterio se aplica por separado."
+  },
+  "resultados": [
+    {
+      "id": "01",
+      "oracion": "El niño corre.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "oracion": "La niña canta.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "canta",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "canto",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niña",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "oracion": "Los niño corre.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "oracion": "Los perros duermen.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "perros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "duermen",
+          "head_index": 2
+        },
+        {
+          "texto": "duermen",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "duermen",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "duermen",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "duermen",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "oracion": "Las profesoras enseñan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "profesoras",
+          "head_index": 1
+        },
+        {
+          "texto": "profesoras",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "enseñan",
+          "head_index": 2
+        },
+        {
+          "texto": "enseñan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "enseñar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "enseñan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "enseñan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "oracion": "La carro corre.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "carro",
+          "head_index": 1
+        },
+        {
+          "texto": "carro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "carro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "oracion": "Un carro rojo avanza.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Un",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "uno",
+          "morph": "Definite=Ind|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "carro",
+          "head_index": 1
+        },
+        {
+          "texto": "carro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "carro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "avanza",
+          "head_index": 3
+        },
+        {
+          "texto": "rojo",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "rojo",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "amod",
+          "head": "carro",
+          "head_index": 1
+        },
+        {
+          "texto": "avanza",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "avanzar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "avanza",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "avanza",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "oracion": "Una mujer trabaja.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "uno",
+          "morph": "Definite=Ind|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "mujer",
+          "head_index": 1
+        },
+        {
+          "texto": "mujer",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "mujer",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabaja",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "oracion": "El niño corren.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corren",
+          "head_index": 2
+        },
+        {
+          "texto": "corren",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corren",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corren",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "oracion": "Los carros nuevos avanzan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "carros",
+          "head_index": 1
+        },
+        {
+          "texto": "carros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "carro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "avanzan",
+          "head_index": 3
+        },
+        {
+          "texto": "nuevos",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "nuevo",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "amod",
+          "head": "carros",
+          "head_index": 1
+        },
+        {
+          "texto": "avanzan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "avanzar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "avanzan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "avanzan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "oracion": "Las niñas juegan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "niñas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 2
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "juegan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "juegan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "oracion": "Las niñas come.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "niñas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "come",
+          "head_index": 2
+        },
+        {
+          "texto": "come",
+          "pos": "PROPN",
+          "tag": "PROPN",
+          "lemma": "come",
+          "morph": "",
+          "dep": "ROOT",
+          "head": "come",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "come",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "oracion": "El perro duerme.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "perro",
+          "head_index": 1
+        },
+        {
+          "texto": "perro",
+          "pos": "PROPN",
+          "tag": "PROPN",
+          "lemma": "perro",
+          "morph": "",
+          "dep": "nsubj",
+          "head": "duerme",
+          "head_index": 2
+        },
+        {
+          "texto": "duerme",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "dormir",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "duerme",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "duerme",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "oracion": "La profesora trabaja.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "profesora",
+          "head_index": 1
+        },
+        {
+          "texto": "profesora",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabaja",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "oracion": "Los niños juegan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "niños",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 2
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "juegan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "juegan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "oracion": "Las mujeres trabajan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "mujeres",
+          "head_index": 1
+        },
+        {
+          "texto": "mujeres",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "mujer",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "trabajan",
+          "head_index": 2
+        },
+        {
+          "texto": "trabajan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabajan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabajan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "oracion": "El doctor estudia.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "doctor",
+          "head_index": 1
+        },
+        {
+          "texto": "doctor",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "doctor",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "estudia",
+          "head_index": 2
+        },
+        {
+          "texto": "estudia",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "estudiar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "estudia",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "estudia",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "oracion": "Una niña canta.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "uno",
+          "morph": "Definite=Ind|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "canta",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "canto",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niña",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "oracion": "Las mariposas vuelan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "mariposas",
+          "head_index": 1
+        },
+        {
+          "texto": "mariposas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "mariposa",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "vuelan",
+          "head_index": 2
+        },
+        {
+          "texto": "vuelan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "volar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "vuelan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "vuelan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "oracion": "Los profesores enseñan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "profesores",
+          "head_index": 1
+        },
+        {
+          "texto": "profesores",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesor",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "enseñan",
+          "head_index": 2
+        },
+        {
+          "texto": "enseñan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "enseñar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "enseñan",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "enseñan",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "oracion": "La niña pequeña canta rápidamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": "pequeña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "canta",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "oracion": "Los perros felices juegan en el jardín.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "perros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": "felices",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "feliz",
+          "morph": "Number=Plur",
+          "dep": "amod",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "jardín",
+          "head_index": 6
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "jardín",
+          "head_index": 6
+        },
+        {
+          "texto": "jardín",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "jardín",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "juegan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "oracion": "La niña pequeño canta.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": "pequeño",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "canta",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "oracion": "El niño corre en el parque.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "parque",
+          "head_index": 5
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "parque",
+          "head_index": 5
+        },
+        {
+          "texto": "parque",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "parque",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "oracion": "La profesora que enseña trabaja.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "profesora",
+          "head_index": 1
+        },
+        {
+          "texto": "profesora",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 4
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "obj",
+          "head": "enseña",
+          "head_index": 3
+        },
+        {
+          "texto": "enseña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "enseño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "acl",
+          "head": "profesora",
+          "head_index": 1
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabaja",
+          "head_index": 4
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabaja",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "oracion": "Los niños que juega corren.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "niños",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "corren",
+          "head_index": 4
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "juega",
+          "head_index": 3
+        },
+        {
+          "texto": "juega",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "corren",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corren",
+          "head_index": 4
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corren",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "oracion": "Las mariposas bonitas vuelan lentamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "mariposas",
+          "head_index": 1
+        },
+        {
+          "texto": "mariposas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "mariposa",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "vuelan",
+          "head_index": 3
+        },
+        {
+          "texto": "bonitas",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "bonito",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "amod",
+          "head": "mariposas",
+          "head_index": 1
+        },
+        {
+          "texto": "vuelan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "volar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "vuelan",
+          "head_index": 3
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "vuelan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "vuelan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "oracion": "Un doctor trabaja en el hospital.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Un",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "uno",
+          "morph": "Definite=Ind|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "doctor",
+          "head_index": 1
+        },
+        {
+          "texto": "doctor",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "doctor",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "hospital",
+          "head_index": 5
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "hospital",
+          "head_index": 5
+        },
+        {
+          "texto": "hospital",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "hospital",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "trabaja",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabaja",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "oracion": "Los vehículos nueva circulan.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "vehículos",
+          "head_index": 1
+        },
+        {
+          "texto": "vehículos",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "vehículo",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": "nueva",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "nuevo",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "vehículos",
+          "head_index": 1
+        },
+        {
+          "texto": "circulan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "circular",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "circulan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "vehículos",
+          "head_index": 1
+        },
+        {
+          "texto": "vehículos",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "vehículo",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": "nuevos",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "nuevo",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "amod",
+          "head": "vehículos",
+          "head_index": 1
+        },
+        {
+          "texto": "circulan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "circular",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "ciudades",
+          "head_index": 7
+        },
+        {
+          "texto": "las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "ciudades",
+          "head_index": 7
+        },
+        {
+          "texto": "ciudades",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "ciudad",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "obl",
+          "head": "circulan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "circulan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "oracion": "El niño que canta alegremente corre con el perro.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "canta",
+          "head_index": 3
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "alegremente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "alegremente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "con",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "con",
+          "morph": "",
+          "dep": "case",
+          "head": "perro",
+          "head_index": 8
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "perro",
+          "head_index": 8
+        },
+        {
+          "texto": "perro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "oracion": "El niño corre en la casa de la niña.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "casa",
+          "head_index": 5
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "casa",
+          "head_index": 5
+        },
+        {
+          "texto": "casa",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "casa",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "de",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "de",
+          "morph": "",
+          "dep": "case",
+          "head": "niña",
+          "head_index": 8
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 8
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nmod",
+          "head": "casa",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "oracion": "La estudiante estudia hoy.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "estudiante",
+          "head_index": 1
+        },
+        {
+          "texto": "estudiante",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "estudiante",
+          "morph": "Number=Sing",
+          "dep": "nsubj",
+          "head": "estudia",
+          "head_index": 2
+        },
+        {
+          "texto": "estudia",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "estudiar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "estudia",
+          "head_index": 2
+        },
+        {
+          "texto": "hoy",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "hoy",
+          "morph": "",
+          "dep": "advmod",
+          "head": "estudia",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "estudia",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "oracion": "El niño pequeño corre lentamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 3
+        },
+        {
+          "texto": "pequeño",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "amod",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 3
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corre",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "oracion": "La niña canta y baila.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "canta",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "canto",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "y",
+          "pos": "CCONJ",
+          "tag": "CCONJ",
+          "lemma": "y",
+          "morph": "",
+          "dep": "cc",
+          "head": "baila",
+          "head_index": 4
+        },
+        {
+          "texto": "baila",
+          "pos": "PROPN",
+          "tag": "PROPN",
+          "lemma": "baila",
+          "morph": "",
+          "dep": "conj",
+          "head": "canta",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niña",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "oracion": "La profesora amable enseña en la escuela.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "profesora",
+          "head_index": 1
+        },
+        {
+          "texto": "profesora",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "amable",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "amable",
+          "morph": "Number=Sing",
+          "dep": "ROOT",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "enseña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "enseño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obj",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "escuela",
+          "head_index": 6
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "escuela",
+          "head_index": 6
+        },
+        {
+          "texto": "escuela",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "escuela",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "amable",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "oracion": "Los perros grandes duermen en el jardín.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "perros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "duermen",
+          "head_index": 3
+        },
+        {
+          "texto": "grandes",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "grande",
+          "morph": "Number=Plur",
+          "dep": "amod",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "duermen",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "duermen ",
+          "morph": "Case=Acc|Person=3|PrepCase=Npr|PronType=Prs|Reflex=Yes|VerbForm=Inf",
+          "dep": "ROOT",
+          "head": "duermen",
+          "head_index": 3
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "jardín",
+          "head_index": 6
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "jardín",
+          "head_index": 6
+        },
+        {
+          "texto": "jardín",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "jardín",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "duermen",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "duermen",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "oracion": "Una mujer feliz trabaja tranquilamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "uno",
+          "morph": "Definite=Ind|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "mujer",
+          "head_index": 1
+        },
+        {
+          "texto": "mujer",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "mujer",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 3
+        },
+        {
+          "texto": "feliz",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "feliz",
+          "morph": "Number=Sing",
+          "dep": "amod",
+          "head": "mujer",
+          "head_index": 1
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabaja",
+          "head_index": 3
+        },
+        {
+          "texto": "tranquilamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "tranquilamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "trabaja",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabaja",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "oracion": "Las niñas bonitas juegan en el parque.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "niñas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": "bonitas",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "bonito",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "amod",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "parque",
+          "head_index": 6
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "parque",
+          "head_index": 6
+        },
+        {
+          "texto": "parque",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "parque",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "juegan",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "oracion": "El carro rojo avanza rápidamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "carro",
+          "head_index": 1
+        },
+        {
+          "texto": "carro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "carro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "avanza",
+          "head_index": 3
+        },
+        {
+          "texto": "rojo",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "rojo",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "amod",
+          "head": "carro",
+          "head_index": 1
+        },
+        {
+          "texto": "avanza",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "avanzar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "avanza",
+          "head_index": 3
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "avanza",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "avanza",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "niños",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "corren",
+          "head_index": 8
+        },
+        {
+          "texto": "pequeños",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "amod",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 4
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "parque",
+          "head_index": 7
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "parque",
+          "head_index": 7
+        },
+        {
+          "texto": "parque",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "parque",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "juegan",
+          "head_index": 4
+        },
+        {
+          "texto": "corren",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corren",
+          "head_index": 8
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corren",
+          "head_index": 8
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corren",
+          "head_index": 8
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "profesoras",
+          "head_index": 1
+        },
+        {
+          "texto": "profesoras",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "trabajan",
+          "head_index": 4
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "obj",
+          "head": "enseñan",
+          "head_index": 3
+        },
+        {
+          "texto": "enseñan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "enseñar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "profesoras",
+          "head_index": 1
+        },
+        {
+          "texto": "trabajan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "trabajan",
+          "head_index": 4
+        },
+        {
+          "texto": "tranquilamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "tranquilamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "trabajan",
+          "head_index": 4
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "trabajan",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "oracion": "El niño que juega con la niña que canta corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "ROOT",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "juega",
+          "head_index": 3
+        },
+        {
+          "texto": "juega",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "con",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "con",
+          "morph": "",
+          "dep": "case",
+          "head": "niña",
+          "head_index": 6
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 6
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "juega",
+          "head_index": 3
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "obj",
+          "head": "corre",
+          "head_index": 9
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 9
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niña",
+          "head_index": 6
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niño",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "oracion": "La niña que camina lentamente canta en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "camina",
+          "head_index": 3
+        },
+        {
+          "texto": "camina",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "caminar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "camina",
+          "head_index": 3
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "obj",
+          "head": "camina",
+          "head_index": 3
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "escuela",
+          "head_index": 8
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "escuela",
+          "head_index": 8
+        },
+        {
+          "texto": "escuela",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "escuela",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "camina",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niña",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "pequeño",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "amod",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "juega",
+          "head_index": 4
+        },
+        {
+          "texto": "juega",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "parque",
+          "head_index": 9
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "parque",
+          "head_index": 9
+        },
+        {
+          "texto": "parque",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "parque",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "oracion": "El niño y la niña corren.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": "y",
+          "pos": "CCONJ",
+          "tag": "CCONJ",
+          "lemma": "y",
+          "morph": "",
+          "dep": "cc",
+          "head": "niña",
+          "head_index": 4
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 4
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "conj",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "corren",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corren",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "niñas",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 5
+        },
+        {
+          "texto": "felices",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "feliz",
+          "morph": "Number=Plur",
+          "dep": "amod",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "cantan",
+          "head_index": 4
+        },
+        {
+          "texto": "cantan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niñas",
+          "head_index": 1
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "juegan",
+          "head_index": 5
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "juegan",
+          "head_index": 5
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "escuela",
+          "head_index": 9
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "escuela",
+          "head_index": 9
+        },
+        {
+          "texto": "escuela",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "escuela",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "juegan",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "juegan",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "profesora",
+          "head_index": 1
+        },
+        {
+          "texto": "profesora",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "profesora",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "amable",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "amable",
+          "morph": "Number=Sing",
+          "dep": "ROOT",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "trabaja",
+          "head_index": 4
+        },
+        {
+          "texto": "trabaja",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "trabajar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ccomp",
+          "head": "amable",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "escuela",
+          "head_index": 7
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "escuela",
+          "head_index": 7
+        },
+        {
+          "texto": "escuela",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "escuela",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "trabaja",
+          "head_index": 4
+        },
+        {
+          "texto": "enseña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "enseño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "escuela",
+          "head_index": 7
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "trabaja",
+          "head_index": 4
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "amable",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "oracion": "Corre el niño.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "Corre",
+          "head_index": 0
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 2
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "Corre",
+          "head_index": 0
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "Corre",
+          "head_index": 0
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "perros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": "grandes",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "grande",
+          "morph": "Number=Plur",
+          "dep": "amod",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "obj",
+          "head": "duermen",
+          "head_index": 4
+        },
+        {
+          "texto": "duermen",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "duermar",
+          "morph": "Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "perros",
+          "head_index": 1
+        },
+        {
+          "texto": "corren",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": "con",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "con",
+          "morph": "",
+          "dep": "case",
+          "head": "niños",
+          "head_index": 9
+        },
+        {
+          "texto": "los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niños",
+          "head_index": 9
+        },
+        {
+          "texto": "niños",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "obj",
+          "head": "corren",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corren",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "camina",
+          "head_index": 6
+        },
+        {
+          "texto": "pequeña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "canta",
+          "head_index": 4
+        },
+        {
+          "texto": "canta",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "cantar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "alegremente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "alegremente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "camina",
+          "head_index": 6
+        },
+        {
+          "texto": "camina",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "caminar",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "camina",
+          "head_index": 6
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "camina",
+          "head_index": 6
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "escuela",
+          "head_index": 10
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "escuela",
+          "head_index": 10
+        },
+        {
+          "texto": "escuela",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "escuela",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "camina",
+          "head_index": 6
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "camina",
+          "head_index": 6
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "oracion": "El niño que la niña conoce corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 6
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "obj",
+          "head": "conoce",
+          "head_index": 5
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 4
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "conoce",
+          "head_index": 5
+        },
+        {
+          "texto": "conoce",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "conocer",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 6
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 6
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "carros",
+          "head_index": 1
+        },
+        {
+          "texto": "carros",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "carro",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "circulan",
+          "head_index": 5
+        },
+        {
+          "texto": "nuevos",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "nuevo",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "amod",
+          "head": "carros",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "avanzan",
+          "head_index": 4
+        },
+        {
+          "texto": "avanzan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "avanzar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "carros",
+          "head_index": 1
+        },
+        {
+          "texto": "circulan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "circular",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "circulan",
+          "head_index": 5
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "circulan",
+          "head_index": 5
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "ciudades",
+          "head_index": 9
+        },
+        {
+          "texto": "las",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "ciudades",
+          "head_index": 9
+        },
+        {
+          "texto": "ciudades",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "ciudad",
+          "morph": "Gender=Fem|Number=Plur",
+          "dep": "obl",
+          "head": "circulan",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "circulan",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "oracion": "La niña que corre con el perro que duerme canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 3
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "con",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "con",
+          "morph": "",
+          "dep": "case",
+          "head": "perro",
+          "head_index": 6
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "perro",
+          "head_index": 6
+        },
+        {
+          "texto": "perro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "perro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 3
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "duerme",
+          "head_index": 8
+        },
+        {
+          "texto": "duerme",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "dormir",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "perro",
+          "head_index": 6
+        },
+        {
+          "texto": "canta",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "canta",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obj",
+          "head": "duerme",
+          "head_index": 8
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "niña",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "oracion": "La niña pequeña tranquila canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "nsubj",
+          "head": "tranquila",
+          "head_index": 3
+        },
+        {
+          "texto": "pequeña",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "pequeño",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 1
+        },
+        {
+          "texto": "tranquila",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "tranquilo",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "ROOT",
+          "head": "tranquila",
+          "head_index": 3
+        },
+        {
+          "texto": "canta",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "canto",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "flat",
+          "head": "tranquila",
+          "head_index": 3
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "tranquila",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "oracion": "El niño corre lentamente hoy.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "lentamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "lentamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "hoy",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "hoy",
+          "morph": "",
+          "dep": "advmod",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "oracion": "El niño corre porque la niña canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "porque",
+          "pos": "SCONJ",
+          "tag": "SCONJ",
+          "lemma": "porque",
+          "morph": "",
+          "dep": "mark",
+          "head": "niña",
+          "head_index": 5
+        },
+        {
+          "texto": "la",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Fem|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niña",
+          "head_index": 5
+        },
+        {
+          "texto": "niña",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niña",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "canta",
+          "pos": "ADJ",
+          "tag": "ADJ",
+          "lemma": "canto",
+          "morph": "Gender=Fem|Number=Sing",
+          "dep": "amod",
+          "head": "niña",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "oracion": "El niño corre en el parque rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "en",
+          "pos": "ADP",
+          "tag": "ADP",
+          "lemma": "en",
+          "morph": "",
+          "dep": "case",
+          "head": "parque",
+          "head_index": 5
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "parque",
+          "head_index": 5
+        },
+        {
+          "texto": "parque",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "parque",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obl",
+          "head": "corre",
+          "head_index": 2
+        },
+        {
+          "texto": "rápidamente",
+          "pos": "ADV",
+          "tag": "ADV",
+          "lemma": "rápidamente",
+          "morph": "",
+          "dep": "advmod",
+          "head": "parque",
+          "head_index": 5
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "oracion": "El niño lee el libro.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "niño",
+          "head_index": 1
+        },
+        {
+          "texto": "niño",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "nsubj",
+          "head": "lee",
+          "head_index": 2
+        },
+        {
+          "texto": "lee",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "leer",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "lee",
+          "head_index": 2
+        },
+        {
+          "texto": "el",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Sing|PronType=Art",
+          "dep": "det",
+          "head": "libro",
+          "head_index": 4
+        },
+        {
+          "texto": "libro",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "libro",
+          "morph": "Gender=Masc|Number=Sing",
+          "dep": "obj",
+          "head": "lee",
+          "head_index": 2
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "lee",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "oracion": "Los niños que juegan corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ANOTADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "pos": "DET",
+          "tag": "DET",
+          "lemma": "el",
+          "morph": "Definite=Def|Gender=Masc|Number=Plur|PronType=Art",
+          "dep": "det",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "niños",
+          "pos": "NOUN",
+          "tag": "NOUN",
+          "lemma": "niño",
+          "morph": "Gender=Masc|Number=Plur",
+          "dep": "nsubj",
+          "head": "corre",
+          "head_index": 4
+        },
+        {
+          "texto": "que",
+          "pos": "PRON",
+          "tag": "PRON",
+          "lemma": "que",
+          "morph": "PronType=Int,Rel",
+          "dep": "nsubj",
+          "head": "juegan",
+          "head_index": 3
+        },
+        {
+          "texto": "juegan",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "jugar",
+          "morph": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "acl",
+          "head": "niños",
+          "head_index": 1
+        },
+        {
+          "texto": "corre",
+          "pos": "VERB",
+          "tag": "VERB",
+          "lemma": "correr",
+          "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dep": "ROOT",
+          "head": "corre",
+          "head_index": 4
+        },
+        {
+          "texto": ".",
+          "pos": "PUNCT",
+          "tag": "PUNCT",
+          "lemma": ".",
+          "morph": "PunctType=Peri",
+          "dep": "punct",
+          "head": "corre",
+          "head_index": 4
+        }
+      ]
+    }
+  ]
+}

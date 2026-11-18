@@ -1,0 +1,6 @@
+﻿herramienta,total,tp,tn,fp,fn,precision,recall,tasa_rechazo_correcto,exactitud,exactitud_balanceada,errores_etiquetado
+Parser LL(1) propio (espanol V3),60,40,20,0,0,1.0,1.0,1.0,1.0,1.0,NO_APLICA
+spaCy es_core_news_sm + criterio equivalencia v1,60,32,20,0,8,1.0,0.8,1.0,0.866667,0.9,VER_tabla_pos.csv
+NLTK BigramTagger+UnigramTagger entrenado en CESS-ESP + criterio equivalencia v1,60,20,20,0,20,1.0,0.5,1.0,0.666667,0.75,VER_tabla_pos.csv
+Gemini API - gemini-3.5-flash-lite - zero_shot,60,39,14,6,1,0.866667,0.975,0.7,0.883333,0.8375,NO_APLICA
+Gemini API - gemini-3.5-flash-lite - few_shot,60,39,16,4,1,0.906977,0.975,0.8,0.916667,0.8875,NO_APLICA

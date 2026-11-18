@@ -1,0 +1,72 @@
+[
+  {
+    "herramienta": "Parser LL(1) propio (espanol V3)",
+    "total": 60,
+    "tp": 40,
+    "tn": 20,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tasa_rechazo_correcto": 1.0,
+    "exactitud": 1.0,
+    "exactitud_balanceada": 1.0,
+    "errores_etiquetado": "NO_APLICA"
+  },
+  {
+    "herramienta": "spaCy es_core_news_sm + criterio equivalencia v1",
+    "total": 60,
+    "tp": 32,
+    "tn": 20,
+    "fp": 0,
+    "fn": 8,
+    "precision": 1.0,
+    "recall": 0.8,
+    "tasa_rechazo_correcto": 1.0,
+    "exactitud": 0.866667,
+    "exactitud_balanceada": 0.9,
+    "errores_etiquetado": "VER_tabla_pos.csv"
+  },
+  {
+    "herramienta": "NLTK BigramTagger+UnigramTagger entrenado en CESS-ESP + criterio equivalencia v1",
+    "total": 60,
+    "tp": 20,
+    "tn": 20,
+    "fp": 0,
+    "fn": 20,
+    "precision": 1.0,
+    "recall": 0.5,
+    "tasa_rechazo_correcto": 1.0,
+    "exactitud": 0.666667,
+    "exactitud_balanceada": 0.75,
+    "errores_etiquetado": "VER_tabla_pos.csv"
+  },
+  {
+    "herramienta": "Gemini API - gemini-3.5-flash-lite - zero_shot",
+    "total": 60,
+    "tp": 39,
+    "tn": 14,
+    "fp": 6,
+    "fn": 1,
+    "precision": 0.866667,
+    "recall": 0.975,
+    "tasa_rechazo_correcto": 0.7,
+    "exactitud": 0.883333,
+    "exactitud_balanceada": 0.8375,
+    "errores_etiquetado": "NO_APLICA"
+  },
+  {
+    "herramienta": "Gemini API - gemini-3.5-flash-lite - few_shot",
+    "total": 60,
+    "tp": 39,
+    "tn": 16,
+    "fp": 4,
+    "fn": 1,
+    "precision": 0.906977,
+    "recall": 0.975,
+    "tasa_rechazo_correcto": 0.8,
+    "exactitud": 0.916667,
+    "exactitud_balanceada": 0.8875,
+    "errores_etiquetado": "NO_APLICA"
+  }
+]

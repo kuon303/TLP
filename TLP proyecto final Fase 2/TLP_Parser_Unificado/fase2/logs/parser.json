@@ -1,0 +1,3716 @@
+{
+  "herramienta": "Parser LL(1) propio (espanol V3)",
+  "tipo_resultado": "clasificacion_cfg",
+  "metadatos": {
+    "fecha_ejecucion_utc": "2026-11-18T03:41:46+00:00",
+    "python": "3.13.14",
+    "corpus": "corpus.csv",
+    "corpus_sha256": "abecc8c74a54f0664af7fe64e6ab342b399767bcfaaa46c53c30329930deca62",
+    "archivos_fuente_sha256": {
+      "parser_ll1.py": "4b0d9f4c223a33dee984ab071c5a076a0883e818b2a745cf75204e4b118a1b99",
+      "lexer_es_v3.py": "8472fdf57f19531fe199d90fe51560dd4d1f111d8eae687acf6a69472e8fad18",
+      "gramatica_es_v3.py": "904883f7c291dfa6a5202d6f86ffacb30343bec6da6ab83588d4ecdf0d84aa18",
+      "vocabulario_es.py": "3ee7372ac3b1ad665b70fd1f05bf4e71df7ce3b172a29389da78a8b994bc5815"
+    },
+    "total_oraciones": 60,
+    "nota": "Resultados reales del parser V3; no se ajustan usando el esperado."
+  },
+  "resultados": [
+    {
+      "id": "01",
+      "nivel": 1,
+      "oracion": "El niño corre.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto singular + verbo",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 15
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "02",
+      "nivel": 1,
+      "oracion": "La niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto singular femenino + verbo",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 15
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "03",
+      "nivel": 1,
+      "oracion": "Los niño corre.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia artículo-sustantivo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 16
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 5: se esperaba SUST_MP, pero aparecio SUST_MS ('niño').",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "04",
+      "nivel": 1,
+      "oracion": "Los perros duermen.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto plural + verbo",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "perros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "duermen",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 20
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('perros')\n│   ├── AdjetivoMPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('duermen')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "05",
+      "nivel": 1,
+      "oracion": "Las profesoras enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto plural femenino + verbo",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "profesoras",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "enseñan",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 24
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('profesoras')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('enseñan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "06",
+      "nivel": 1,
+      "oracion": "La carro corre.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia de género",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "carro",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 16
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 4: se esperaba SUST_FS, pero aparecio SUST_MS ('carro').",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "07",
+      "nivel": 1,
+      "oracion": "Un carro rojo avanza.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo masculino singular",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "Un",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "carro",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_MS",
+          "texto": "rojo",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "avanza",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 22
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('Un')\n│   ├── SUST_MS ('carro')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_MS ('rojo')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('avanza')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "08",
+      "nivel": 1,
+      "oracion": "Una mujer trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Artículo indefinido femenino",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "Una",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "mujer",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 19
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('Una')\n│   ├── SUST_FS ('mujer')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('trabaja')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "09",
+      "nivel": 1,
+      "oracion": "El niño corren.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia sujeto-verbo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "corren",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 16
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 9: no hay produccion para RelativaSOpc con VERBO_P ('corren'). Tokens esperados: QUE, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "10",
+      "nivel": 1,
+      "oracion": "Los carros nuevos avanzan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo masculino plural",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "carros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_MP",
+          "texto": "nuevos",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "avanzan",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 27
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('carros')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('nuevos')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('avanzan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "11",
+      "nivel": 1,
+      "oracion": "Las niñas juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto plural femenino",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "niñas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 18
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "12",
+      "nivel": 1,
+      "oracion": "Las niñas come.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia sujeto-verbo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "niñas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "come",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 16
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 11: no hay produccion para RelativaPOpc con VERBO_S ('come'). Tokens esperados: QUE, VERBO_P.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "13",
+      "nivel": 1,
+      "oracion": "El perro duerme.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto masculino singular",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "perro",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "duerme",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 17
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('perro')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('duerme')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "14",
+      "nivel": 1,
+      "oracion": "La profesora trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto femenino singular",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "profesora",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 22
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('profesora')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('trabaja')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "15",
+      "nivel": 1,
+      "oracion": "Los niños juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto masculino plural",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "niños",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 18
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "16",
+      "nivel": 1,
+      "oracion": "Las mujeres trabajan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto femenino plural",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "mujeres",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "trabajan",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 22
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('mujeres')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('trabajan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "17",
+      "nivel": 1,
+      "oracion": "El doctor estudia.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto masculino singular",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "doctor",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "estudia",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 19
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('doctor')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('estudia')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "18",
+      "nivel": 1,
+      "oracion": "Una niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Articulo indefinido",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "Una",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 16
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('Una')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "19",
+      "nivel": 1,
+      "oracion": "Las mariposas vuelan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto femenino plural",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "mariposas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "vuelan",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 22
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('mariposas')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('vuelan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "20",
+      "nivel": 1,
+      "oracion": "Los profesores enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto masculino plural",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "profesores",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "enseñan",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 24
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('profesores')\n│   ├── AdjetivoMPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('enseñan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "21",
+      "nivel": 2,
+      "oracion": "La niña pequeña canta rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo y adverbio",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_FS",
+          "texto": "pequeña",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 34
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 35
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_FS ('pequeña')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "22",
+      "nivel": 2,
+      "oracion": "Los perros felices juegan en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo y frase preposicional",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "perros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_COMUN_P",
+          "texto": "felices",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 30
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "jardín",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 40
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('perros')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_COMUN_P ('felices')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('jardín')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "23",
+      "nivel": 2,
+      "oracion": "La niña pequeño canta.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia sustantivo-adjetivo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_MS",
+          "texto": "pequeño",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 23
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoFSOpc con ADJ_MS ('pequeño'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "24",
+      "nivel": 2,
+      "oracion": "El niño corre en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Frase preposicional",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "parque",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 28
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('parque')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "25",
+      "nivel": 2,
+      "oracion": "La profesora que enseña trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa sencilla",
+      "estructura_esperada": "SujetoFS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "profesora",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "enseña",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 33
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('profesora')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('enseña')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('trabaja')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "26",
+      "nivel": 2,
+      "oracion": "Los niños que juega corren.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia de la relativa",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "niños",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "juega",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "corren",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 28
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 15: se esperaba VERBO_P, pero aparecio VERBO_S ('juega').",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "27",
+      "nivel": 2,
+      "oracion": "Las mariposas bonitas vuelan lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo y adverbio plural",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "mariposas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_FP",
+          "texto": "bonitas",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "vuelan",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 30
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 40
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 41
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('mariposas')\n│   ├── AdjetivoFPOpc\n│   │   └── ADJ_FP ('bonitas')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('vuelan')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "28",
+      "nivel": 2,
+      "oracion": "Un doctor trabaja en el hospital.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Preposición con nominal masculino",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "Un",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "doctor",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "hospital",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 34
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('Un')\n│   ├── SUST_MS ('doctor')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('trabaja')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('hospital')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "29",
+      "nivel": 2,
+      "oracion": "Los vehículos nueva circulan.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia sustantivo-adjetivo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "vehículos",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_FS",
+          "texto": "nueva",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "circulan",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 29
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 30
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 15: no hay produccion para AdjetivoMPOpc con ADJ_FS ('nueva'). Tokens esperados: ADJ_COMUN_P, ADJ_MP, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "30",
+      "nivel": 2,
+      "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Modificadores y preposición",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "vehículos",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_MP",
+          "texto": "nuevos",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "circulan",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 43
+        },
+        {
+          "tipo": "ART_FP",
+          "texto": "las",
+          "linea": 1,
+          "columna": 46
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "ciudades",
+          "linea": 1,
+          "columna": 50
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 58
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 59
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('vehículos')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('nuevos')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('circulan')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFP\n│               ├── ART_FP ('las')\n│               ├── SUST_FP ('ciudades')\n│               └── AdjetivoFPOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "31",
+      "nivel": 2,
+      "oracion": "El niño que canta alegremente corre con el perro.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa + adverbio + preposición",
+      "estructura_esperada": "SujetoMS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "ADV",
+          "texto": "alegremente",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "PREP",
+          "texto": "con",
+          "linea": 1,
+          "columna": 37
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 41
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "perro",
+          "linea": 1,
+          "columna": 44
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 49
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 50
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('canta')\n│       ├── AdverbioOpc\n│       │   └── ADV ('alegremente')\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('con')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('perro')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "32",
+      "nivel": 2,
+      "oracion": "El niño corre en la casa de la niña.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Dos frases preposicionales encadenadas",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "casa",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "PREP",
+          "texto": "de",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 29
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 36
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 37
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 26: no hay produccion para AdjetivoFSOpc con PREP ('de'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "33",
+      "nivel": 2,
+      "oracion": "La estudiante estudia hoy.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sustantivo común en género",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "estudiante",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "estudia",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ADV",
+          "texto": "hoy",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 27
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('estudiante')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('estudia')\n│   ├── AdverbioOpc\n│   │   └── ADV ('hoy')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "34",
+      "nivel": 2,
+      "oracion": "El niño pequeño corre lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo y adverbio",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_MS",
+          "texto": "pequeño",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 34
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_MS ('pequeño')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "35",
+      "nivel": 2,
+      "oracion": "La niña canta y baila.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Coordinación verbal",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "DESCONOCIDA",
+          "texto": "y",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "baila",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 23
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA ('y'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "36",
+      "nivel": 2,
+      "oracion": "La profesora amable enseña en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo comun y preposicion",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "profesora",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_COMUN_S",
+          "texto": "amable",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "enseña",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 28
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "escuela",
+          "linea": 1,
+          "columna": 34
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 41
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 42
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('profesora')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_COMUN_S ('amable')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('enseña')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('escuela')\n│               └── AdjetivoFSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "37",
+      "nivel": 2,
+      "oracion": "Los perros grandes duermen en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo plural y preposicion",
+      "estructura_esperada": "SujetoMP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "perros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_COMUN_P",
+          "texto": "grandes",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "duermen",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 28
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "jardín",
+          "linea": 1,
+          "columna": 34
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 40
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 41
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('perros')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_COMUN_P ('grandes')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('duermen')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('jardín')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "38",
+      "nivel": 2,
+      "oracion": "Una mujer feliz trabaja tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo comun y adverbio",
+      "estructura_esperada": "SujetoFS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "Una",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "mujer",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_COMUN_S",
+          "texto": "feliz",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "ADV",
+          "texto": "tranquilamente",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 40
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('Una')\n│   ├── SUST_FS ('mujer')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_COMUN_S ('feliz')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('trabaja')\n│   ├── AdverbioOpc\n│   │   └── ADV ('tranquilamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "39",
+      "nivel": 2,
+      "oracion": "Las niñas bonitas juegan en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo femenino plural y preposicion",
+      "estructura_esperada": "SujetoFP PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "niñas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_FP",
+          "texto": "bonitas",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 29
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "parque",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 38
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 39
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── ADJ_FP ('bonitas')\n│   └── RelativaPOpc\n│       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('parque')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "40",
+      "nivel": 2,
+      "oracion": "El carro rojo avanza rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adjetivo masculino y adverbio",
+      "estructura_esperada": "SujetoMS PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "carro",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_MS",
+          "texto": "rojo",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "avanza",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 34
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('carro')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_MS ('rojo')\n│   └── RelativaSOpc\n│       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('avanza')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "41",
+      "nivel": 3,
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa + adjetivo + adverbio",
+      "estructura_esperada": "SujetoMP RelativaPOpc PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "niños",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_MP",
+          "texto": "pequeños",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 24
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 34
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "parque",
+          "linea": 1,
+          "columna": 37
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "corren",
+          "linea": 1,
+          "columna": 44
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 51
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 62
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 63
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('niños')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('pequeños')\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('juegan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           ├── PREP ('en')\n│           └── SintagmaNominal\n│               └── NominalMS\n│                   ├── ART_MS ('el')\n│                   ├── SUST_MS ('parque')\n│                   └── AdjetivoMSOpc\n│                       └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "42",
+      "nivel": 3,
+      "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa plural y adverbio",
+      "estructura_esperada": "SujetoFP RelativaPOpc PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "profesoras",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "enseñan",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "trabajan",
+          "linea": 1,
+          "columna": 28
+        },
+        {
+          "tipo": "ADV",
+          "texto": "tranquilamente",
+          "linea": 1,
+          "columna": 37
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 51
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 52
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('profesoras')\n│   ├── AdjetivoFPOpc\n│   │   └── vacia\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('enseñan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('trabajan')\n│   ├── AdverbioOpc\n│   │   └── ADV ('tranquilamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "43",
+      "nivel": 3,
+      "oracion": "El niño que juega con la niña que canta corre.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa anidada",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "juega",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "PREP",
+          "texto": "con",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 35
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 41
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 46
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 47
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 31: no hay produccion para PredicadoS con QUE ('que'). Tokens esperados: VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "44",
+      "nivel": 3,
+      "oracion": "La niña que camina lentamente canta en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa con adverbio y complemento",
+      "estructura_esperada": "SujetoFS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "camina",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 37
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 40
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "escuela",
+          "linea": 1,
+          "columna": 43
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 50
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 51
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── vacia\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('camina')\n│       ├── AdverbioOpc\n│       │   └── ADV ('lentamente')\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('canta')\n│   ├── AdverbioOpc\n│   │   └── vacia\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('escuela')\n│               └── AdjetivoFSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "45",
+      "nivel": 3,
+      "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa y modificadores multiples",
+      "estructura_esperada": "SujetoMS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_MS",
+          "texto": "pequeño",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "juega",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 45
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 48
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "parque",
+          "linea": 1,
+          "columna": 51
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 57
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 58
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMS\n│   ├── ART_MS ('El')\n│   ├── SUST_MS ('niño')\n│   ├── AdjetivoMSOpc\n│   │   └── ADJ_MS ('pequeño')\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('juega')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('corre')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalMS\n│               ├── ART_MS ('el')\n│               ├── SUST_MS ('parque')\n│               └── AdjetivoMSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "46",
+      "nivel": 3,
+      "oracion": "El niño y la niña corren.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Sujeto coordinado",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "DESCONOCIDA",
+          "texto": "y",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "corren",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 26
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoMSOpc con DESCONOCIDA ('y'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "47",
+      "nivel": 3,
+      "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa plural y modificadores",
+      "estructura_esperada": "SujetoFP RelativaPOpc PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FP",
+          "texto": "Las",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "niñas",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_COMUN_P",
+          "texto": "felices",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "cantan",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 30
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 37
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 48
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 51
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "escuela",
+          "linea": 1,
+          "columna": 54
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 61
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 62
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFP\n│   ├── ART_FP ('Las')\n│   ├── SUST_FP ('niñas')\n│   ├── AdjetivoFPOpc\n│   │   └── ADJ_COMUN_P ('felices')\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('cantan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('juegan')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('escuela')\n│               └── AdjetivoFSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "48",
+      "nivel": 3,
+      "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa con frase preposicional",
+      "estructura_esperada": "SujetoFS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "profesora",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_COMUN_S",
+          "texto": "amable",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "trabaja",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 36
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "escuela",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "enseña",
+          "linea": 1,
+          "columna": 47
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 54
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 65
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 66
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('profesora')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_COMUN_S ('amable')\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('trabaja')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           ├── PREP ('en')\n│           └── SintagmaNominal\n│               └── NominalFS\n│                   ├── ART_FS ('la')\n│                   ├── SUST_FS ('escuela')\n│                   └── AdjetivoFSOpc\n│                       └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('enseña')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "49",
+      "nivel": 3,
+      "oracion": "Corre el niño.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Inversión sujeto-verbo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "VERBO_S",
+          "texto": "Corre",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 7
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 10
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 14
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 15
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 1: no hay produccion para Oracion con VERBO_S ('Corre'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "50",
+      "nivel": 3,
+      "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa plural y preposicion",
+      "estructura_esperada": "SujetoMP RelativaPOpc PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "perros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_COMUN_P",
+          "texto": "grandes",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 20
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "duermen",
+          "linea": 1,
+          "columna": 24
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "corren",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "PREP",
+          "texto": "con",
+          "linea": 1,
+          "columna": 50
+        },
+        {
+          "tipo": "ART_MP",
+          "texto": "los",
+          "linea": 1,
+          "columna": 54
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "niños",
+          "linea": 1,
+          "columna": 58
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 63
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 64
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('perros')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_COMUN_P ('grandes')\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('duermen')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('corren')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('con')\n│       └── SintagmaNominal\n│           └── NominalMP\n│               ├── ART_MP ('los')\n│               ├── SUST_MP ('niños')\n│               └── AdjetivoMPOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "51",
+      "nivel": 3,
+      "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adverbios en dos predicados",
+      "estructura_esperada": "SujetoFS RelativaSOpc PredicadoS",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_FS",
+          "texto": "pequeña",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "ADV",
+          "texto": "alegremente",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "camina",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 46
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 57
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 60
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "escuela",
+          "linea": 1,
+          "columna": 63
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 70
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 71
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoFS\n│   ├── ART_FS ('La')\n│   ├── SUST_FS ('niña')\n│   ├── AdjetivoFSOpc\n│   │   └── ADJ_FS ('pequeña')\n│   └── RelativaSOpc\n│       ├── QUE ('que')\n│       ├── VERBO_S ('canta')\n│       ├── AdverbioOpc\n│       │   └── ADV ('alegremente')\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoS\n│   ├── VERBO_S ('camina')\n│   ├── AdverbioOpc\n│   │   └── ADV ('lentamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFS\n│               ├── ART_FS ('la')\n│               ├── SUST_FS ('escuela')\n│               └── AdjetivoFSOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "52",
+      "nivel": 3,
+      "oracion": "El niño que la niña conoce corre.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa de objeto",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "conoce",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 28
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 33
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 34
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 13: se esperaba VERBO_S, pero aparecio ART_FS ('la').",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "53",
+      "nivel": 3,
+      "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa plural y modificadores",
+      "estructura_esperada": "SujetoMP RelativaPOpc PredicadoP",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "carros",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "ADJ_MP",
+          "texto": "nuevos",
+          "linea": 1,
+          "columna": 12
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "avanzan",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "circulan",
+          "linea": 1,
+          "columna": 31
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 40
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 52
+        },
+        {
+          "tipo": "ART_FP",
+          "texto": "las",
+          "linea": 1,
+          "columna": 55
+        },
+        {
+          "tipo": "SUST_FP",
+          "texto": "ciudades",
+          "linea": 1,
+          "columna": 59
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 67
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 68
+        }
+      ],
+      "arbol": "Oracion\n├── SujetoMP\n│   ├── ART_MP ('Los')\n│   ├── SUST_MP ('carros')\n│   ├── AdjetivoMPOpc\n│   │   └── ADJ_MP ('nuevos')\n│   └── RelativaPOpc\n│       ├── QUE ('que')\n│       ├── VERBO_P ('avanzan')\n│       ├── AdverbioOpc\n│       │   └── vacia\n│       └── FrasePrepOpc\n│           └── vacia\n├── PredicadoP\n│   ├── VERBO_P ('circulan')\n│   ├── AdverbioOpc\n│   │   └── ADV ('rápidamente')\n│   └── FrasePrepOpc\n│       ├── PREP ('en')\n│       └── SintagmaNominal\n│           └── NominalFP\n│               ├── ART_FP ('las')\n│               ├── SUST_FP ('ciudades')\n│               └── AdjetivoFPOpc\n│                   └── vacia\n├── PuntoOpcional\n│   └── PUNTO ('.')\n└── EOF ('$')",
+      "error": null,
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "54",
+      "nivel": 3,
+      "oracion": "La niña que corre con el perro que duerme canta.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Relativa anidada",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "PREP",
+          "texto": "con",
+          "linea": 1,
+          "columna": 19
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 23
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "perro",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "duerme",
+          "linea": 1,
+          "columna": 36
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 43
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 48
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 49
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 32: no hay produccion para PredicadoS con QUE ('que'). Tokens esperados: VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "55",
+      "nivel": 3,
+      "oracion": "La niña pequeña tranquila canta.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Dos adjetivos consecutivos",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_FS",
+          "texto": "La",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "ADJ_FS",
+          "texto": "pequeña",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "ADJ_FS",
+          "texto": "tranquila",
+          "linea": 1,
+          "columna": 17
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 32
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 33
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 17: no hay produccion para RelativaSOpc con ADJ_FS ('tranquila'). Tokens esperados: QUE, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "56",
+      "nivel": 3,
+      "oracion": "El niño corre lentamente hoy.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Dos adverbios consecutivos",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "ADV",
+          "texto": "lentamente",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ADV",
+          "texto": "hoy",
+          "linea": 1,
+          "columna": 26
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 29
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 30
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 26: no hay produccion para FrasePrepOpc con ADV ('hoy'). Tokens esperados: EOF, PREP, PUNTO, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "57",
+      "nivel": 3,
+      "oracion": "El niño corre porque la niña canta.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Subordinada causal",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "DESCONOCIDA",
+          "texto": "porque",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ART_FS",
+          "texto": "la",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "SUST_FS",
+          "texto": "niña",
+          "linea": 1,
+          "columna": 25
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "canta",
+          "linea": 1,
+          "columna": 30
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 35
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 36
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA ('porque'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "58",
+      "nivel": 3,
+      "oracion": "El niño corre en el parque rápidamente.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Adverbio después de preposición",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "PREP",
+          "texto": "en",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 18
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "parque",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "ADV",
+          "texto": "rápidamente",
+          "linea": 1,
+          "columna": 28
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 39
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 40
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 28: no hay produccion para AdjetivoMSOpc con ADV ('rápidamente'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "59",
+      "nivel": 3,
+      "oracion": "El niño lee el libro.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "SI",
+      "fenomeno": "Objeto directo",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MS",
+          "texto": "El",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "niño",
+          "linea": 1,
+          "columna": 4
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "lee",
+          "linea": 1,
+          "columna": 9
+        },
+        {
+          "tipo": "ART_MS",
+          "texto": "el",
+          "linea": 1,
+          "columna": 13
+        },
+        {
+          "tipo": "SUST_MS",
+          "texto": "libro",
+          "linea": 1,
+          "columna": 16
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 21
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 22
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 13: no hay produccion para AdverbioOpc con ART_MS ('el'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    },
+    {
+      "id": "60",
+      "nivel": 3,
+      "oracion": "Los niños que juegan corre.",
+      "esperado_cfg": "RECHAZADA",
+      "correcta_espanol": "NO",
+      "fenomeno": "Concordancia sujeto-verbo a distancia",
+      "estructura_esperada": "",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "tokens": [
+        {
+          "tipo": "ART_MP",
+          "texto": "Los",
+          "linea": 1,
+          "columna": 1
+        },
+        {
+          "tipo": "SUST_MP",
+          "texto": "niños",
+          "linea": 1,
+          "columna": 5
+        },
+        {
+          "tipo": "QUE",
+          "texto": "que",
+          "linea": 1,
+          "columna": 11
+        },
+        {
+          "tipo": "VERBO_P",
+          "texto": "juegan",
+          "linea": 1,
+          "columna": 15
+        },
+        {
+          "tipo": "VERBO_S",
+          "texto": "corre",
+          "linea": 1,
+          "columna": 22
+        },
+        {
+          "tipo": "PUNTO",
+          "texto": ".",
+          "linea": 1,
+          "columna": 27
+        },
+        {
+          "tipo": "EOF",
+          "texto": "$",
+          "linea": 1,
+          "columna": 28
+        }
+      ],
+      "arbol": null,
+      "error": "ErrorSintactico: Linea 1, columna 22: no hay produccion para PredicadoP con VERBO_S ('corre'). Tokens esperados: VERBO_P.",
+      "timestamp_utc": "2026-11-18T03:41:46+00:00"
+    }
+  ]
+}

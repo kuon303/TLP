@@ -1,0 +1,424 @@
+{
+  "resultados": [
+    {
+      "resultado": {
+        "oracion": "El niño corre.",
+        "resultado": "ACEPTADA",
+        "razon": "Cumple exactamente con SujetoMS PredicadoS PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña canta.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niño corre.",
+        "resultado": "RECHAZADA",
+        "razon": "Error de concordancia entre sujeto plural (Los niño) y verbo singular (corre)."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros duermen.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMP y PredicadoP concuerdan correctamente con la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las profesoras enseñan.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFP y PredicadoP concuerdan correctamente con ART_FP SUST_FP y VERBO_P seguido de punto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La carro corre.",
+        "resultado": "RECHAZADA",
+        "razon": "El articulo femenino no concuerda en genero con el sustantivo masculino."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Un carro rojo avanza.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS con adjetivo y PredicadoS con verbo singular."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una mujer trabaja.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular seguido de predicado singular y punto opcional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corren.",
+        "resultado": "RECHAZADA",
+        "razon": "SujetoMS requiere VERBO_S, pero se encontro VERBO_P."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los carros nuevos avanzan.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con SujetoMP PredicadoP PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas juegan.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la regla sintactica de SujetoFP PredicadoP PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas come.",
+        "resultado": "RECHAZADA",
+        "razon": "Discrepancia de numero entre el sujeto plural y el predicado singular."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El perro duerme.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS seguido de PredicadoS y punto opcional conforman la gramatica."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora trabaja.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto FS y Predicado S con punto opcional y EOF validos."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños juegan.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMP y PredicadoP cumplen exactamente con la gramática de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mujeres trabajan.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFP y PredicadoP cumplen exactamente con las reglas de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El doctor estudia.",
+        "resultado": "ACEPTADA",
+        "razon": "Cumple exactamente con la estructura gramatical definida por la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una niña canta.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto femenino singular seguido de predicado singular y punto opcional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mariposas vuelan.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFP y PredicadoP concuerdan correctamente en plural."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los profesores enseñan.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMP seguido de PredicadoP y PuntoOpcional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña canta rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion pertenece exactamente a la CFG como SujetoFS PredicadoS PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros felices juegan en el jardín.",
+        "resultado": "ACEPTADA",
+        "razon": "La oración cumple exactamente con la estructura sintáctica de sujeto plural y predicado de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeño canta.",
+        "resultado": "RECHAZADA",
+        "razon": "Discordancia de genero entre SUST_FS y ADJ_MS en el sujeto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en el parque.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS seguido de PredicadoS con FrasePrepOpc y punto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora que enseña trabaja.",
+        "resultado": "RECHAZADA",
+        "razon": "La regla RelativaSOpc exige adverbio o frase preposicional opcional tras el verbo."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños que juega corren.",
+        "resultado": "RECHAZADA",
+        "razon": "El sujeto plural requiere verbo plural en la proposicion relativa."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las mariposas bonitas vuelan lentamente.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFP, PredicadoP con adverbio y puntuacion validos segun CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Un doctor trabaja en el hospital.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la regla sintactica de la gramatica formal."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los vehículos nueva circulan.",
+        "resultado": "RECHAZADA",
+        "razon": "El adjetivo femenina singular no concuerda con el sustantivo masculino plural."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion pertenece al lenguaje de la CFG especificada."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que canta alegremente corre con el perro.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple estrictamente con las reglas de la gramatica formal especificada."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en la casa de la niña.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion pertenece al lenguaje reconocido por la gramatica."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La estudiante estudia hoy.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFS seguido de PredicadoS con adverbio y punto final."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño pequeño corre lentamente.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la estructura sintactica definida en la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña canta y baila.",
+        "resultado": "RECHAZADA",
+        "razon": "La conjuncion 'y' no esta permitida en el predicado segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora amable enseña en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "La oración cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros grandes duermen en el jardín.",
+        "resultado": "ACEPTADA",
+        "razon": "La oración cumple exactamente con la estructura de SujetoMP y PredicadoP de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Una mujer feliz trabaja tranquilamente.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la estructura sintactica definida en la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas bonitas juegan en el parque.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto FP, predicado P con frase preposicional y punto final."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El carro rojo avanza rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoMS con adjetivo y PredicadoS con adverbio siguen exactamente las reglas de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple estrictamente con las reglas de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural, relativa correcta, predicado con verbo plural y adverbio."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que juega con la niña que canta corre.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple estrictamente con las reglas de la gramatica libre de contexto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña que camina lentamente canta en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "La oración cumple estrictamente con la estructura sintáctica de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con las reglas de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño y la niña corren.",
+        "resultado": "RECHAZADA",
+        "razon": "La CFG no contempla la conjuncion copulativa entre dos sintagmas nominales."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto plural femenino con relativa, predicado con adverbio y frase preposicional."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "SujetoFS con relativa y PredicadoS con adverbio validan la estructura completa de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Corre el niño.",
+        "resultado": "RECHAZADA",
+        "razon": "La CFG exige que el sujeto preceda al predicado en la estructura de la oración."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple estrictamente todas las reglas de la gramatica libre de contexto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la estructura de la CFG especificada."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño que la niña conoce corre.",
+        "resultado": "ACEPTADA",
+        "razon": "Cumple con las reglas de sujeto con relacional, predicado y punto final."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple estrictamente con la CFG establecida."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña que corre con el perro que duerme canta.",
+        "resultado": "ACEPTADA",
+        "razon": "Sujeto con relativas anidadas y predicado concuerdan perfectamente con la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "La niña pequeña tranquila canta.",
+        "resultado": "RECHAZADA",
+        "razon": "SujetoFS no acepta dos adjetivos consecutivos sin conjuncion."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre lentamente hoy.",
+        "resultado": "RECHAZADA",
+        "razon": "PredicadoS no acepta multiples adverbios consecutivos segun la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre porque la niña canta.",
+        "resultado": "RECHAZADA",
+        "razon": "La palabra porque no pertenece al conjunto terminal QUE de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño corre en el parque rápidamente.",
+        "resultado": "ACEPTADA",
+        "razon": "La oracion cumple exactamente con la estructura de SujetoMS, PredicadoS, adverbio y punto."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "El niño lee el libro.",
+        "resultado": "ACEPTADA",
+        "razon": "Cumple exactamente con la estructura de SujetoMS, PredicadoS, PuntoOpcional y EOF de la CFG."
+      }
+    },
+    {
+      "resultado": {
+        "oracion": "Los niños que juegan corre.",
+        "resultado": "RECHAZADA",
+        "razon": "No hay concordancia de número entre el sujeto plural y el predicado singular."
+      }
+    }
+  ]
+}

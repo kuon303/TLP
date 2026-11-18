@@ -1,0 +1,22 @@
+[
+  {
+    "herramienta": "spaCy",
+    "tokens_evaluados": 396,
+    "tokens_con_etiqueta": 396,
+    "tokens_pos_correctos": 384,
+    "tokens_pos_incorrectos": 12,
+    "cobertura_etiquetado": 1.0,
+    "exactitud_pos": 0.969697,
+    "exactitud_pos_sobre_etiquetados": 0.969697
+  },
+  {
+    "herramienta": "NLTK",
+    "tokens_evaluados": 396,
+    "tokens_con_etiqueta": 367,
+    "tokens_pos_correctos": 366,
+    "tokens_pos_incorrectos": 30,
+    "cobertura_etiquetado": 0.926768,
+    "exactitud_pos": 0.924242,
+    "exactitud_pos_sobre_etiquetados": 0.997275
+  }
+]

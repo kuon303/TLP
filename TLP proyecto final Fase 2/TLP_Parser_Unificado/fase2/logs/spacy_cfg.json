@@ -1,0 +1,5091 @@
+{
+  "herramienta": "spaCy es_core_news_sm + criterio equivalencia v1",
+  "tipo_resultado": "clasificacion_cfg",
+  "metadatos": {
+    "origen": "criterio_derivado_de_anotaciones",
+    "decision_nativa": false,
+    "version_criterios": "criterios_nlp_v1",
+    "log_original": "spacy.json",
+    "log_original_sha256": "6077c7eec6356e46e5dd943d859412a64d3efa6b5b90930c60e879c53eb584ef",
+    "corpus_sha256": "abecc8c74a54f0664af7fe64e6ab342b399767bcfaaa46c53c30329930deca62",
+    "nota": "Decision derivada de POS/morfologia; spaCy y NLTK no validan CFG de forma nativa."
+  },
+  "resultados": [
+    {
+      "id": "01",
+      "nivel": 1,
+      "oracion": "El niño corre.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "nivel": 1,
+      "oracion": "La niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba VERBO; aparece PUNTO (.)",
+      "error": "Se esperaba VERBO; aparece PUNTO (.)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "canta",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "nivel": 1,
+      "oracion": "Los niño corre.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Articulo y sustantivo: numero diferente (Los / niño)",
+      "error": "Articulo y sustantivo: numero diferente (Los / niño)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "nivel": 1,
+      "oracion": "Los perros duermen.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Sujeto y verbo principal: numero diferente (perros / duermen)",
+      "error": "Sujeto y verbo principal: numero diferente (perros / duermen)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "perros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "duermen",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Past",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "nivel": 1,
+      "oracion": "Las profesoras enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesoras",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "enseñan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "nivel": 1,
+      "oracion": "La carro corre.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Articulo y sustantivo: genero diferente (La / carro)",
+      "error": "Articulo y sustantivo: genero diferente (La / carro)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "carro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "nivel": 1,
+      "oracion": "Un carro rojo avanza.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Un",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "carro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "rojo",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "avanza",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "nivel": 1,
+      "oracion": "Una mujer trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Una",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "mujer",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "nivel": 1,
+      "oracion": "El niño corren.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sujeto y verbo principal: numero diferente (niño / corren)",
+      "error": "Sujeto y verbo principal: numero diferente (niño / corren)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corren",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "nivel": 1,
+      "oracion": "Los carros nuevos avanzan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "carros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "nuevos",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "avanzan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "nivel": 1,
+      "oracion": "Las niñas juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niñas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "nivel": 1,
+      "oracion": "Las niñas come.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece OTRO (come)",
+      "error": "Se esperaba VERBO; aparece OTRO (come)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niñas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "come",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "nivel": 1,
+      "oracion": "El perro duerme.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba SUST; aparece OTRO (perro)",
+      "error": "Se esperaba SUST; aparece OTRO (perro)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "perro",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "duerme",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "nivel": 1,
+      "oracion": "La profesora trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesora",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "nivel": 1,
+      "oracion": "Los niños juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niños",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "nivel": 1,
+      "oracion": "Las mujeres trabajan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "mujeres",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "trabajan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "nivel": 1,
+      "oracion": "El doctor estudia.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "doctor",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "estudia",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "nivel": 1,
+      "oracion": "Una niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba VERBO; aparece PUNTO (.)",
+      "error": "Se esperaba VERBO; aparece PUNTO (.)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Una",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "canta",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "nivel": 1,
+      "oracion": "Las mariposas vuelan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "mariposas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "vuelan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "nivel": 1,
+      "oracion": "Los profesores enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesores",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "enseñan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "nivel": 2,
+      "oracion": "La niña pequeña canta rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "pequeña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "nivel": 2,
+      "oracion": "Los perros felices juegan en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "perros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "felices",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "jardín",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "nivel": 2,
+      "oracion": "La niña pequeño canta.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sustantivo y adjetivo: genero diferente (niña / pequeño)",
+      "error": "Sustantivo y adjetivo: genero diferente (niña / pequeño)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "pequeño",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "nivel": 2,
+      "oracion": "El niño corre en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 5
+        },
+        {
+          "indice": 4,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "parque",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 6,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "nivel": 2,
+      "oracion": "La profesora que enseña trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba VERBO; aparece ADJ (enseña)",
+      "error": "Se esperaba VERBO; aparece ADJ (enseña)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesora",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "enseña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 4
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "nivel": 2,
+      "oracion": "Los niños que juega corren.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sujeto y verbo de la relativa: numero diferente (niños / juega)",
+      "error": "Sujeto y verbo de la relativa: numero diferente (niños / juega)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niños",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "juega",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "corren",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 4
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "nivel": 2,
+      "oracion": "Las mariposas bonitas vuelan lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "mariposas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "bonitas",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "vuelan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "nivel": 2,
+      "oracion": "Un doctor trabaja en el hospital.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Un",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "doctor",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 5
+        },
+        {
+          "indice": 4,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "hospital",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 6,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "nivel": 2,
+      "oracion": "Los vehículos nueva circulan.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sustantivo y adjetivo: genero diferente (vehículos / nueva)",
+      "error": "Sustantivo y adjetivo: genero diferente (vehículos / nueva)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "vehículos",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "nueva",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "circulan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "nivel": 2,
+      "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "vehículos",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "nuevos",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "circulan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 7
+        },
+        {
+          "indice": 6,
+          "texto": "las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 7
+        },
+        {
+          "indice": 7,
+          "texto": "ciudades",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 8,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "nivel": 2,
+      "oracion": "El niño que canta alegremente corre con el perro.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "alegremente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": "con",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 8
+        },
+        {
+          "indice": 7,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 8
+        },
+        {
+          "indice": 8,
+          "texto": "perro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 5
+        },
+        {
+          "indice": 9,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "nivel": 2,
+      "oracion": "El niño corre en la casa de la niña.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sobran tokens: de (PREP)",
+      "error": "Sobran tokens: de (PREP)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 5
+        },
+        {
+          "indice": 4,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "casa",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 6,
+          "texto": "de",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 8
+        },
+        {
+          "indice": 7,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 8
+        },
+        {
+          "indice": 8,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nmod",
+          "head_index": 5
+        },
+        {
+          "indice": 9,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "nivel": 2,
+      "oracion": "La estudiante estudia hoy.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "estudiante",
+          "cat": "SUST",
+          "genero": null,
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "estudia",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "hoy",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 2
+        },
+        {
+          "indice": 4,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "nivel": 2,
+      "oracion": "El niño pequeño corre lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "pequeño",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "nivel": 2,
+      "oracion": "La niña canta y baila.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece OTRO (y)",
+      "error": "Se esperaba VERBO; aparece OTRO (y)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "canta",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "y",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "cc",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "baila",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "conj",
+          "head_index": 2
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "nivel": 2,
+      "oracion": "La profesora amable enseña en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba VERBO; aparece ADJ (enseña)",
+      "error": "Se esperaba VERBO; aparece ADJ (enseña)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesora",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "amable",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "enseña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 2
+        },
+        {
+          "indice": 4,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "escuela",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "nivel": 2,
+      "oracion": "Los perros grandes duermen en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "perros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "grandes",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "duermen",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "jardín",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "nivel": 2,
+      "oracion": "Una mujer feliz trabaja tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Una",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "mujer",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "feliz",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "tranquilamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "nivel": 2,
+      "oracion": "Las niñas bonitas juegan en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niñas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "bonitas",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "parque",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "nivel": 2,
+      "oracion": "El carro rojo avanza rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "carro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "rojo",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "avanza",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "nivel": 3,
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niños",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 8
+        },
+        {
+          "indice": 2,
+          "texto": "pequeños",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 7
+        },
+        {
+          "indice": 6,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 7
+        },
+        {
+          "indice": 7,
+          "texto": "parque",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 4
+        },
+        {
+          "indice": 8,
+          "texto": "corren",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 8
+        },
+        {
+          "indice": 9,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 8
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 8
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "nivel": 3,
+      "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesoras",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "enseñan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "trabajan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 4
+        },
+        {
+          "indice": 5,
+          "texto": "tranquilamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 4
+        },
+        {
+          "indice": 6,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 4
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "nivel": 3,
+      "oracion": "El niño que juega con la niña que canta corre.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece QUE (que)",
+      "error": "Se esperaba VERBO; aparece QUE (que)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "juega",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "con",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 7,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 9
+        },
+        {
+          "indice": 8,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "nsubj",
+          "head_index": 9
+        },
+        {
+          "indice": 9,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 6
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "nivel": 3,
+      "oracion": "La niña que camina lentamente canta en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "El verbo principal no es ROOT en spaCy",
+      "error": "El verbo principal no es ROOT en spaCy",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "camina",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "obj",
+          "head_index": 3
+        },
+        {
+          "indice": 6,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 8
+        },
+        {
+          "indice": 7,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 8
+        },
+        {
+          "indice": 8,
+          "texto": "escuela",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 9,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "nivel": 3,
+      "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "pequeño",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "juega",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 9
+        },
+        {
+          "indice": 8,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 9
+        },
+        {
+          "indice": 9,
+          "texto": "parque",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 5
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "nivel": 3,
+      "oracion": "El niño y la niña corren.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece OTRO (y)",
+      "error": "Se esperaba VERBO; aparece OTRO (y)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "y",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "cc",
+          "head_index": 4
+        },
+        {
+          "indice": 3,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "conj",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "corren",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "nivel": 3,
+      "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niñas",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "felices",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "cantan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 9
+        },
+        {
+          "indice": 8,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 9
+        },
+        {
+          "indice": 9,
+          "texto": "escuela",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 5
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "nivel": 3,
+      "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": false,
+      "criterio_motivo": "Se esperaba VERBO; aparece ADV (rápidamente)",
+      "error": "Se esperaba VERBO; aparece ADV (rápidamente)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "profesora",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "amable",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "trabaja",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ccomp",
+          "head_index": 2
+        },
+        {
+          "indice": 5,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 7
+        },
+        {
+          "indice": 6,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 7
+        },
+        {
+          "indice": 7,
+          "texto": "escuela",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 4
+        },
+        {
+          "indice": 8,
+          "texto": "enseña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 7
+        },
+        {
+          "indice": 9,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 4
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "nivel": 3,
+      "oracion": "Corre el niño.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba ART; aparece VERBO (Corre)",
+      "error": "Se esperaba ART; aparece VERBO (Corre)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 0
+        },
+        {
+          "indice": 1,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 0
+        },
+        {
+          "indice": 3,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 0
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "nivel": 3,
+      "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "perros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "grandes",
+          "cat": "ADJ",
+          "genero": null,
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "duermen",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "corren",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": "con",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 9
+        },
+        {
+          "indice": 8,
+          "texto": "los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 9
+        },
+        {
+          "indice": 9,
+          "texto": "niños",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 5
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "nivel": 3,
+      "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 6
+        },
+        {
+          "indice": 2,
+          "texto": "pequeña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "canta",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "alegremente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "camina",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 6
+        },
+        {
+          "indice": 7,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 6
+        },
+        {
+          "indice": 8,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 10
+        },
+        {
+          "indice": 9,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 10
+        },
+        {
+          "indice": 10,
+          "texto": "escuela",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 6
+        },
+        {
+          "indice": 11,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 6
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "nivel": 3,
+      "oracion": "El niño que la niña conoce corre.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece ART (la)",
+      "error": "Se esperaba VERBO; aparece ART (la)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 6
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 5
+        },
+        {
+          "indice": 3,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "conoce",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 6,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 6
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 6
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "nivel": 3,
+      "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Coincide con el patron de etiquetas y concordancia definido",
+      "error": null,
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "carros",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 5
+        },
+        {
+          "indice": 2,
+          "texto": "nuevos",
+          "cat": "ADJ",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "avanzan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 5,
+          "texto": "circulan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 5
+        },
+        {
+          "indice": 6,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 9
+        },
+        {
+          "indice": 8,
+          "texto": "las",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 9
+        },
+        {
+          "indice": 9,
+          "texto": "ciudades",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 5
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 5
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "nivel": 3,
+      "oracion": "La niña que corre con el perro que duerme canta.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece QUE (que)",
+      "error": "Se esperaba VERBO; aparece QUE (que)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 1
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "con",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 6
+        },
+        {
+          "indice": 5,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 6
+        },
+        {
+          "indice": 6,
+          "texto": "perro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 3
+        },
+        {
+          "indice": 7,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 8
+        },
+        {
+          "indice": 8,
+          "texto": "duerme",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 6
+        },
+        {
+          "indice": 9,
+          "texto": "canta",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 8
+        },
+        {
+          "indice": 10,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 1
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "nivel": 3,
+      "oracion": "La niña pequeña tranquila canta.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Se esperaba VERBO; aparece ADJ (tranquila)",
+      "error": "Se esperaba VERBO; aparece ADJ (tranquila)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "La",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 2,
+          "texto": "pequeña",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 1
+        },
+        {
+          "indice": 3,
+          "texto": "tranquila",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "ROOT",
+          "head_index": 3
+        },
+        {
+          "indice": 4,
+          "texto": "canta",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "flat",
+          "head_index": 3
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 3
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "nivel": 3,
+      "oracion": "El niño corre lentamente hoy.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sobran tokens: hoy (ADV)",
+      "error": "Sobran tokens: hoy (ADV)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "lentamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 2
+        },
+        {
+          "indice": 4,
+          "texto": "hoy",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 2
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "nivel": 3,
+      "oracion": "El niño corre porque la niña canta.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sobran tokens: porque (OTRO)",
+      "error": "Sobran tokens: porque (OTRO)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "porque",
+          "cat": "OTRO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "mark",
+          "head_index": 5
+        },
+        {
+          "indice": 4,
+          "texto": "la",
+          "cat": "ART",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "niña",
+          "cat": "SUST",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 6,
+          "texto": "canta",
+          "cat": "ADJ",
+          "genero": "f",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "amod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "nivel": 3,
+      "oracion": "El niño corre en el parque rápidamente.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sobran tokens: rápidamente (ADV)",
+      "error": "Sobran tokens: rápidamente (ADV)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "en",
+          "cat": "PREP",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "case",
+          "head_index": 5
+        },
+        {
+          "indice": 4,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 5
+        },
+        {
+          "indice": 5,
+          "texto": "parque",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obl",
+          "head_index": 2
+        },
+        {
+          "indice": 6,
+          "texto": "rápidamente",
+          "cat": "ADV",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "advmod",
+          "head_index": 5
+        },
+        {
+          "indice": 7,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "nivel": 3,
+      "oracion": "El niño lee el libro.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sobran tokens: el (ART)",
+      "error": "Sobran tokens: el (ART)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "El",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niño",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 2
+        },
+        {
+          "indice": 2,
+          "texto": "lee",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 2
+        },
+        {
+          "indice": 3,
+          "texto": "el",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 4
+        },
+        {
+          "indice": 4,
+          "texto": "libro",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "s",
+          "tiempo": null,
+          "persona": null,
+          "dep": "obj",
+          "head_index": 2
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 2
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "nivel": 3,
+      "oracion": "Los niños que juegan corre.",
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "coincide_con_esperado": true,
+      "criterio_motivo": "Sujeto y verbo principal: numero diferente (niños / corre)",
+      "error": "Sujeto y verbo principal: numero diferente (niños / corre)",
+      "tokens_normalizados": [
+        {
+          "indice": 0,
+          "texto": "Los",
+          "cat": "ART",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "det",
+          "head_index": 1
+        },
+        {
+          "indice": 1,
+          "texto": "niños",
+          "cat": "SUST",
+          "genero": "m",
+          "numero": "p",
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 4
+        },
+        {
+          "indice": 2,
+          "texto": "que",
+          "cat": "QUE",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "nsubj",
+          "head_index": 3
+        },
+        {
+          "indice": 3,
+          "texto": "juegan",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "p",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "acl",
+          "head_index": 1
+        },
+        {
+          "indice": 4,
+          "texto": "corre",
+          "cat": "VERBO",
+          "genero": null,
+          "numero": "s",
+          "tiempo": "Pres",
+          "persona": "3",
+          "dep": "ROOT",
+          "head_index": 4
+        },
+        {
+          "indice": 5,
+          "texto": ".",
+          "cat": "PUNTO",
+          "genero": null,
+          "numero": null,
+          "tiempo": null,
+          "persona": null,
+          "dep": "punct",
+          "head_index": 4
+        }
+      ]
+    }
+  ]
+}

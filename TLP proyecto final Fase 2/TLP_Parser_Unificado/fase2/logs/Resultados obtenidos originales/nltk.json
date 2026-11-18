@@ -1,0 +1,2199 @@
+{
+  "herramienta": "NLTK BigramTagger+UnigramTagger entrenado en CESS-ESP",
+  "tipo_resultado": "anotaciones_nlp",
+  "metadatos": {
+    "fecha_ejecucion_utc": "2026-11-18T03:44:12.934536+00:00",
+    "nltk_version": "3.10.4",
+    "corpus_entrenamiento": "CESS-ESP (NLTK)",
+    "oraciones_entrenamiento": 6030,
+    "tagset": "etiquetas originales CESS-ESP / EAGLES",
+    "metodo": "BigramTagger con retroceso a UnigramTagger y DefaultTagger",
+    "nota": "ETIQUETADO no equivale a ACEPTADA. Requiere anotacion de referencia/criterio de evaluacion."
+  },
+  "resultados": [
+    {
+      "id": "01",
+      "nivel": 1,
+      "oracion": "El niño corre.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "nivel": 1,
+      "oracion": "La niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "nivel": 1,
+      "oracion": "Los niño corre.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "nivel": 1,
+      "oracion": "Los perros duermen.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "perros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "duermen",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "nivel": 1,
+      "oracion": "Las profesoras enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "profesoras",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "enseñan",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "nivel": 1,
+      "oracion": "La carro corre.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "carro",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "nivel": 1,
+      "oracion": "Un carro rojo avanza.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Un",
+          "etiqueta_cess_esp": "di0ms0"
+        },
+        {
+          "texto": "carro",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "rojo",
+          "etiqueta_cess_esp": "aq0ms0"
+        },
+        {
+          "texto": "avanza",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "nivel": 1,
+      "oracion": "Una mujer trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "etiqueta_cess_esp": "di0fs0"
+        },
+        {
+          "texto": "mujer",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "nivel": 1,
+      "oracion": "El niño corren.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corren",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "nivel": 1,
+      "oracion": "Los carros nuevos avanzan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "carros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "nuevos",
+          "etiqueta_cess_esp": "aq0mp0"
+        },
+        {
+          "texto": "avanzan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "nivel": 1,
+      "oracion": "Las niñas juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "niñas",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "nivel": 1,
+      "oracion": "Las niñas come.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "niñas",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": "come",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "nivel": 1,
+      "oracion": "El perro duerme.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "perro",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "duerme",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "nivel": 1,
+      "oracion": "La profesora trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "profesora",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "nivel": 1,
+      "oracion": "Los niños juegan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niños",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "nivel": 1,
+      "oracion": "Las mujeres trabajan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "mujeres",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": "trabajan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "nivel": 1,
+      "oracion": "El doctor estudia.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "doctor",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "estudia",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "nivel": 1,
+      "oracion": "Una niña canta.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "etiqueta_cess_esp": "di0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "nivel": 1,
+      "oracion": "Las mariposas vuelan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "mariposas",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "vuelan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "nivel": 1,
+      "oracion": "Los profesores enseñan.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "profesores",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "enseñan",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "nivel": 2,
+      "oracion": "La niña pequeña canta rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "pequeña",
+          "etiqueta_cess_esp": "aq0fs0"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "nivel": 2,
+      "oracion": "Los perros felices juegan en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "perros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "felices",
+          "etiqueta_cess_esp": "aq0cp0"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "jardín",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "nivel": 2,
+      "oracion": "La niña pequeño canta.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "pequeño",
+          "etiqueta_cess_esp": "aq0ms0"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "nivel": 2,
+      "oracion": "El niño corre en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "parque",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "nivel": 2,
+      "oracion": "La profesora que enseña trabaja.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "profesora",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "enseña",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "nivel": 2,
+      "oracion": "Los niños que juega corren.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niños",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "juega",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "corren",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "nivel": 2,
+      "oracion": "Las mariposas bonitas vuelan lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "mariposas",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "bonitas",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "vuelan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "nivel": 2,
+      "oracion": "Un doctor trabaja en el hospital.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Un",
+          "etiqueta_cess_esp": "di0ms0"
+        },
+        {
+          "texto": "doctor",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "hospital",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "nivel": 2,
+      "oracion": "Los vehículos nueva circulan.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "vehículos",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "nueva",
+          "etiqueta_cess_esp": "aq0fs0"
+        },
+        {
+          "texto": "circulan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "nivel": 2,
+      "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "vehículos",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "nuevos",
+          "etiqueta_cess_esp": "aq0mp0"
+        },
+        {
+          "texto": "circulan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "ciudades",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "nivel": 2,
+      "oracion": "El niño que canta alegremente corre con el perro.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "alegremente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "con",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "perro",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "nivel": 2,
+      "oracion": "El niño corre en la casa de la niña.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "casa",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "de",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "nivel": 2,
+      "oracion": "La estudiante estudia hoy.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "estudiante",
+          "etiqueta_cess_esp": "nccs000"
+        },
+        {
+          "texto": "estudia",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "hoy",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "nivel": 2,
+      "oracion": "El niño pequeño corre lentamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "pequeño",
+          "etiqueta_cess_esp": "aq0ms0"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "nivel": 2,
+      "oracion": "La niña canta y baila.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "y",
+          "etiqueta_cess_esp": "cc"
+        },
+        {
+          "texto": "baila",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "nivel": 2,
+      "oracion": "La profesora amable enseña en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "profesora",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "amable",
+          "etiqueta_cess_esp": "aq0cs0"
+        },
+        {
+          "texto": "enseña",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "escuela",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "nivel": 2,
+      "oracion": "Los perros grandes duermen en el jardín.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "perros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "grandes",
+          "etiqueta_cess_esp": "aq0cp0"
+        },
+        {
+          "texto": "duermen",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "jardín",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "nivel": 2,
+      "oracion": "Una mujer feliz trabaja tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Una",
+          "etiqueta_cess_esp": "di0fs0"
+        },
+        {
+          "texto": "mujer",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "feliz",
+          "etiqueta_cess_esp": "aq0cs0"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "tranquilamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "nivel": 2,
+      "oracion": "Las niñas bonitas juegan en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "niñas",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": "bonitas",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "parque",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "nivel": 2,
+      "oracion": "El carro rojo avanza rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "carro",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "rojo",
+          "etiqueta_cess_esp": "aq0ms0"
+        },
+        {
+          "texto": "avanza",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "nivel": 3,
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niños",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "pequeños",
+          "etiqueta_cess_esp": "aq0mp0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "parque",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corren",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "nivel": 3,
+      "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "profesoras",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "enseñan",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "trabajan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "tranquilamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "nivel": 3,
+      "oracion": "El niño que juega con la niña que canta corre.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "juega",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "con",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "nivel": 3,
+      "oracion": "La niña que camina lentamente canta en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "camina",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "escuela",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "nivel": 3,
+      "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "pequeño",
+          "etiqueta_cess_esp": "aq0ms0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "juega",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "parque",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "nivel": 3,
+      "oracion": "El niño y la niña corren.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "y",
+          "etiqueta_cess_esp": "cc"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "corren",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "nivel": 3,
+      "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "niñas",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": "felices",
+          "etiqueta_cess_esp": "aq0cp0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "cantan",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "escuela",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "nivel": 3,
+      "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "profesora",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "amable",
+          "etiqueta_cess_esp": "aq0cs0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "cs"
+        },
+        {
+          "texto": "trabaja",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "escuela",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "enseña",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "nivel": 3,
+      "oracion": "Corre el niño.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Corre",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "nivel": 3,
+      "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "perros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "grandes",
+          "etiqueta_cess_esp": "aq0cp0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "duermen",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "corren",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "con",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niños",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "nivel": 3,
+      "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "pequeña",
+          "etiqueta_cess_esp": "aq0fs0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "alegremente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "camina",
+          "etiqueta_cess_esp": "SIN_ETIQUETA"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "escuela",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "nivel": 3,
+      "oracion": "El niño que la niña conoce corre.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "conoce",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "nivel": 3,
+      "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+      "esperado_cfg": "ACEPTADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "carros",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "nuevos",
+          "etiqueta_cess_esp": "aq0mp0"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "avanzan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "circulan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "las",
+          "etiqueta_cess_esp": "da0fp0"
+        },
+        {
+          "texto": "ciudades",
+          "etiqueta_cess_esp": "ncfp000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "nivel": 3,
+      "oracion": "La niña que corre con el perro que duerme canta.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "con",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "perro",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "duerme",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "nivel": 3,
+      "oracion": "La niña pequeña tranquila canta.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "La",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "pequeña",
+          "etiqueta_cess_esp": "aq0fs0"
+        },
+        {
+          "texto": "tranquila",
+          "etiqueta_cess_esp": "aq0fs0"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "nivel": 3,
+      "oracion": "El niño corre lentamente hoy.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "lentamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": "hoy",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "nivel": 3,
+      "oracion": "El niño corre porque la niña canta.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "porque",
+          "etiqueta_cess_esp": "cs"
+        },
+        {
+          "texto": "la",
+          "etiqueta_cess_esp": "da0fs0"
+        },
+        {
+          "texto": "niña",
+          "etiqueta_cess_esp": "ncfs000"
+        },
+        {
+          "texto": "canta",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "nivel": 3,
+      "oracion": "El niño corre en el parque rápidamente.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "en",
+          "etiqueta_cess_esp": "sps00"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "parque",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "rápidamente",
+          "etiqueta_cess_esp": "rg"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "nivel": 3,
+      "oracion": "El niño lee el libro.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "El",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "niño",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": "lee",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": "el",
+          "etiqueta_cess_esp": "da0ms0"
+        },
+        {
+          "texto": "libro",
+          "etiqueta_cess_esp": "ncms000"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "nivel": 3,
+      "oracion": "Los niños que juegan corre.",
+      "esperado_cfg": "RECHAZADA",
+      "estado": "ETIQUETADO",
+      "obtenido": null,
+      "tokens": [
+        {
+          "texto": "Los",
+          "etiqueta_cess_esp": "da0mp0"
+        },
+        {
+          "texto": "niños",
+          "etiqueta_cess_esp": "ncmp000"
+        },
+        {
+          "texto": "que",
+          "etiqueta_cess_esp": "pr0cn000"
+        },
+        {
+          "texto": "juegan",
+          "etiqueta_cess_esp": "vmip3p0"
+        },
+        {
+          "texto": "corre",
+          "etiqueta_cess_esp": "vmip3s0"
+        },
+        {
+          "texto": ".",
+          "etiqueta_cess_esp": "Fp"
+        }
+      ]
+    }
+  ]
+}

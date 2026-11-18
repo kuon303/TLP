@@ -1,0 +1,693 @@
+{
+  "herramienta": "Gemini API - gemini-3.5-flash-lite - few_shot",
+  "tipo_resultado": "clasificacion_cfg",
+  "metadatos": {
+    "proveedor": "Gemini",
+    "modelo": "gemini-3.5-flash-lite",
+    "modo": "few_shot",
+    "corpus_sha256": "abecc8c74a54f0664af7fe64e6ab342b399767bcfaaa46c53c30329930deca62",
+    "configuracion_sha256": "b886e3906a1df37e772b185a8b234d4b0c5273a0a7a75a7829e764ae3ad55ead",
+    "registros_brutos_jsonl": "gemini_few_shot.jsonl",
+    "ejemplos_fuera_del_corpus": [
+      [
+        "La mujer camina.",
+        "ACEPTADA"
+      ],
+      [
+        "Los perros juegan en el parque.",
+        "ACEPTADA"
+      ],
+      [
+        "Los niño caminan.",
+        "RECHAZADA"
+      ],
+      [
+        "El profesor lee un libro.",
+        "RECHAZADA"
+      ]
+    ],
+    "estado": "COMPLETO"
+  },
+  "resultados": [
+    {
+      "id": "01",
+      "oracion": "El niño corre.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular y verbo singular con concordancia gramatical correcta.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T02:53:59+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular y verbo singular con concordancia gramatical correcta.\"\n  }\n}"
+    },
+    {
+      "id": "02",
+      "oracion": "La niña canta.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular y verbo singular con vocabulario permitido.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:30:41+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"La niña canta.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto singular y verbo singular con vocabulario permitido.\"}}"
+    },
+    {
+      "id": "03",
+      "oracion": "Los niño corre.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "Discordancia de numero entre articulo, sustantivo y verbo.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:31:12+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los niño corre.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"Discordancia de numero entre articulo, sustantivo y verbo.\"\n  }\n}"
+    },
+    {
+      "id": "04",
+      "oracion": "Los perros duermen.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural masculino y verbo plural validos segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:31:43+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los perros duermen.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural masculino y verbo plural validos segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "05",
+      "oracion": "Las profesoras enseñan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino plural y verbo plural validos segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:32:14+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Las profesoras enseñan.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto femenino plural y verbo plural validos segun la CFG.\"}}"
+    },
+    {
+      "id": "06",
+      "oracion": "La carro corre.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El articulo femenino singular no concuerda con el sustantivo masculino singular.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:32:46+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La carro corre.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El articulo femenino singular no concuerda con el sustantivo masculino singular.\"\n  }\n}"
+    },
+    {
+      "id": "07",
+      "oracion": "Un carro rojo avanza.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto masculino singular con adjetivo y verbo singular concuerdan perfectamente.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:33:17+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Un carro rojo avanza.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto masculino singular con adjetivo y verbo singular concuerdan perfectamente.\"}}"
+    },
+    {
+      "id": "08",
+      "oracion": "Una mujer trabaja.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular y predicado singular válidos según la gramática.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:33:48+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Una mujer trabaja.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular y predicado singular válidos según la gramática.\"\n  }\n}"
+    },
+    {
+      "id": "09",
+      "oracion": "El niño corren.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El articulo singular no concuerda con el verbo plural.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:34:19+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corren.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El articulo singular no concuerda con el verbo plural.\"\n  }\n}"
+    },
+    {
+      "id": "10",
+      "oracion": "Los carros nuevos avanzan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural y predicado plural concuerdan perfectamente.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:34:50+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Los carros nuevos avanzan.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto plural y predicado plural concuerdan perfectamente.\"}}"
+    },
+    {
+      "id": "11",
+      "oracion": "Las niñas juegan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural femenino y verbo plural validos con punto y fin de cadena.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:35:21+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las niñas juegan.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural femenino y verbo plural validos con punto y fin de cadena.\"\n  }\n}"
+    },
+    {
+      "id": "12",
+      "oracion": "Las niñas come.",
+      "nivel": 1,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El sujeto plural no concuerda con el verbo en singular.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:35:52+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las niñas come.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El sujeto plural no concuerda con el verbo en singular.\"\n  }\n}"
+    },
+    {
+      "id": "13",
+      "oracion": "El perro duerme.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular masculino con verbo singular y punto opcional.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:36:24+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"El perro duerme.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto singular masculino con verbo singular y punto opcional.\"}}"
+    },
+    {
+      "id": "14",
+      "oracion": "La profesora trabaja.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular y verbo singular con puntuacion valida.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:36:55+00:00",
+      "respuesta_bruta": "{\"resultado\":{\"oracion\":\"La profesora trabaja.\",\"resultado\":\"ACEPTADA\",\"razon\":\"Sujeto femenino singular y verbo singular con puntuacion valida.\"}}"
+    },
+    {
+      "id": "15",
+      "oracion": "Los niños juegan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural masculino y predicado plural concuerdan perfectamente segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:37:27+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los niños juegan.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural masculino y predicado plural concuerdan perfectamente segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "16",
+      "oracion": "Las mujeres trabajan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural femenino y predicado plural concuerdan perfectamente.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:37:58+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las mujeres trabajan.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural femenino y predicado plural concuerdan perfectamente.\"\n  }\n}"
+    },
+    {
+      "id": "17",
+      "oracion": "El doctor estudia.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto masculino singular y verbo singular con punto y fin de secuencia correctos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:38:29+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"El doctor estudia.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto masculino singular y verbo singular con punto y fin de secuencia correctos.\"}}"
+    },
+    {
+      "id": "18",
+      "oracion": "Una niña canta.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular y verbo singular con puntuacion valida.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:39:00+00:00",
+      "respuesta_bruta": "{\"resultado\":{\"oracion\":\"Una niña canta.\",\"resultado\":\"ACEPTADA\",\"razon\":\"Sujeto femenino singular y verbo singular con puntuacion valida.\"}}"
+    },
+    {
+      "id": "19",
+      "oracion": "Las mariposas vuelan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino plural y verbo plural concuerdan perfectamente segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:39:37+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las mariposas vuelan.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino plural y verbo plural concuerdan perfectamente segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "20",
+      "oracion": "Los profesores enseñan.",
+      "nivel": 1,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural masculino y verbo plural validos segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:40:08+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Los profesores enseñan.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto plural masculino y verbo plural validos segun la CFG.\"}}"
+    },
+    {
+      "id": "21",
+      "oracion": "La niña pequeña canta rápidamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular, adjetivo, verbo singular y adverbio permitidos por la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:40:44+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La niña pequeña canta rápidamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular, adjetivo, verbo singular y adverbio permitidos por la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "22",
+      "oracion": "Los perros felices juegan en el jardín.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural, adjetivo plural común, verbo plural y frase preposicional válida.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:41:15+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los perros felices juegan en el jardín.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural, adjetivo plural común, verbo plural y frase preposicional válida.\"\n  }\n}"
+    },
+    {
+      "id": "23",
+      "oracion": "La niña pequeño canta.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El genero del articulo y sustantivo no concuerda con el adjetivo.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:42:51+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"La niña pequeño canta.\", \"resultado\": \"RECHAZADA\", \"razon\": \"El genero del articulo y sustantivo no concuerda con el adjetivo.\"}}"
+    },
+    {
+      "id": "24",
+      "oracion": "El niño corre en el parque.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular, verbo singular y frase preposicional permitida por la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:43:25+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre en el parque.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular, verbo singular y frase preposicional permitida por la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "25",
+      "oracion": "La profesora que enseña trabaja.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular con proposicion relativa y predicado singular validos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:43:56+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La profesora que enseña trabaja.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular con proposicion relativa y predicado singular validos.\"\n  }\n}"
+    },
+    {
+      "id": "26",
+      "oracion": "Los niños que juega corren.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El verbo de la relativa debe ser plural para concordar con niños.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:44:27+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los niños que juega corren.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El verbo de la relativa debe ser plural para concordar con niños.\"\n  }\n}"
+    },
+    {
+      "id": "27",
+      "oracion": "Las mariposas bonitas vuelan lentamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino plural con adjetivo y predicado plural con adverbio permitidos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:44:58+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las mariposas bonitas vuelan lentamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino plural con adjetivo y predicado plural con adverbio permitidos.\"\n  }\n}"
+    },
+    {
+      "id": "28",
+      "oracion": "Un doctor trabaja en el hospital.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular y verbo singular con frase preposicional permitida en la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:45:29+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Un doctor trabaja en el hospital.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular y verbo singular con frase preposicional permitida en la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "29",
+      "oracion": "Los vehículos nueva circulan.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El adjetivo femenino no concuerda con el sustantivo masculino.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:46:00+00:00",
+      "respuesta_bruta": "{\"resultado\":{\"oracion\":\"Los vehículos nueva circulan.\",\"resultado\":\"RECHAZADA\",\"razon\":\"El adjetivo femenino no concuerda con el sustantivo masculino.\"}}"
+    },
+    {
+      "id": "30",
+      "oracion": "Los vehículos nuevos circulan rápidamente en las ciudades.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural, adjetivo plural, verbo plural y adverbio con sintagma preposicional permitidos por CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:46:31+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los vehículos nuevos circulan rápidamente en las ciudades.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural, adjetivo plural, verbo plural y adverbio con sintagma preposicional permitidos por CFG.\"\n  }\n}"
+    },
+    {
+      "id": "31",
+      "oracion": "El niño que canta alegremente corre con el perro.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto masculino singular con relativa, predicado con adverbio y frase preposicional.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:47:02+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño que canta alegremente corre con el perro.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto masculino singular con relativa, predicado con adverbio y frase preposicional.\"\n  }\n}"
+    },
+    {
+      "id": "32",
+      "oracion": "El niño corre en la casa de la niña.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular, verbo singular y frase preposicional anidada permitida por CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:47:34+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre en la casa de la niña.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular, verbo singular y frase preposicional anidada permitida por CFG.\"\n  }\n}"
+    },
+    {
+      "id": "33",
+      "oracion": "La estudiante estudia hoy.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular y verbo singular con adverbio permitido.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:48:05+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La estudiante estudia hoy.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular y verbo singular con adverbio permitido.\"\n  }\n}"
+    },
+    {
+      "id": "34",
+      "oracion": "El niño pequeño corre lentamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "SujetoMS con adjetivo y PredicadoS con adverbio validos segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:48:37+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño pequeño corre lentamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"SujetoMS con adjetivo y PredicadoS con adverbio validos segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "35",
+      "oracion": "La niña canta y baila.",
+      "nivel": 2,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "La conjuncion y no esta permitida en la gramatica de la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:49:08+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"La niña canta y baila.\", \"resultado\": \"RECHAZADA\", \"razon\": \"La conjuncion y no esta permitida en la gramatica de la CFG.\"}}"
+    },
+    {
+      "id": "36",
+      "oracion": "La profesora amable enseña en la escuela.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular con adjetivo y predicado con frase preposicional correctos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:49:39+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La profesora amable enseña en la escuela.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular con adjetivo y predicado con frase preposicional correctos.\"\n  }\n}"
+    },
+    {
+      "id": "37",
+      "oracion": "Los perros grandes duermen en el jardín.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural, adjetivo plural, verbo plural y frase preposicional permitida por la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:50:10+00:00",
+      "respuesta_bruta": "{\"resultado\":{\"oracion\":\"Los perros grandes duermen en el jardín.\",\"resultado\":\"ACEPTADA\",\"razon\":\"Sujeto plural, adjetivo plural, verbo plural y frase preposicional permitida por la CFG.\"}}"
+    },
+    {
+      "id": "38",
+      "oracion": "Una mujer feliz trabaja tranquilamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular con adjetivo y predicado con adverbio validos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:50:41+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Una mujer feliz trabaja tranquilamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular con adjetivo y predicado con adverbio validos.\"\n  }\n}"
+    },
+    {
+      "id": "39",
+      "oracion": "Las niñas bonitas juegan en el parque.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural femenino, adjetivo, verbo plural y frase preposicional permitidas.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:51:12+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Las niñas bonitas juegan en el parque.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto plural femenino, adjetivo, verbo plural y frase preposicional permitidas.\"}}"
+    },
+    {
+      "id": "40",
+      "oracion": "El carro rojo avanza rápidamente.",
+      "nivel": 2,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular masculino, adjetivo, verbo singular y adverbio permitidos por la gramática.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:51:44+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El carro rojo avanza rápidamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular masculino, adjetivo, verbo singular y adverbio permitidos por la gramática.\"\n  }\n}"
+    },
+    {
+      "id": "41",
+      "oracion": "Los niños pequeños que juegan en el parque corren rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural con relativa, predicado plural con adverbio, todo segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:52:15+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"Los niños pequeños que juegan en el parque corren rápidamente.\", \"resultado\": \"ACEPTADA\", \"razon\": \"Sujeto plural con relativa, predicado plural con adverbio, todo segun la CFG.\"}}"
+    },
+    {
+      "id": "42",
+      "oracion": "Las profesoras que enseñan trabajan tranquilamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino plural con relativa, verbo plural y adverbio admitido.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:53:33+00:00",
+      "respuesta_bruta": "{\"resultado\":{\"oracion\":\"Las profesoras que enseñan trabajan tranquilamente.\",\"resultado\":\"ACEPTADA\",\"razon\":\"Sujeto femenino plural con relativa, verbo plural y adverbio admitido.\"}}"
+    },
+    {
+      "id": "43",
+      "oracion": "El niño que juega con la niña que canta corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular con relativas anidadas y predicado singular válidos según CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:54:04+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño que juega con la niña que canta corre.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular con relativas anidadas y predicado singular válidos según CFG.\"\n  }\n}"
+    },
+    {
+      "id": "44",
+      "oracion": "La niña que camina lentamente canta en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto singular con relativa, verbo singular, adverbio y frase preposicional.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:54:36+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La niña que camina lentamente canta en la escuela.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto singular con relativa, verbo singular, adverbio y frase preposicional.\"\n  }\n}"
+    },
+    {
+      "id": "45",
+      "oracion": "El niño pequeño que juega corre rápidamente en el parque.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El adverbio 'rápidamente' no es permitido por la regla RelativaSOpc ni PredicadoS.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:55:07+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño pequeño que juega corre rápidamente en el parque.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El adverbio 'rápidamente' no es permitido por la regla RelativaSOpc ni PredicadoS.\"\n  }\n}"
+    },
+    {
+      "id": "46",
+      "oracion": "El niño y la niña corren.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "La CFG no contempla conjunciones copulativas como 'y' en la estructura del sujeto.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:55:38+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño y la niña corren.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"La CFG no contempla conjunciones copulativas como 'y' en la estructura del sujeto.\"\n  }\n}"
+    },
+    {
+      "id": "47",
+      "oracion": "Las niñas felices que cantan juegan lentamente en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural, relativa plural, predicado plural, adverbio y frase preposicional válidos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:56:10+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Las niñas felices que cantan juegan lentamente en la escuela.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural, relativa plural, predicado plural, adverbio y frase preposicional válidos.\"\n  }\n}"
+    },
+    {
+      "id": "48",
+      "oracion": "La profesora amable que trabaja en la escuela enseña rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular con relativa y predicado validos segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:56:45+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La profesora amable que trabaja en la escuela enseña rápidamente.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular con relativa y predicado validos segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "49",
+      "oracion": "Corre el niño.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El orden sintáctico no cumple con la regla de Sujeto antes que Predicado.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:57:16+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Corre el niño.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El orden sintáctico no cumple con la regla de Sujeto antes que Predicado.\"\n  }\n}"
+    },
+    {
+      "id": "50",
+      "oracion": "Los perros grandes que duermen corren lentamente con los niños.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural con relativa, predicado plural, adverbio y frase preposicional válidos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:57:55+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los perros grandes que duermen corren lentamente con los niños.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural con relativa, predicado plural, adverbio y frase preposicional válidos.\"\n  }\n}"
+    },
+    {
+      "id": "51",
+      "oracion": "La niña pequeña que canta alegremente camina lentamente en la escuela.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto femenino singular con subordinada relativa, predicado con adverbio y frase preposicional.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:59:06+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La niña pequeña que canta alegremente camina lentamente en la escuela.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto femenino singular con subordinada relativa, predicado con adverbio y frase preposicional.\"\n  }\n}"
+    },
+    {
+      "id": "52",
+      "oracion": "El niño que la niña conoce corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto masculino singular con proposicion relativa valida y predicado singular.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T03:59:38+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño que la niña conoce corre.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto masculino singular con proposicion relativa valida y predicado singular.\"\n  }\n}"
+    },
+    {
+      "id": "53",
+      "oracion": "Los carros nuevos que avanzan circulan rápidamente en las ciudades.",
+      "nivel": 3,
+      "esperado_cfg": "ACEPTADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "Sujeto plural con relativa, verbo plural, adverbio y frase preposicional válidos.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:00:09+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los carros nuevos que avanzan circulan rápidamente en las ciudades.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"Sujeto plural con relativa, verbo plural, adverbio y frase preposicional válidos.\"\n  }\n}"
+    },
+    {
+      "id": "54",
+      "oracion": "La niña que corre con el perro que duerme canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "La gramática no permite oraciones relativas anidadas dentro de un sintagma nominal.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:00:42+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"La niña que corre con el perro que duerme canta.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"La gramática no permite oraciones relativas anidadas dentro de un sintagma nominal.\"\n  }\n}"
+    },
+    {
+      "id": "55",
+      "oracion": "La niña pequeña tranquila canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "La gramatica solo permite un adjetivo opcional tras el sustantivo.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:01:13+00:00",
+      "respuesta_bruta": "{\"resultado\": {\"oracion\": \"La niña pequeña tranquila canta.\", \"resultado\": \"RECHAZADA\", \"razon\": \"La gramatica solo permite un adjetivo opcional tras el sustantivo.\"}}"
+    },
+    {
+      "id": "56",
+      "oracion": "El niño corre lentamente hoy.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "ACEPTADA",
+      "justificacion": "SujetoMS, verbo singular, adverbio opcional y punto final validos por la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:01:45+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre lentamente hoy.\",\n    \"resultado\": \"ACEPTADA\",\n    \"razon\": \"SujetoMS, verbo singular, adverbio opcional y punto final validos por la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "57",
+      "oracion": "El niño corre porque la niña canta.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "La CFG no permite conectores subordinantes condicionales o causales.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:02:16+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre porque la niña canta.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"La CFG no permite conectores subordinantes condicionales o causales.\"\n  }\n}"
+    },
+    {
+      "id": "58",
+      "oracion": "El niño corre en el parque rápidamente.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El adverbio debe preceder a la frase preposicional segun la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:02:51+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño corre en el parque rápidamente.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El adverbio debe preceder a la frase preposicional segun la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "59",
+      "oracion": "El niño lee el libro.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El objeto directo final no esta contemplado en el predicado de la CFG.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:03:22+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"El niño lee el libro.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El objeto directo final no esta contemplado en el predicado de la CFG.\"\n  }\n}"
+    },
+    {
+      "id": "60",
+      "oracion": "Los niños que juegan corre.",
+      "nivel": 3,
+      "esperado_cfg": "RECHAZADA",
+      "obtenido": "RECHAZADA",
+      "justificacion": "El verbo principal no concuerda en numero con el sujeto plural.",
+      "error": null,
+      "timestamp_utc": "2026-11-17T04:03:53+00:00",
+      "respuesta_bruta": "{\n  \"resultado\": {\n    \"oracion\": \"Los niños que juegan corre.\",\n    \"resultado\": \"RECHAZADA\",\n    \"razon\": \"El verbo principal no concuerda en numero con el sujeto plural.\"\n  }\n}"
+    }
+  ]
+}

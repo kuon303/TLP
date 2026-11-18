@@ -1,0 +1,1621 @@
+ANALISIS DEL CORPUS - FASE 2
+Casos: 60 | Parser ACEPTADA: 40 | RECHAZADA: 20 | FP: 0 | FN: 0
+La etiqueta esperada proviene del corpus y no se usa para decidir.
+
+Parser LL(1): TP=40, TN=20, FP=0, FN=0
+spaCy + criterio: TP=32, TN=20, FP=0, FN=8
+NLTK + criterio: TP=20, TN=20, FP=0, FN=20
+Gemini zero-shot: TP=39, TN=14, FP=6, FN=1
+Gemini few-shot: TP=39, TN=16, FP=4, FN=1
+
+==========================================================================
+CASO 01 | Nivel 1
+Oracion: El niño corre.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Estructura simple prevista en la CFG
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('niño')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('corre')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Cumple exactamente con SujetoMS PredicadoS PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular y verbo singular con concordancia gramatical correcta.
+
+==========================================================================
+CASO 02 | Nivel 1
+Oracion: La niña canta.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Estructura simple prevista en la CFG
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('niña')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('canta')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece PUNTO (.)
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular y verbo singular con vocabulario permitido.
+
+==========================================================================
+CASO 03 | Nivel 1
+Oracion: Los niño corre.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: Se esperaba SUST_MP, pero aparecio SUST_MS ('niño').
+Error exacto: ErrorSintactico: Linea 1, columna 5: se esperaba SUST_MP, pero aparecio SUST_MS ('niño').
+Nota del corpus: Artículo plural con sustantivo singular
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Articulo y sustantivo: numero diferente (Los / niño)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Articulo y sustantivo: numero diferente (Los / niño)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: Error de concordancia entre sujeto plural (Los niño) y verbo singular (corre).
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: Discordancia de numero entre articulo, sustantivo y verbo.
+
+==========================================================================
+CASO 04 | Nivel 1
+Oracion: Los perros duermen.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Concordancia de número
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('perros')
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('duermen')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Sujeto y verbo principal: numero diferente (perros / duermen)
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMP y PredicadoP concuerdan correctamente con la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural masculino y verbo plural validos segun la CFG.
+
+==========================================================================
+CASO 05 | Nivel 1
+Oracion: Las profesoras enseñan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Concordancia de número
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('profesoras')
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('enseñan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesoras)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFP y PredicadoP concuerdan correctamente con ART_FP SUST_FP y VERBO_P seguido de punto.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino plural y verbo plural validos segun la CFG.
+
+==========================================================================
+CASO 06 | Nivel 1
+Oracion: La carro corre.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: Se esperaba SUST_FS, pero aparecio SUST_MS ('carro').
+Error exacto: ErrorSintactico: Linea 1, columna 4: se esperaba SUST_FS, pero aparecio SUST_MS ('carro').
+Nota del corpus: Artículo femenino con sustantivo masculino
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Articulo y sustantivo: genero diferente (La / carro)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (carro)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: El articulo femenino no concuerda en genero con el sustantivo masculino.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El articulo femenino singular no concuerda con el sustantivo masculino singular.
+
+==========================================================================
+CASO 07 | Nivel 1
+Oracion: Un carro rojo avanza.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales.
+Nota del corpus: Modificador permitido
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('Un')
+│   ├── SUST_MS ('carro')
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS ('rojo')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('avanza')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (carro)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMS con adjetivo y PredicadoS con verbo singular.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto masculino singular con adjetivo y verbo singular concuerdan perfectamente.
+
+==========================================================================
+CASO 08 | Nivel 1
+Oracion: Una mujer trabaja.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Artículo y sustantivo compatibles
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('Una')
+│   ├── SUST_FS ('mujer')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('trabaja')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular seguido de predicado singular y punto opcional.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular y predicado singular válidos según la gramática.
+
+==========================================================================
+CASO 09 | Nivel 1
+Oracion: El niño corren.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de RelativaSOpc para el token VERBO_P ('corren').
+Error exacto: ErrorSintactico: Linea 1, columna 9: no hay produccion para RelativaSOpc con VERBO_P ('corren'). Tokens esperados: QUE, VERBO_S.
+Nota del corpus: Sujeto singular con verbo plural
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo principal: numero diferente (niño / corren)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo principal: numero diferente (niño / corren)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: SujetoMS requiere VERBO_S, pero se encontro VERBO_P.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El articulo singular no concuerda con el verbo plural.
+
+==========================================================================
+CASO 10 | Nivel 1
+Oracion: Los carros nuevos avanzan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales.
+Nota del corpus: Concordancia en sujeto y verbo
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('carros')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP ('nuevos')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('avanzan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con SujetoMP PredicadoP PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural y predicado plural concuerdan perfectamente.
+
+==========================================================================
+CASO 11 | Nivel 1
+Oracion: Las niñas juegan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Estructura simple prevista en la CFG
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('niñas')
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('juegan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la regla sintactica de SujetoFP PredicadoP PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural femenino y verbo plural validos con punto y fin de cadena.
+
+==========================================================================
+CASO 12 | Nivel 1
+Oracion: Las niñas come.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de RelativaPOpc para el token VERBO_S ('come').
+Error exacto: ErrorSintactico: Linea 1, columna 11: no hay produccion para RelativaPOpc con VERBO_S ('come'). Tokens esperados: QUE, VERBO_P.
+Nota del corpus: Sujeto plural con verbo singular
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece OTRO (come)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo principal: numero diferente (niñas / come)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: Discrepancia de numero entre el sujeto plural y el predicado singular.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El sujeto plural no concuerda con el verbo en singular.
+
+==========================================================================
+CASO 13 | Nivel 1
+Oracion: El perro duerme.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Sujeto simple sin modificadores
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('perro')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('duerme')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece OTRO (perro)
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMS seguido de PredicadoS y punto opcional conforman la gramatica.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular masculino con verbo singular y punto opcional.
+
+==========================================================================
+CASO 14 | Nivel 1
+Oracion: La profesora trabaja.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Sujeto simple sin modificadores
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('profesora')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('trabaja')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesora)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto FS y Predicado S con punto opcional y EOF validos.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular y verbo singular con puntuacion valida.
+
+==========================================================================
+CASO 15 | Nivel 1
+Oracion: Los niños juegan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Concordancia del sujeto plural
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('niños')
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('juegan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMP y PredicadoP cumplen exactamente con la gramática de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural masculino y predicado plural concuerdan perfectamente segun la CFG.
+
+==========================================================================
+CASO 16 | Nivel 1
+Oracion: Las mujeres trabajan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Concordancia en plural femenino
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('mujeres')
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('trabajan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFP y PredicadoP cumplen exactamente con las reglas de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural femenino y predicado plural concuerdan perfectamente.
+
+==========================================================================
+CASO 17 | Nivel 1
+Oracion: El doctor estudia.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Verbo singular en presente
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('doctor')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('estudia')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (estudia)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Cumple exactamente con la estructura gramatical definida por la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto masculino singular y verbo singular con punto y fin de secuencia correctos.
+
+==========================================================================
+CASO 18 | Nivel 1
+Oracion: Una niña canta.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Articulo singular femenino
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('Una')
+│   ├── SUST_FS ('niña')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('canta')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece PUNTO (.)
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular seguido de predicado singular y punto opcional.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular y verbo singular con puntuacion valida.
+
+==========================================================================
+CASO 19 | Nivel 1
+Oracion: Las mariposas vuelan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Verbo plural en presente
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('mariposas')
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('vuelan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (mariposas)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFP y PredicadoP concuerdan correctamente en plural.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino plural y verbo plural concuerdan perfectamente segun la CFG.
+
+==========================================================================
+CASO 20 | Nivel 1
+Oracion: Los profesores enseñan.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG.
+Nota del corpus: Sujeto plural con verbo plural
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('profesores')
+│   ├── AdjetivoMPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('enseñan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (enseñan)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMP seguido de PredicadoP y PuntoOpcional.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural masculino y verbo plural validos segun la CFG.
+
+==========================================================================
+CASO 21 | Nivel 2
+Oracion: La niña pequeña canta rápidamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.
+Nota del corpus: Adjetivo y adverbio opcionales
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('niña')
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_FS ('pequeña')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('canta')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion pertenece exactamente a la CFG como SujetoFS PredicadoS PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular, adjetivo, verbo singular y adverbio permitidos por la CFG.
+
+==========================================================================
+CASO 22 | Nivel 2
+Oracion: Los perros felices juegan en el jardín.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.
+Nota del corpus: Frase preposicional simple
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('perros')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P ('felices')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('juegan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('jardín')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oración cumple exactamente con la estructura sintáctica de sujeto plural y predicado de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural, adjetivo plural común, verbo plural y frase preposicional válida.
+
+==========================================================================
+CASO 23 | Nivel 2
+Oracion: La niña pequeño canta.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de AdjetivoFSOpc para el token ADJ_MS ('pequeño').
+Error exacto: ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoFSOpc con ADJ_MS ('pequeño'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.
+Nota del corpus: Adjetivo masculino con sustantivo femenino
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sustantivo y adjetivo: genero diferente (niña / pequeño)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sustantivo y adjetivo: genero diferente (niña / pequeño)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: Discordancia de genero entre SUST_FS y ADJ_MS en el sujeto.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El genero del articulo y sustantivo no concuerda con el adjetivo.
+
+==========================================================================
+CASO 24 | Nivel 2
+Oracion: El niño corre en el parque.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye complementos preposicionales.
+Nota del corpus: Complemento preposicional simple
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('niño')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('corre')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('parque')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMS seguido de PredicadoS con FrasePrepOpc y punto.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular, verbo singular y frase preposicional permitida por la CFG.
+
+==========================================================================
+CASO 25 | Nivel 2
+Oracion: La profesora que enseña trabaja.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa.
+Nota del corpus: Relativa de sujeto en singular
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('profesora')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('enseña')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('trabaja')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece ADJ (enseña)
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesora)
+Gemini zero-shot: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: La regla RelativaSOpc exige adverbio o frase preposicional opcional tras el verbo.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular con proposicion relativa y predicado singular validos.
+
+==========================================================================
+CASO 26 | Nivel 2
+Oracion: Los niños que juega corren.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: Se esperaba VERBO_P, pero aparecio VERBO_S ('juega').
+Error exacto: ErrorSintactico: Linea 1, columna 15: se esperaba VERBO_P, pero aparecio VERBO_S ('juega').
+Nota del corpus: Antecedente plural con verbo singular en relativa
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo de la relativa: numero diferente (niños / juega)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo de la relativa: numero diferente (niños / juega)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: El sujeto plural requiere verbo plural en la proposicion relativa.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El verbo de la relativa debe ser plural para concordar con niños.
+
+==========================================================================
+CASO 27 | Nivel 2
+Oracion: Las mariposas bonitas vuelan lentamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.
+Nota del corpus: Modificadores sencillos
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('mariposas')
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_FP ('bonitas')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('vuelan')
+│   ├── AdverbioOpc
+│   │   └── ADV ('lentamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (mariposas)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFP, PredicadoP con adverbio y puntuacion validos segun CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino plural con adjetivo y predicado plural con adverbio permitidos.
+
+==========================================================================
+CASO 28 | Nivel 2
+Oracion: Un doctor trabaja en el hospital.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye complementos preposicionales.
+Nota del corpus: Un complemento preposicional
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('Un')
+│   ├── SUST_MS ('doctor')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('trabaja')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('hospital')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la regla sintactica de la gramatica formal.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular y verbo singular con frase preposicional permitida en la CFG.
+
+==========================================================================
+CASO 29 | Nivel 2
+Oracion: Los vehículos nueva circulan.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de AdjetivoMPOpc para el token ADJ_FS ('nueva').
+Error exacto: ErrorSintactico: Linea 1, columna 15: no hay produccion para AdjetivoMPOpc con ADJ_FS ('nueva'). Tokens esperados: ADJ_COMUN_P, ADJ_MP, EOF, PUNTO, QUE, VERBO_P, VERBO_S.
+Nota del corpus: Adjetivo femenino singular con sujeto plural masculino
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sustantivo y adjetivo: genero diferente (vehículos / nueva)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sustantivo y adjetivo: genero diferente (vehículos / nueva)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: El adjetivo femenina singular no concuerda con el sustantivo masculino plural.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El adjetivo femenino no concuerda con el sustantivo masculino.
+
+==========================================================================
+CASO 30 | Nivel 2
+Oracion: Los vehículos nuevos circulan rápidamente en las ciudades.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Adverbio seguido de frase preposicional
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('vehículos')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP ('nuevos')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('circulan')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFP
+│               ├── ART_FP ('las')
+│               ├── SUST_FP ('ciudades')
+│               └── AdjetivoFPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion pertenece al lenguaje de la CFG especificada.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural, adjetivo plural, verbo plural y adverbio con sintagma preposicional permitidos por CFG.
+
+==========================================================================
+CASO 31 | Nivel 2
+Oracion: El niño que canta alegremente corre con el perro.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios, complementos preposicionales.
+Nota del corpus: Relativa sencilla y complemento del predicado
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('niño')
+│   ├── AdjetivoMSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('canta')
+│       ├── AdverbioOpc
+│       │   └── ADV ('alegremente')
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('corre')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('con')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('perro')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple estrictamente con las reglas de la gramatica formal especificada.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto masculino singular con relativa, predicado con adverbio y frase preposicional.
+
+==========================================================================
+CASO 32 | Nivel 2
+Oracion: El niño corre en la casa de la niña.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de AdjetivoFSOpc para el token PREP ('de').
+Error exacto: ErrorSintactico: Linea 1, columna 26: no hay produccion para AdjetivoFSOpc con PREP ('de'). Tokens esperados: ADJ_COMUN_S, ADJ_FS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.
+Nota del corpus: La CFG solo permite un nominal simple tras la preposición
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: de (PREP)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: de (PREP)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: La oracion pertenece al lenguaje reconocido por la gramatica.
+Gemini few-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Sujeto singular, verbo singular y frase preposicional anidada permitida por CFG.
+
+==========================================================================
+CASO 33 | Nivel 2
+Oracion: La estudiante estudia hoy.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye adverbios.
+Nota del corpus: Artículo femenino resuelve el sustantivo
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('estudiante')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('estudia')
+│   ├── AdverbioOpc
+│   │   └── ADV ('hoy')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (estudia)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFS seguido de PredicadoS con adverbio y punto final.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular y verbo singular con adverbio permitido.
+
+==========================================================================
+CASO 34 | Nivel 2
+Oracion: El niño pequeño corre lentamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.
+Nota del corpus: Modificador del sujeto y adverbio del verbo
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('niño')
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS ('pequeño')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('corre')
+│   ├── AdverbioOpc
+│   │   └── ADV ('lentamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la estructura sintactica definida en la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMS con adjetivo y PredicadoS con adverbio validos segun la CFG.
+
+==========================================================================
+CASO 35 | Nivel 2
+Oracion: La niña canta y baila.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: El token 'y' no pertenece al vocabulario valido en AdverbioOpc.
+Error exacto: ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA ('y'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.
+Nota del corpus: La CFG no permite dos verbos coordinados
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece OTRO (y)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: y (OTRO)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: La conjuncion 'y' no esta permitida en el predicado segun la CFG.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: La conjuncion y no esta permitida en la gramatica de la CFG.
+
+==========================================================================
+CASO 36 | Nivel 2
+Oracion: La profesora amable enseña en la escuela.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.
+Nota del corpus: Adjetivo y complemento preposicional
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('profesora')
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S ('amable')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('enseña')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS ('la')
+│               ├── SUST_FS ('escuela')
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece ADJ (enseña)
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesora)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oración cumple exactamente con la estructura de SujetoFS PredicadoS PuntoOpcional EOF.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular con adjetivo y predicado con frase preposicional correctos.
+
+==========================================================================
+CASO 37 | Nivel 2
+Oracion: Los perros grandes duermen en el jardín.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.
+Nota del corpus: Concordancia plural y lugar
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('perros')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P ('grandes')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('duermen')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('jardín')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oración cumple exactamente con la estructura de SujetoMP y PredicadoP de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural, adjetivo plural, verbo plural y frase preposicional permitida por la CFG.
+
+==========================================================================
+CASO 38 | Nivel 2
+Oracion: Una mujer feliz trabaja tranquilamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.
+Nota del corpus: Adjetivo comun y adverbio simple
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('Una')
+│   ├── SUST_FS ('mujer')
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S ('feliz')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('trabaja')
+│   ├── AdverbioOpc
+│   │   └── ADV ('tranquilamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la estructura sintactica definida en la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular con adjetivo y predicado con adverbio validos.
+
+==========================================================================
+CASO 39 | Nivel 2
+Oracion: Las niñas bonitas juegan en el parque.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, complementos preposicionales.
+Nota del corpus: Modificadores y concordancia
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('niñas')
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_FP ('bonitas')
+│   └── RelativaPOpc
+│       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('juegan')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('parque')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (bonitas)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto FP, predicado P con frase preposicional y punto final.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural femenino, adjetivo, verbo plural y frase preposicional permitidas.
+
+==========================================================================
+CASO 40 | Nivel 2
+Oracion: El carro rojo avanza rápidamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye modificadores adjetivales, adverbios.
+Nota del corpus: Adjetivo y adverbio admitidos
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('carro')
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS ('rojo')
+│   └── RelativaSOpc
+│       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('avanza')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (carro)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoMS con adjetivo y PredicadoS con adverbio siguen exactamente las reglas de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular masculino, adjetivo, verbo singular y adverbio permitidos por la gramática.
+
+==========================================================================
+CASO 41 | Nivel 3
+Oracion: Los niños pequeños que juegan en el parque corren rápidamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Combinación compleja dentro del alcance
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('niños')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP ('pequeños')
+│   └── RelativaPOpc
+│       ├── QUE ('que')
+│       ├── VERBO_P ('juegan')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           ├── PREP ('en')
+│           └── SintagmaNominal
+│               └── NominalMS
+│                   ├── ART_MS ('el')
+│                   ├── SUST_MS ('parque')
+│                   └── AdjetivoMSOpc
+│                       └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('corren')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple estrictamente con las reglas de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural con relativa, predicado plural con adverbio, todo segun la CFG.
+
+==========================================================================
+CASO 42 | Nivel 3
+Oracion: Las profesoras que enseñan trabajan tranquilamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios.
+Nota del corpus: Relativa plural dentro del alcance
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('profesoras')
+│   ├── AdjetivoFPOpc
+│   │   └── vacia
+│   └── RelativaPOpc
+│       ├── QUE ('que')
+│       ├── VERBO_P ('enseñan')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('trabajan')
+│   ├── AdverbioOpc
+│   │   └── ADV ('tranquilamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesoras)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural, relativa correcta, predicado con verbo plural y adverbio.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino plural con relativa, verbo plural y adverbio admitido.
+
+==========================================================================
+CASO 43 | Nivel 3
+Oracion: El niño que juega con la niña que canta corre.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de PredicadoS para el token QUE ('que').
+Error exacto: ErrorSintactico: Linea 1, columna 31: no hay produccion para PredicadoS con QUE ('que'). Tokens esperados: VERBO_S.
+Nota del corpus: La CFG no permite relativa en nominal preposicional
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece QUE (que)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece QUE (que)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: La oracion cumple estrictamente con las reglas de la gramatica libre de contexto.
+Gemini few-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Sujeto singular con relativas anidadas y predicado singular válidos según CFG.
+
+==========================================================================
+CASO 44 | Nivel 3
+Oracion: La niña que camina lentamente canta en la escuela.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, adverbios, complementos preposicionales.
+Nota del corpus: Relativa singular con complemento en predicado
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('niña')
+│   ├── AdjetivoFSOpc
+│   │   └── vacia
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('camina')
+│       ├── AdverbioOpc
+│       │   └── ADV ('lentamente')
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('canta')
+│   ├── AdverbioOpc
+│   │   └── vacia
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS ('la')
+│               ├── SUST_FS ('escuela')
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: El verbo principal no es ROOT en spaCy
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (camina)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oración cumple estrictamente con la estructura sintáctica de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto singular con relativa, verbo singular, adverbio y frase preposicional.
+
+==========================================================================
+CASO 45 | Nivel 3
+Oracion: El niño pequeño que juega corre rápidamente en el parque.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Una relativa, un adjetivo, un adverbio y una preposicion
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMS
+│   ├── ART_MS ('El')
+│   ├── SUST_MS ('niño')
+│   ├── AdjetivoMSOpc
+│   │   └── ADJ_MS ('pequeño')
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('juega')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('corre')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalMS
+│               ├── ART_MS ('el')
+│               ├── SUST_MS ('parque')
+│               └── AdjetivoMSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con las reglas de la CFG.
+Gemini few-shot: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: El adverbio 'rápidamente' no es permitido por la regla RelativaSOpc ni PredicadoS.
+
+==========================================================================
+CASO 46 | Nivel 3
+Oracion: El niño y la niña corren.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: El token 'y' no pertenece al vocabulario valido en AdjetivoMSOpc.
+Error exacto: ErrorSintactico: Linea 1, columna 9: no hay produccion para AdjetivoMSOpc con DESCONOCIDA ('y'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.
+Nota del corpus: La CFG exige un solo sujeto simple
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece OTRO (y)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece OTRO (y)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: La CFG no contempla la conjuncion copulativa entre dos sintagmas nominales.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: La CFG no contempla conjunciones copulativas como 'y' en la estructura del sujeto.
+
+==========================================================================
+CASO 47 | Nivel 3
+Oracion: Las niñas felices que cantan juegan lentamente en la escuela.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Concordancia plural con relativa y preposicion
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFP
+│   ├── ART_FP ('Las')
+│   ├── SUST_FP ('niñas')
+│   ├── AdjetivoFPOpc
+│   │   └── ADJ_COMUN_P ('felices')
+│   └── RelativaPOpc
+│       ├── QUE ('que')
+│       ├── VERBO_P ('cantan')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('juegan')
+│   ├── AdverbioOpc
+│   │   └── ADV ('lentamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS ('la')
+│               ├── SUST_FS ('escuela')
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (cantan)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural femenino con relativa, predicado con adverbio y frase preposicional.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural, relativa plural, predicado plural, adverbio y frase preposicional válidos.
+
+==========================================================================
+CASO 48 | Nivel 3
+Oracion: La profesora amable que trabaja en la escuela enseña rápidamente.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Preposicion en la relativa y adverbio principal
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('profesora')
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_COMUN_S ('amable')
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('trabaja')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           ├── PREP ('en')
+│           └── SintagmaNominal
+│               └── NominalFS
+│                   ├── ART_FS ('la')
+│                   ├── SUST_FS ('escuela')
+│                   └── AdjetivoFSOpc
+│                       └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('enseña')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece ADV (rápidamente)
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba SUST; aparece SIN_ETIQUETA (profesora)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: SujetoFS con relativa y PredicadoS con adverbio validan la estructura completa de la CFG.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular con relativa y predicado validos segun la CFG.
+
+==========================================================================
+CASO 49 | Nivel 3
+Oracion: Corre el niño.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de Oracion para el token VERBO_S ('Corre').
+Error exacto: ErrorSintactico: Linea 1, columna 1: no hay produccion para Oracion con VERBO_S ('Corre'). Tokens esperados: ART_FP, ART_FS, ART_MP, ART_MS.
+Nota del corpus: La CFG exige sujeto antes del predicado
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba ART; aparece VERBO (Corre)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba ART; aparece SIN_ETIQUETA (Corre)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: La CFG exige que el sujeto preceda al predicado en la estructura de la oración.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El orden sintáctico no cumple con la regla de Sujeto antes que Predicado.
+
+==========================================================================
+CASO 50 | Nivel 3
+Oracion: Los perros grandes que duermen corren lentamente con los niños.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Relativa plural y modificadores validos
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('perros')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_COMUN_P ('grandes')
+│   └── RelativaPOpc
+│       ├── QUE ('que')
+│       ├── VERBO_P ('duermen')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('corren')
+│   ├── AdverbioOpc
+│   │   └── ADV ('lentamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('con')
+│       └── SintagmaNominal
+│           └── NominalMP
+│               ├── ART_MP ('los')
+│               ├── SUST_MP ('niños')
+│               └── AdjetivoMPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (duermen)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple estrictamente todas las reglas de la gramatica libre de contexto.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural con relativa, predicado plural, adverbio y frase preposicional válidos.
+
+==========================================================================
+CASO 51 | Nivel 3
+Oracion: La niña pequeña que canta alegremente camina lentamente en la escuela.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoFS PredicadoS PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Adverbio dentro de relativa y otro en predicado principal
+ARBOL SINTACTICO:
+Oracion
+├── SujetoFS
+│   ├── ART_FS ('La')
+│   ├── SUST_FS ('niña')
+│   ├── AdjetivoFSOpc
+│   │   └── ADJ_FS ('pequeña')
+│   └── RelativaSOpc
+│       ├── QUE ('que')
+│       ├── VERBO_S ('canta')
+│       ├── AdverbioOpc
+│       │   └── ADV ('alegremente')
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoS
+│   ├── VERBO_S ('camina')
+│   ├── AdverbioOpc
+│   │   └── ADV ('lentamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFS
+│               ├── ART_FS ('la')
+│               ├── SUST_FS ('escuela')
+│               └── AdjetivoFSOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: RECHAZADA | Falso negativo: rechazada erroneamente | Motivo: Se esperaba VERBO; aparece SIN_ETIQUETA (camina)
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple exactamente con la estructura de la CFG especificada.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto femenino singular con subordinada relativa, predicado con adverbio y frase preposicional.
+
+==========================================================================
+CASO 52 | Nivel 3
+Oracion: El niño que la niña conoce corre.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: Se esperaba VERBO_S, pero aparecio ART_FS ('la').
+Error exacto: ErrorSintactico: Linea 1, columna 13: se esperaba VERBO_S, pero aparecio ART_FS ('la').
+Nota del corpus: La CFG solo modela relativa de sujeto
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece ART (la)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece ART (la)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Cumple con las reglas de sujeto con relacional, predicado y punto final.
+Gemini few-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Sujeto masculino singular con proposicion relativa valida y predicado singular.
+
+==========================================================================
+CASO 53 | Nivel 3
+Oracion: Los carros nuevos que avanzan circulan rápidamente en las ciudades.
+Esperado CFG: ACEPTADA | Español general: SI
+Parser: ACEPTADA | Verdadero positivo
+Motivo del parser: Derivacion valida: Oracion -> SujetoMP PredicadoP PuntoOpcional EOF. Los tokens se consumieron en el orden permitido por la CFG. Incluye una relativa, modificadores adjetivales, adverbios, complementos preposicionales.
+Nota del corpus: Relativa de sujeto plural con modificadores y lugar
+ARBOL SINTACTICO:
+Oracion
+├── SujetoMP
+│   ├── ART_MP ('Los')
+│   ├── SUST_MP ('carros')
+│   ├── AdjetivoMPOpc
+│   │   └── ADJ_MP ('nuevos')
+│   └── RelativaPOpc
+│       ├── QUE ('que')
+│       ├── VERBO_P ('avanzan')
+│       ├── AdverbioOpc
+│       │   └── vacia
+│       └── FrasePrepOpc
+│           └── vacia
+├── PredicadoP
+│   ├── VERBO_P ('circulan')
+│   ├── AdverbioOpc
+│   │   └── ADV ('rápidamente')
+│   └── FrasePrepOpc
+│       ├── PREP ('en')
+│       └── SintagmaNominal
+│           └── NominalFP
+│               ├── ART_FP ('las')
+│               ├── SUST_FP ('ciudades')
+│               └── AdjetivoFPOpc
+│                   └── vacia
+├── PuntoOpcional
+│   └── PUNTO ('.')
+└── EOF ('$')
+spaCy + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+NLTK + criterio: ACEPTADA | Verdadero positivo | Motivo: Coincide con el patron de etiquetas y concordancia definido
+Gemini zero-shot: ACEPTADA | Verdadero positivo | Motivo: La oracion cumple estrictamente con la CFG establecida.
+Gemini few-shot: ACEPTADA | Verdadero positivo | Motivo: Sujeto plural con relativa, verbo plural, adverbio y frase preposicional válidos.
+
+==========================================================================
+CASO 54 | Nivel 3
+Oracion: La niña que corre con el perro que duerme canta.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de PredicadoS para el token QUE ('que').
+Error exacto: ErrorSintactico: Linea 1, columna 32: no hay produccion para PredicadoS con QUE ('que'). Tokens esperados: VERBO_S.
+Nota del corpus: La CFG no permite relativas dentro del nominal preposicional
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece QUE (que)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece QUE (que)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Sujeto con relativas anidadas y predicado concuerdan perfectamente con la CFG.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: La gramática no permite oraciones relativas anidadas dentro de un sintagma nominal.
+
+==========================================================================
+CASO 55 | Nivel 3
+Oracion: La niña pequeña tranquila canta.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de RelativaSOpc para el token ADJ_FS ('tranquila').
+Error exacto: ErrorSintactico: Linea 1, columna 17: no hay produccion para RelativaSOpc con ADJ_FS ('tranquila'). Tokens esperados: QUE, VERBO_S.
+Nota del corpus: La CFG permite un único adjetivo opcional
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece ADJ (tranquila)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Se esperaba VERBO; aparece ADJ (tranquila)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: SujetoFS no acepta dos adjetivos consecutivos sin conjuncion.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: La gramatica solo permite un adjetivo opcional tras el sustantivo.
+
+==========================================================================
+CASO 56 | Nivel 3
+Oracion: El niño corre lentamente hoy.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de FrasePrepOpc para el token ADV ('hoy').
+Error exacto: ErrorSintactico: Linea 1, columna 26: no hay produccion para FrasePrepOpc con ADV ('hoy'). Tokens esperados: EOF, PREP, PUNTO, VERBO_P, VERBO_S.
+Nota del corpus: La CFG permite un único adverbio opcional
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: hoy (ADV)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: hoy (ADV)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: PredicadoS no acepta multiples adverbios consecutivos segun la CFG.
+Gemini few-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: SujetoMS, verbo singular, adverbio opcional y punto final validos por la CFG.
+
+==========================================================================
+CASO 57 | Nivel 3
+Oracion: El niño corre porque la niña canta.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: El token 'porque' no pertenece al vocabulario valido en AdverbioOpc.
+Error exacto: ErrorSintactico: Linea 1, columna 15: no hay produccion para AdverbioOpc con DESCONOCIDA ('porque'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.
+Nota del corpus: La CFG no incluye subordinadas causales
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: porque (OTRO)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: porque (OTRO)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: La palabra porque no pertenece al conjunto terminal QUE de la CFG.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: La CFG no permite conectores subordinantes condicionales o causales.
+
+==========================================================================
+CASO 58 | Nivel 3
+Oracion: El niño corre en el parque rápidamente.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de AdjetivoMSOpc para el token ADV ('rápidamente').
+Error exacto: ErrorSintactico: Linea 1, columna 28: no hay produccion para AdjetivoMSOpc con ADV ('rápidamente'). Tokens esperados: ADJ_COMUN_S, ADJ_MS, EOF, PUNTO, QUE, VERBO_P, VERBO_S.
+Nota del corpus: El orden del predicado en la CFG es adverbio y luego frase preposicional
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: rápidamente (ADV)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: rápidamente (ADV)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: La oracion cumple exactamente con la estructura de SujetoMS, PredicadoS, adverbio y punto.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El adverbio debe preceder a la frase preposicional segun la CFG.
+
+==========================================================================
+CASO 59 | Nivel 3
+Oracion: El niño lee el libro.
+Esperado CFG: RECHAZADA | Español general: SI
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de AdverbioOpc para el token ART_MS ('el').
+Error exacto: ErrorSintactico: Linea 1, columna 13: no hay produccion para AdverbioOpc con ART_MS ('el'). Tokens esperados: ADV, EOF, PREP, PUNTO, VERBO_P, VERBO_S.
+Nota del corpus: El predicado de la CFG no permite objeto directo
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: el (ART)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sobran tokens: el (ART)
+Gemini zero-shot: ACEPTADA | Falso positivo: aceptada erroneamente | Motivo: Cumple exactamente con la estructura de SujetoMS, PredicadoS, PuntoOpcional y EOF de la CFG.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El objeto directo final no esta contemplado en el predicado de la CFG.
+
+==========================================================================
+CASO 60 | Nivel 3
+Oracion: Los niños que juegan corre.
+Esperado CFG: RECHAZADA | Español general: NO
+Parser: RECHAZADA | Verdadero negativo
+Motivo del parser: No existe una produccion de PredicadoP para el token VERBO_S ('corre').
+Error exacto: ErrorSintactico: Linea 1, columna 22: no hay produccion para PredicadoP con VERBO_S ('corre'). Tokens esperados: VERBO_P.
+Nota del corpus: Sujeto plural y verbo principal singular
+spaCy + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo principal: numero diferente (niños / corre)
+NLTK + criterio: RECHAZADA | Verdadero negativo | Motivo: Sujeto y verbo principal: numero diferente (niños / corre)
+Gemini zero-shot: RECHAZADA | Verdadero negativo | Motivo: No hay concordancia de número entre el sujeto plural y el predicado singular.
+Gemini few-shot: RECHAZADA | Verdadero negativo | Motivo: El verbo principal no concuerda en numero con el sujeto plural.
+

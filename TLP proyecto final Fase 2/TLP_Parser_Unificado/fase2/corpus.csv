@@ -1,0 +1,61 @@
+﻿id,nivel,oracion,esperado_cfg,correcta_espanol,fenomeno,estructura_esperada,justificacion
+01,1,El niño corre.,ACEPTADA,SI,Sujeto singular + verbo,SujetoMS PredicadoS,Estructura simple prevista en la CFG
+02,1,La niña canta.,ACEPTADA,SI,Sujeto singular femenino + verbo,SujetoFS PredicadoS,Estructura simple prevista en la CFG
+03,1,Los niño corre.,RECHAZADA,NO,Concordancia artículo-sustantivo,,Artículo plural con sustantivo singular
+04,1,Los perros duermen.,ACEPTADA,SI,Sujeto plural + verbo,SujetoMP PredicadoP,Concordancia de número
+05,1,Las profesoras enseñan.,ACEPTADA,SI,Sujeto plural femenino + verbo,SujetoFP PredicadoP,Concordancia de número
+06,1,La carro corre.,RECHAZADA,NO,Concordancia de género,,Artículo femenino con sustantivo masculino
+07,1,Un carro rojo avanza.,ACEPTADA,SI,Adjetivo masculino singular,SujetoMS PredicadoS,Modificador permitido
+08,1,Una mujer trabaja.,ACEPTADA,SI,Artículo indefinido femenino,SujetoFS PredicadoS,Artículo y sustantivo compatibles
+09,1,El niño corren.,RECHAZADA,NO,Concordancia sujeto-verbo,,Sujeto singular con verbo plural
+10,1,Los carros nuevos avanzan.,ACEPTADA,SI,Adjetivo masculino plural,SujetoMP PredicadoP,Concordancia en sujeto y verbo
+11,1,Las niñas juegan.,ACEPTADA,SI,Sujeto plural femenino,SujetoFP PredicadoP,Estructura simple prevista en la CFG
+12,1,Las niñas come.,RECHAZADA,NO,Concordancia sujeto-verbo,,Sujeto plural con verbo singular
+13,1,El perro duerme.,ACEPTADA,SI,Sujeto masculino singular,SujetoMS PredicadoS,Sujeto simple sin modificadores
+14,1,La profesora trabaja.,ACEPTADA,SI,Sujeto femenino singular,SujetoFS PredicadoS,Sujeto simple sin modificadores
+15,1,Los niños juegan.,ACEPTADA,SI,Sujeto masculino plural,SujetoMP PredicadoP,Concordancia del sujeto plural
+16,1,Las mujeres trabajan.,ACEPTADA,SI,Sujeto femenino plural,SujetoFP PredicadoP,Concordancia en plural femenino
+17,1,El doctor estudia.,ACEPTADA,SI,Sujeto masculino singular,SujetoMS PredicadoS,Verbo singular en presente
+18,1,Una niña canta.,ACEPTADA,SI,Articulo indefinido,SujetoFS PredicadoS,Articulo singular femenino
+19,1,Las mariposas vuelan.,ACEPTADA,SI,Sujeto femenino plural,SujetoFP PredicadoP,Verbo plural en presente
+20,1,Los profesores enseñan.,ACEPTADA,SI,Sujeto masculino plural,SujetoMP PredicadoP,Sujeto plural con verbo plural
+21,2,La niña pequeña canta rápidamente.,ACEPTADA,SI,Adjetivo y adverbio,SujetoFS PredicadoS,Adjetivo y adverbio opcionales
+22,2,Los perros felices juegan en el jardín.,ACEPTADA,SI,Adjetivo y frase preposicional,SujetoMP PredicadoP,Frase preposicional simple
+23,2,La niña pequeño canta.,RECHAZADA,NO,Concordancia sustantivo-adjetivo,,Adjetivo masculino con sustantivo femenino
+24,2,El niño corre en el parque.,ACEPTADA,SI,Frase preposicional,SujetoMS PredicadoS,Complemento preposicional simple
+25,2,La profesora que enseña trabaja.,ACEPTADA,SI,Relativa sencilla,SujetoFS RelativaSOpc PredicadoS,Relativa de sujeto en singular
+26,2,Los niños que juega corren.,RECHAZADA,NO,Concordancia de la relativa,,Antecedente plural con verbo singular en relativa
+27,2,Las mariposas bonitas vuelan lentamente.,ACEPTADA,SI,Adjetivo y adverbio plural,SujetoFP PredicadoP,Modificadores sencillos
+28,2,Un doctor trabaja en el hospital.,ACEPTADA,SI,Preposición con nominal masculino,SujetoMS PredicadoS,Un complemento preposicional
+29,2,Los vehículos nueva circulan.,RECHAZADA,NO,Concordancia sustantivo-adjetivo,,Adjetivo femenino singular con sujeto plural masculino
+30,2,Los vehículos nuevos circulan rápidamente en las ciudades.,ACEPTADA,SI,Modificadores y preposición,SujetoMP PredicadoP,Adverbio seguido de frase preposicional
+31,2,El niño que canta alegremente corre con el perro.,ACEPTADA,SI,Relativa + adverbio + preposición,SujetoMS RelativaSOpc PredicadoS,Relativa sencilla y complemento del predicado
+32,2,El niño corre en la casa de la niña.,RECHAZADA,SI,Dos frases preposicionales encadenadas,,La CFG solo permite un nominal simple tras la preposición
+33,2,La estudiante estudia hoy.,ACEPTADA,SI,Sustantivo común en género,SujetoFS PredicadoS,Artículo femenino resuelve el sustantivo
+34,2,El niño pequeño corre lentamente.,ACEPTADA,SI,Adjetivo y adverbio,SujetoMS PredicadoS,Modificador del sujeto y adverbio del verbo
+35,2,La niña canta y baila.,RECHAZADA,SI,Coordinación verbal,,La CFG no permite dos verbos coordinados
+36,2,La profesora amable enseña en la escuela.,ACEPTADA,SI,Adjetivo comun y preposicion,SujetoFS PredicadoS,Adjetivo y complemento preposicional
+37,2,Los perros grandes duermen en el jardín.,ACEPTADA,SI,Adjetivo plural y preposicion,SujetoMP PredicadoP,Concordancia plural y lugar
+38,2,Una mujer feliz trabaja tranquilamente.,ACEPTADA,SI,Adjetivo comun y adverbio,SujetoFS PredicadoS,Adjetivo comun y adverbio simple
+39,2,Las niñas bonitas juegan en el parque.,ACEPTADA,SI,Adjetivo femenino plural y preposicion,SujetoFP PredicadoP,Modificadores y concordancia
+40,2,El carro rojo avanza rápidamente.,ACEPTADA,SI,Adjetivo masculino y adverbio,SujetoMS PredicadoS,Adjetivo y adverbio admitidos
+41,3,Los niños pequeños que juegan en el parque corren rápidamente.,ACEPTADA,SI,Relativa + adjetivo + adverbio,SujetoMP RelativaPOpc PredicadoP,Combinación compleja dentro del alcance
+42,3,Las profesoras que enseñan trabajan tranquilamente.,ACEPTADA,SI,Relativa plural y adverbio,SujetoFP RelativaPOpc PredicadoP,Relativa plural dentro del alcance
+43,3,El niño que juega con la niña que canta corre.,RECHAZADA,SI,Relativa anidada,,La CFG no permite relativa en nominal preposicional
+44,3,La niña que camina lentamente canta en la escuela.,ACEPTADA,SI,Relativa con adverbio y complemento,SujetoFS RelativaSOpc PredicadoS,Relativa singular con complemento en predicado
+45,3,El niño pequeño que juega corre rápidamente en el parque.,ACEPTADA,SI,Relativa y modificadores multiples,SujetoMS RelativaSOpc PredicadoS,"Una relativa, un adjetivo, un adverbio y una preposicion"
+46,3,El niño y la niña corren.,RECHAZADA,SI,Sujeto coordinado,,La CFG exige un solo sujeto simple
+47,3,Las niñas felices que cantan juegan lentamente en la escuela.,ACEPTADA,SI,Relativa plural y modificadores,SujetoFP RelativaPOpc PredicadoP,Concordancia plural con relativa y preposicion
+48,3,La profesora amable que trabaja en la escuela enseña rápidamente.,ACEPTADA,SI,Relativa con frase preposicional,SujetoFS RelativaSOpc PredicadoS,Preposicion en la relativa y adverbio principal
+49,3,Corre el niño.,RECHAZADA,SI,Inversión sujeto-verbo,,La CFG exige sujeto antes del predicado
+50,3,Los perros grandes que duermen corren lentamente con los niños.,ACEPTADA,SI,Relativa plural y preposicion,SujetoMP RelativaPOpc PredicadoP,Relativa plural y modificadores validos
+51,3,La niña pequeña que canta alegremente camina lentamente en la escuela.,ACEPTADA,SI,Adverbios en dos predicados,SujetoFS RelativaSOpc PredicadoS,Adverbio dentro de relativa y otro en predicado principal
+52,3,El niño que la niña conoce corre.,RECHAZADA,SI,Relativa de objeto,,La CFG solo modela relativa de sujeto
+53,3,Los carros nuevos que avanzan circulan rápidamente en las ciudades.,ACEPTADA,SI,Relativa plural y modificadores,SujetoMP RelativaPOpc PredicadoP,Relativa de sujeto plural con modificadores y lugar
+54,3,La niña que corre con el perro que duerme canta.,RECHAZADA,SI,Relativa anidada,,La CFG no permite relativas dentro del nominal preposicional
+55,3,La niña pequeña tranquila canta.,RECHAZADA,SI,Dos adjetivos consecutivos,,La CFG permite un único adjetivo opcional
+56,3,El niño corre lentamente hoy.,RECHAZADA,SI,Dos adverbios consecutivos,,La CFG permite un único adverbio opcional
+57,3,El niño corre porque la niña canta.,RECHAZADA,SI,Subordinada causal,,La CFG no incluye subordinadas causales
+58,3,El niño corre en el parque rápidamente.,RECHAZADA,SI,Adverbio después de preposición,,El orden del predicado en la CFG es adverbio y luego frase preposicional
+59,3,El niño lee el libro.,RECHAZADA,SI,Objeto directo,,El predicado de la CFG no permite objeto directo
+60,3,Los niños que juegan corre.,RECHAZADA,NO,Concordancia sujeto-verbo a distancia,,Sujeto plural y verbo principal singular

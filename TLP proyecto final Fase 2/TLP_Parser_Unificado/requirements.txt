@@ -1,0 +1,8 @@
+# Python 3.13
+# El parser y los evaluadores offline usan solo la biblioteca estandar.
+# Dependencias para volver a ejecutar spaCy, NLTK y Gemini.
+spacy==3.8.18
+nltk==3.10.4
+google-genai>=1.0,<2.0
+python-dotenv>=1.0,<2.0
+pydantic>=2.0,<3.0
